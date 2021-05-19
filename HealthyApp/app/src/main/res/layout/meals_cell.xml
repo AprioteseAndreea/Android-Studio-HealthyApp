@@ -4,36 +4,52 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/purple_200">
+    android:background="@color/white">
 
+    <!--    <ImageView-->
+<!--        android:id="@+id/meals_image"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+
+<!--        app:srcCompat="@drawable/ic_baseline_fastfood_24" />-->
     <TextView
         android:id="@+id/meals_name"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="23dp"
         android:padding="?android:listPreferredItemPaddingLeft"
         android:paddingStart="5dp"
         android:paddingLeft="0dp"
-        android:layout_marginLeft="65dp"
         android:text="Name"
-        android:textColor="@color/white"
-        android:textSize="20dp" />
+        android:textColor="@color/peach"
+        android:textColorHighlight="@color/black"
+        android:textSize="18dp" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/meals_image"
-        android:layout_width="65dp"
-        android:layout_height="72dp"
-        app:srcCompat="@drawable/ic_baseline_fastfood_24" />
+        app:civ_border_width="2dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_baseline_fastfood_24"
+        app:civ_border_color="@color/peach"
+        android:layout_width="95dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="95dp"/>
 
     <TextView
         android:id="@+id/meals_kcals"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="450dp"
+        android:layout_marginLeft="100dp"
         android:padding="?android:listPreferredItemPaddingLeft"
         android:paddingStart="5dp"
+        android:layout_marginTop="50dp"
         android:paddingLeft="0dp"
         android:text="kcals"
-        android:textColor="@color/white"
+        android:textColor="@color/peach"
         android:textSize="18dp" />
 
 </FrameLayout>
