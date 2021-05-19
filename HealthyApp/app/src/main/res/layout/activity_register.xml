@@ -8,23 +8,30 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="653dp"
-        android:layout_height="938dp"
+        android:layout_width="850dp"
+        android:layout_height="1131dp"
+
+        android:layout_marginTop="-10dp"
+        android:rotation="90"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bgr35" />
+        app:srcCompat="@drawable/bg342" />
+
     <EditText
         android:id="@+id/registerFullName"
         android:layout_width="330dp"
         android:layout_height="42dp"
         android:ems="10"
+android:textColorHint="@color/white"
         android:hint="Full Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="200dp"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintVertical_chainStyle="packed"/>
 
     <EditText
@@ -33,6 +40,9 @@
         android:layout_height="42dp"
         android:ems="10"
         android:hint="Email Address"
+        android:textColorHint="@color/white"
+        app:layout_constraintHorizontal_bias="0.75"
+
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +54,9 @@
         android:layout_height="42dp"
         android:ems="10"
         android:hint="Password"
+        android:textColorHint="@color/white"
+        app:layout_constraintHorizontal_bias="0.75"
+
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +69,9 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Confirm Password"
+        android:textColorHint="@color/white"
+        app:layout_constraintHorizontal_bias="0.75"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerPassword" />

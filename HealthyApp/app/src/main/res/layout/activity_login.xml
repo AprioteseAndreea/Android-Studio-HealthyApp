@@ -3,65 +3,67 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".activities.LoginActivity"
 
    >
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="653dp"
-        android:layout_height="938dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bgr35" />
+        android:layout_width="850dp"
+        android:layout_height="1131dp"
 
-    <EditText
-        android:id="@+id/loginEmail"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Email Address"
-        android:inputType="textPersonName"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/loginPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <EditText
-        android:id="@+id/loginPassword"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Password"
-        android:textColor="@color/white"
-        android:inputType="textPassword"
+        android:layout_marginTop="-10dp"
+        android:rotation="90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-
-
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginEmail"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg342" />
 
-        />
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/loginEmail"
+        android:textColorHint="@color/white"
+        app:layout_constraintVertical_bias="0.45"
+
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@id/loginPassword"
+        android:textColor="@color/white"
+        android:inputType="textPersonName"
+        android:hint="Email Address"
+        android:ems="10"/>
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/loginPassword"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:textColor="@color/white"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:textColorHint="@color/white"
+
+        android:ems="10"
+        app:layout_constraintTop_toBottomOf="@id/loginEmail"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
-        android:id="@+id/loginb"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="LogIn"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/loginb"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/loginPassword"
+        android:backgroundTint="@color/white" android:text="LogIn"
+        android:layout_marginTop="30dp"/>
 
     <Button
         android:id="@+id/createAccount"
