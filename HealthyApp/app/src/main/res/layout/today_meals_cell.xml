@@ -27,7 +27,7 @@
         android:layout_marginTop="90dp"
         android:paddingLeft="10dp"
         android:textAlignment="center"
-
+android:fontFamily="@font/gentiumbasicbegular"
         android:text="kcals"
         android:textColor="@color/peach"
         android:textSize="13dp" />

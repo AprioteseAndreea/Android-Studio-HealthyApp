@@ -24,15 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*Button logout = findViewById(R.id.logoutBtn);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                finish();
-            }
-        });*/
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 HomeFragment.newInstance(" ", " ")).commit();
 

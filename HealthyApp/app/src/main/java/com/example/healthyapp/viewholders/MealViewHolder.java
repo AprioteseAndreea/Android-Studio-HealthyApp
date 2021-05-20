@@ -18,6 +18,7 @@ import com.example.healthyapp.models.Meal;
 public class MealViewHolder extends RecyclerView.ViewHolder {
     private TextView title;
     private TextView kcals;
+    private TextView day;
     private ImageView imageView;
 
     public MealViewHolder(@NonNull View view) {
@@ -25,12 +26,14 @@ public class MealViewHolder extends RecyclerView.ViewHolder {
         title = view.findViewById(R.id.meals_name);
         kcals = view.findViewById(R.id.meals_kcals);
         imageView = view.findViewById(R.id.meals_image);
+        day = view.findViewById(R.id.day_number);
 
     }
 
     public void bind(Meal meal) {
         title.setText(meal.getName());
         kcals.setText(meal.getCalories());
+        day.setText(meal.getDay());
         String imageViewUrl = meal.getImagePath();
         ImageLoader imageLoader = VolleyConfigSingleton.getInstance(imageView.getContext().
                 getApplicationContext()).getImageLoader();
