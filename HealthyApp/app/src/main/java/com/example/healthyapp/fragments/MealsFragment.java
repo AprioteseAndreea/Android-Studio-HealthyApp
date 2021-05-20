@@ -59,7 +59,7 @@ public class MealsFragment extends Fragment {
 
     public static String mealId;
     private RecyclerView recyclerView;
-    ArrayList<Meal> meals = new ArrayList<>();
+    public static ArrayList<Meal> meals = new ArrayList<>();
     private ActivityFragmentCommunication activityFragmentCommunication;
 
     public MealsFragment() {
@@ -131,7 +131,7 @@ public class MealsFragment extends Fragment {
     }
 
     private void handleMealResponse(String responseJson) throws JSONException {
-
+        meals.clear();
         JSONArray usersJSONArray = new JSONArray(responseJson);
         for (int i = 0; i < usersJSONArray.length(); i++) {
             JSONObject obj = usersJSONArray.getJSONObject(i);
@@ -145,7 +145,7 @@ public class MealsFragment extends Fragment {
             String preptime = obj.getString(PREP_TIME);
             String calories = obj.getString(CALORIES);
 
-            Meal meal = new Meal(id, day,  name, preptime, calories, imagePath, ingredients, howtoprepare);
+            Meal meal = new Meal(id, day, name, preptime, calories, imagePath, ingredients, howtoprepare);
             meals.add(meal);
         }
 
@@ -156,7 +156,7 @@ public class MealsFragment extends Fragment {
 
 
                 if (activityFragmentCommunication != null) {
-                    activityFragmentCommunication.replaceWithF2();
+                    activityFragmentCommunication.replaceWithAboutMealFragment();
 
                 }
             }
@@ -165,6 +165,7 @@ public class MealsFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
     }
+
     @Override
     public void onAttach(@NonNull Context context) {
 

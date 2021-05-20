@@ -67,9 +67,11 @@ public class HomeFragment extends Fragment {
     private String mParam2;
 
     private RecyclerView recyclerView;
-    ArrayList<Meal> meals = new ArrayList<>();
+    public static ArrayList<Meal> meals = new ArrayList<>();
     private ActivityFragmentCommunication activityFragmentCommunication;
     private TextView dateTimeDisplay;
+
+    private String clickedId = null;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -122,20 +124,21 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 int waterGlasses = Integer.parseInt((String) water_glasses.getText());
-                if(waterGlasses>0){
-                    water_glasses.setText(String.valueOf(waterGlasses-1));
+                if (waterGlasses > 0) {
+                    water_glasses.setText(String.valueOf(waterGlasses - 1));
                 }
 
             }
         });
-        dateTimeDisplay=view.findViewById(R.id.date_time);
+        dateTimeDisplay = view.findViewById(R.id.date_time);
         getDate();
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         getMeals();
         return view;
     }
-    private void getDate(){
+
+    private void getDate() {
 
 
         Calendar calendar;
@@ -148,6 +151,7 @@ public class HomeFragment extends Fragment {
         date = dateFormat.format(calendar.getTime());
         dateTimeDisplay.setText(date);
     }
+
     private void getMeals() {
         RequestQueue queue = Volley.newRequestQueue(getContext());
         String url = MEALS_URL;
@@ -174,7 +178,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void handleMealResponse(String responseJson) throws JSONException {
-
+        meals.clear();
         JSONArray usersJSONArray = new JSONArray(responseJson);
         for (int i = 0; i < usersJSONArray.length(); i++) {
             JSONObject obj = usersJSONArray.getJSONObject(i);
@@ -188,8 +192,9 @@ public class HomeFragment extends Fragment {
             String preptime = obj.getString(PREP_TIME);
             String calories = obj.getString(CALORIES);
 
-            if(day.equals("1")){
-                Meal meal = new Meal(id, day,  name, preptime, calories, imagePath, ingredients, howtoprepare);
+            //if day egal cu current date :
+            if (day.equals("1")) {
+                Meal meal = new Meal(id, day, name, preptime, calories, imagePath, ingredients, howtoprepare);
                 meals.add(meal);
             }
 
@@ -200,6 +205,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
     }
+
     @Override
     public void onAttach(@NonNull Context context) {
 
