@@ -1,6 +1,7 @@
 package com.example.healthyapp.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,11 +23,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.healthyapp.R;
+import com.example.healthyapp.activities.LoginActivity;
 import com.example.healthyapp.adapters.MealAdapter;
 import com.example.healthyapp.adapters.TodayMealsAdapter;
 import com.example.healthyapp.interfaces.ActivityFragmentCommunication;
 import com.example.healthyapp.interfaces.OnMealItemClick;
 import com.example.healthyapp.models.Meal;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -103,6 +107,27 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.today_meals_recyclerView);
+        Button logout = view.findViewById(R.id.logout_btn);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getContext(), LoginActivity.class));
+
+            }
+        });
+        Button drunk = view.findViewById(R.id.drink);
+        TextView water_glasses = view.findViewById(R.id.water_glasses);
+        drunk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int waterGlasses = Integer.parseInt((String) water_glasses.getText());
+                if(waterGlasses>0){
+                    water_glasses.setText(String.valueOf(waterGlasses-1));
+                }
+
+            }
+        });
         dateTimeDisplay=view.findViewById(R.id.date_time);
         getDate();
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));

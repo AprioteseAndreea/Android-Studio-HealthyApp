@@ -19,45 +19,123 @@
         android:layout_marginTop="-10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.593"
-        app:srcCompat="@drawable/bg5678" />
+        app:layout_constraintVertical_bias="0.124"
+        app:srcCompat="@drawable/bg56789" />
 
     <TextView
         android:id="@+id/date_time"
         android:layout_width="190dp"
-        android:layout_height="45dp"
+        android:layout_height="35dp"
         android:text="Saturday, 12 April"
         android:paddingTop="10dp"
         android:paddingLeft="10dp"
         android:textSize="15sp"
 android:textColor="@color/peach"
+        android:fontFamily="@font/gentiumbasicitalic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
+    <ImageView
+        android:id="@+id/water_glass"
+        android:layout_width="40dp"
+        android:layout_height="52dp"
+        app:layout_constraintStart_toEndOf="@id/water_glasses"
+        app:layout_constraintTop_toBottomOf="@id/logout_btn"
+android:src="@drawable/glass"
+        ></ImageView>
+    <TextView
+        android:id="@+id/water_glasses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/logout_btn"
+        app:layout_constraintTop_toBottomOf="@id/logout_btn"
+        android:text="8"
+        android:paddingLeft="30dp"
+        android:textColor="@color/peach"
+        android:textSize="40dp">
+
+    </TextView>
+    <Button
+        android:id="@+id/logout_btn"
+        android:layout_height="37dp"
+        android:layout_width="100dp"
+        app:layout_constraintStart_toEndOf="@id/date_time"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="80dp"
+        android:text="LogOut"
+        android:backgroundTint="@color/peach"
+        >
+
+    </Button>
+    <Button
+        android:id="@+id/drink"
+        android:layout_height="37dp"
+        android:layout_width="120dp"
+        app:layout_constraintStart_toStartOf="@id/water_glasses"
+        app:layout_constraintTop_toBottomOf="@id/water_glasses"
+        android:layout_marginLeft="0dp"
+        android:text="Drunk one"
+        android:textColor="@color/peach"
+        android:backgroundTint="@color/white"
+
+        >
+
+    </Button>
 
     <TextView
         android:id="@+id/hello"
         android:layout_width="120dp"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
         android:paddingLeft="10dp"
-
+android:fontFamily="@font/gentiumbasicbold"
         app:layout_constraintTop_toBottomOf="@id/date_time"
         app:layout_constraintStart_toStartOf="@id/date_time"
         android:text="Hello!"
         android:textColor="@color/peach"
-        android:textSize="30sp" />
+        android:textSize="35sp" />
+    <TextView
+        android:id="@+id/your_meals"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="24dp"
+        android:fontFamily="@font/gentiumbasicbold"
+        app:layout_constraintTop_toBottomOf="@id/hello"
+        app:layout_constraintStart_toStartOf="@id/hello"
+        android:text="MEALS FOR TODAY"
+        android:textColor="@color/peach"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/your_workout"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="0dp"
+        android:fontFamily="@font/gentiumbasicbold"
+        app:layout_constraintTop_toBottomOf="@id/today_meals_recyclerView"
+        app:layout_constraintStart_toStartOf="@id/hello"
+        android:text="TODAY WORKOUT"
+        android:textColor="@color/peach"
+        android:textSize="18sp" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/today_meals_recyclerView"
-        android:layout_width="395dp"
-        android:layout_height="689dp"
+        android:layout_width="390dp"
+        android:layout_height="170dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/hello"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintStart_toStartOf="@id/your_meals"
+        app:layout_constraintTop_toBottomOf="@+id/your_meals" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/today_workout_recyclerView"
+        android:layout_width="390dp"
+        android:layout_height="170dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/your_workout"
+        app:layout_constraintTop_toBottomOf="@+id/your_workout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
