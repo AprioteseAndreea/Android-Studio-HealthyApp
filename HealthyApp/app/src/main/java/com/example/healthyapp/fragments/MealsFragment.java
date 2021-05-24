@@ -112,8 +112,8 @@ public class MealsFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         try {
+
                             handleMealResponse(response);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -123,7 +123,7 @@ public class MealsFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "ERROR: get EMPLOYEES failed with error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "ERROR: get MEALS failed with error: " + error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 

@@ -170,7 +170,7 @@ public class HomeFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "ERROR: get EMPLOYEES failed with error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "ERROR: get MEALS failed with error: " + error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
