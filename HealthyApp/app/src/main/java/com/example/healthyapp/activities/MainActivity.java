@@ -17,6 +17,7 @@ import com.example.healthyapp.R;
 import com.example.healthyapp.activities.LoginActivity;
 import com.example.healthyapp.fragments.AboutMealFragment;
 import com.example.healthyapp.fragments.HomeFragment;
+import com.example.healthyapp.fragments.HoursSleepFragment;
 import com.example.healthyapp.fragments.MealsFragment;
 import com.example.healthyapp.fragments.WorkoutFragment;
 import com.example.healthyapp.interfaces.ActivityFragmentCommunication;
@@ -69,4 +70,15 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
+
+    @Override
+    public void replaceWithAddHoursFragment() {
+        FragmentTransaction fragmentTransaction;
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container,  HoursSleepFragment.newInstance("",""), "HoursSleepFragmentTag");
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
 }

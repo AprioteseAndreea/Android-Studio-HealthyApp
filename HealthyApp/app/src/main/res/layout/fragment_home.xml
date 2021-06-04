@@ -4,14 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.HomeFragment"
-
-    >
+    tools:context=".fragments.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/imageView"
         android:layout_width="547dp"
         android:layout_height="1309dp"
@@ -23,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.124"
-        app:srcCompat="@drawable/bg56789" />
+        app:srcCompat="@drawable/bg56789" />-->
 
     <TextView
         android:id="@+id/date_time"
@@ -45,7 +43,7 @@ android:textColor="@color/peach"
         app:layout_constraintStart_toEndOf="@id/water_glasses"
         app:layout_constraintTop_toBottomOf="@id/logout_btn"
 android:src="@drawable/glass"
-        ></ImageView>
+        />
     <TextView
         android:id="@+id/water_glasses"
         android:layout_width="wrap_content"
@@ -64,7 +62,7 @@ android:src="@drawable/glass"
         android:layout_width="100dp"
         app:layout_constraintStart_toEndOf="@id/date_time"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="90dp"
         android:text="LogOut"
         android:backgroundTint="@color/peach"
         >
@@ -136,6 +134,15 @@ android:fontFamily="@font/gentiumbasicbold"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="@id/your_workout"
         app:layout_constraintTop_toBottomOf="@+id/your_workout" />
+    <Button
+        android:id="@+id/addHours_btn"
+        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        app:layout_constraintStart_toStartOf="@id/today_workout_recyclerView"
+        app:layout_constraintTop_toBottomOf="@id/today_workout_recyclerView"
+        android:layout_marginLeft="230dp"
+        android:text="Add Sleep Hours"
+        android:backgroundTint="@color/peach"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

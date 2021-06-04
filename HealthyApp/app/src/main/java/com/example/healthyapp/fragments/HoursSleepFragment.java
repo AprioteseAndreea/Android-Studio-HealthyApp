@@ -2,13 +2,28 @@ package com.example.healthyapp.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.healthyapp.R;
+import com.example.healthyapp.adapters.HoursSleepAdapter;
+import com.example.healthyapp.data.HoursSleepRepository;
+import com.example.healthyapp.models.HoursSleepElement;
+import com.example.healthyapp.models.dbEntities.HoursSleep;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,14 +32,21 @@ import com.example.healthyapp.R;
  */
 public class HoursSleepFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private DatePicker dataPicker;
+    private EditText hours;
+    private Button addBtn;
+
+    private HoursSleepRepository hoursSleepRepository = new HoursSleepRepository();
+    private HoursSleepAdapter hoursSleepAdapter;
+
+    private RecyclerView recyclerView;
+    private ArrayList<HoursSleepElement> hoursSleepElements;
 
     public HoursSleepFragment() {
         // Required empty public constructor
@@ -49,6 +71,62 @@ public class HoursSleepFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        addBtn = view.findViewById(R.id.add_hour);
+        dataPicker = view.findViewById(R.id.data_picker);
+        hours = view.findViewById(R.id.hours);
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertHoursSleep();
+            }
+        });
+        getHoursSleep();
+
+
+
+    }
+
+    public void insertHoursSleep() {
+        String currentHours = hours.getText().toString();
+        if (hours == null) {
+            hours.setError(getString(R.string.error_required));
+        }
+        String date = String.valueOf(dataPicker.getDayOfMonth()) + "/"+
+                String.valueOf( dataPicker.getMonth())+"/"+ String.valueOf(dataPicker.getYear());
+        HoursSleep hoursSleep = new HoursSleep(date, currentHours);
+        hoursSleepRepository.insertHoursSleep(hoursSleep, new HoursSleepRepository.OnSuccesListener(){
+
+            @Override
+            public void onSuccess() {
+                hoursSleepElements.add(hoursSleep.convert());
+                hoursSleepAdapter.notifyItemChanged(hoursSleepElements.size()-1);
+                hoursSleepAdapter.notifyDataSetChanged();
+                Toast.makeText(getContext(), "Success.", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        hours.setText("");
+    }
+
+    public void getHoursSleep() {
+
+        hoursSleepRepository.getAllHoursSleep(new HoursSleepRepository.OnGetToDosListener() {
+            @Override
+            public void onSuccess(List<HoursSleep> items) {
+                hoursSleepElements.clear();
+                for(HoursSleep h : items){
+                    hoursSleepElements.add(h.convert());
+                }
+                hoursSleepAdapter.notifyDataSetChanged();
+            }
+        });
+
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -60,7 +138,15 @@ public class HoursSleepFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_hours_sleep, container, false);
+        hoursSleepElements = new ArrayList<>();
+        View view = inflater.inflate(R.layout.fragment_hours_sleep, container, false);
+        recyclerView = view.findViewById(R.id.hours_recycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+        hoursSleepElements.clear();
+        hoursSleepAdapter = new HoursSleepAdapter(hoursSleepElements);
+        recyclerView.setAdapter(hoursSleepAdapter);
+
+        return view;
     }
 }

@@ -2,7 +2,7 @@ package com.example.healthyapp
 
 class Constants {
     companion object {
-        const val MEALS_URL = "https://my-json-server.typicode.com/AprioteseAndreea/mealsJSON/meals"
+        const val MEALS_URL = "https://60b357cb1bec230017bf3875.mockapi.io/meals"
         const val ID = "id"
         const val DAY= "day"
         const val NAME = "name"

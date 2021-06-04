@@ -19,9 +19,11 @@ import java.util.ArrayList;
 public class TodayMealsAdapter extends RecyclerView.Adapter<TodayMealViewHolder> {
     private Context context;
     ArrayList<Meal> meals;
+    public static OnMealItemClick onMealItemClick;
 
-    public TodayMealsAdapter(ArrayList<Meal> meals) {
+    public TodayMealsAdapter(ArrayList<Meal> meals,  OnMealItemClick onMealItemClick) {
         this.meals = meals;
+        this.onMealItemClick = onMealItemClick;
     }
 
 

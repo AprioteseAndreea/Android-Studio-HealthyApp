@@ -39,6 +39,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import static com.example.healthyapp.Constants.CALORIES;
 import static com.example.healthyapp.Constants.DAY;
@@ -118,6 +119,17 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
+        Button addHours = view.findViewById(R.id.addHours_btn);
+        addHours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (activityFragmentCommunication != null) {
+                    activityFragmentCommunication.replaceWithAddHoursFragment();
+                }
+            }
+        });
+
         Button drunk = view.findViewById(R.id.drink);
         TextView water_glasses = view.findViewById(R.id.water_glasses);
         drunk.setOnClickListener(new View.OnClickListener() {
@@ -149,6 +161,7 @@ public class HomeFragment extends Fragment {
 
         dateFormat = new SimpleDateFormat("EEE, MMM d, ''yy");
         date = dateFormat.format(calendar.getTime());
+
         dateTimeDisplay.setText(date);
     }
 
@@ -192,8 +205,11 @@ public class HomeFragment extends Fragment {
             String preptime = obj.getString(PREP_TIME);
             String calories = obj.getString(CALORIES);
 
-            //if day egal cu current date :
-            if (day.equals("1")) {
+            Calendar calendar = Calendar.getInstance();
+            Date date = calendar.getTime();
+            int currentDay = calendar.get(Calendar.DATE);
+
+            if (day.equals(String.valueOf(currentDay))) {
                 Meal meal = new Meal(id, day, name, preptime, calories, imagePath, ingredients, howtoprepare);
                 meals.add(meal);
             }
@@ -201,7 +217,15 @@ public class HomeFragment extends Fragment {
         }
 
 
-        TodayMealsAdapter adapter = new TodayMealsAdapter(meals);
+        TodayMealsAdapter adapter = new TodayMealsAdapter(meals, new OnMealItemClick() {
+            @Override
+            public void onClick(Meal meal) {
+                if (activityFragmentCommunication != null) {
+                    activityFragmentCommunication.replaceWithAboutMealFragment();
+
+                }
+            }
+        });
         recyclerView.setAdapter(adapter);
 
     }

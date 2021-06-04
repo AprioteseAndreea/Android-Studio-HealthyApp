@@ -12,17 +12,20 @@ import com.android.volley.toolbox.ImageLoader;
 import com.example.healthyapp.R;
 import com.example.healthyapp.VolleyConfigSingleton;
 import com.example.healthyapp.adapters.MealAdapter;
+import com.example.healthyapp.fragments.MealsFragment;
 import com.example.healthyapp.models.Meal;
 
 public class TodayMealViewHolder extends RecyclerView.ViewHolder {
     private TextView title;
 
     private ImageView imageView;
+    private View view;
 
     public TodayMealViewHolder(@NonNull View view) {
         super(view);
         title = view.findViewById(R.id.today_meals_title);
         imageView = view.findViewById(R.id.today_meals_image);
+        this.view = view;
 
     }
 
@@ -42,6 +45,15 @@ public class TodayMealViewHolder extends RecyclerView.ViewHolder {
 
             }
         });
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MealsFragment.mealId=meal.getId();
+                if (MealAdapter.onMealItemClick != null)
+                    MealAdapter.onMealItemClick.onClick(meal);
+            }
+        });
+
 
     }
 }
