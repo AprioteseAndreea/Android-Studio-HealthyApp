@@ -40,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.loginPassword);
         loginBtn = findViewById(R.id.loginb);
 
+        username.setText("andreea.apriotese11@gmail.com");
+        password.setText("123456");
         loginBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override

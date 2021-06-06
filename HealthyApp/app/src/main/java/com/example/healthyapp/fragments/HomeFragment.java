@@ -25,10 +25,12 @@ import com.android.volley.toolbox.Volley;
 import com.example.healthyapp.R;
 import com.example.healthyapp.activities.LoginActivity;
 import com.example.healthyapp.adapters.MealAdapter;
+import com.example.healthyapp.adapters.SnackAdapter;
 import com.example.healthyapp.adapters.TodayMealsAdapter;
 import com.example.healthyapp.interfaces.ActivityFragmentCommunication;
 import com.example.healthyapp.interfaces.OnMealItemClick;
 import com.example.healthyapp.models.Meal;
+import com.example.healthyapp.models.Snack;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONArray;
@@ -40,6 +42,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 import static com.example.healthyapp.Constants.CALORIES;
 import static com.example.healthyapp.Constants.DAY;
@@ -49,7 +52,9 @@ import static com.example.healthyapp.Constants.IMAGE_PATH;
 import static com.example.healthyapp.Constants.INGREDIENTS;
 import static com.example.healthyapp.Constants.MEALS_URL;
 import static com.example.healthyapp.Constants.NAME;
+import static com.example.healthyapp.Constants.PATH;
 import static com.example.healthyapp.Constants.PREP_TIME;
+import static com.example.healthyapp.Constants.SNACKS_URL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,17 +63,18 @@ import static com.example.healthyapp.Constants.PREP_TIME;
  */
 public class HomeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private RecyclerView recyclerView;
+    private RecyclerView snacksRecyclerView;
+
     public static ArrayList<Meal> meals = new ArrayList<>();
+    public static ArrayList<Snack> snacks = new ArrayList<>();
+
     private ActivityFragmentCommunication activityFragmentCommunication;
     private TextView dateTimeDisplay;
 
@@ -109,7 +115,10 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
         recyclerView = view.findViewById(R.id.today_meals_recyclerView);
+        snacksRecyclerView = view.findViewById(R.id.today_snacks_recyclerView);
+
         Button logout = view.findViewById(R.id.logout_btn);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,14 +153,17 @@ public class HomeFragment extends Fragment {
         });
         dateTimeDisplay = view.findViewById(R.id.date_time);
         getDate();
+
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
+        snacksRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         getMeals();
+        getSnacks();
+
         return view;
     }
 
     private void getDate() {
-
 
         Calendar calendar;
         SimpleDateFormat dateFormat;
@@ -163,6 +175,31 @@ public class HomeFragment extends Fragment {
         date = dateFormat.format(calendar.getTime());
 
         dateTimeDisplay.setText(date);
+    }
+
+    private void getSnacks() {
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        String url = SNACKS_URL;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            handleSnackResponse(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "ERROR: get MEALS failed with error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        queue.add(stringRequest);
     }
 
     private void getMeals() {
@@ -188,6 +225,40 @@ public class HomeFragment extends Fragment {
         });
 
         queue.add(stringRequest);
+    }
+
+    private void handleSnackResponse(String responseJson) throws JSONException {
+        snacks.clear();
+        JSONArray usersJSONArray = new JSONArray(responseJson);
+        for (int i = 0; i < usersJSONArray.length(); i++) {
+            JSONObject obj = usersJSONArray.getJSONObject(i);
+            String path = obj.getString(PATH);
+            Snack snack = new Snack(path);
+            snacks.add(snack);
+        }
+        getCurrentSnacks();
+    }
+
+    public void getCurrentSnacks() {
+        ArrayList<Snack> randomSnacks = new ArrayList<>();
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+        int currentDay = calendar.get(Calendar.DATE);
+        if (currentDay <= 4) {
+            randomSnacks.add(snacks.get(currentDay + 0));
+            randomSnacks.add(snacks.get(currentDay + 1));
+            randomSnacks.add(snacks.get(currentDay + 2));
+            randomSnacks.add(snacks.get(currentDay + 3));
+        }else {
+            randomSnacks.add(snacks.get(currentDay - 0));
+            randomSnacks.add(snacks.get(currentDay - 1));
+            randomSnacks.add(snacks.get(currentDay - 2));
+            randomSnacks.add(snacks.get(currentDay - 3));
+        }
+
+
+        SnackAdapter adapter = new SnackAdapter(randomSnacks);
+        snacksRecyclerView.setAdapter(adapter);
     }
 
     private void handleMealResponse(String responseJson) throws JSONException {

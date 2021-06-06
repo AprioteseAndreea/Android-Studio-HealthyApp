@@ -19,32 +19,37 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.124"
         app:srcCompat="@drawable/bg56789" />
+
     <EditText
         android:id="@+id/registerFullName"
         android:layout_width="330dp"
         android:layout_height="42dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/border"
         android:ems="10"
-android:textColorHint="@color/peach"
         android:hint="Full Name"
+
         android:inputType="textPersonName"
+        android:textColorHint="@color/peach"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="200dp"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintVertical_chainStyle="packed"/>
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
         android:id="@+id/registerEmailAddress"
         android:layout_width="330dp"
         android:layout_height="42dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border"
+
         android:ems="10"
         android:hint="Email Address"
-        android:textColorHint="@color/peach"
-        app:layout_constraintHorizontal_bias="0.75"
-android:layout_marginTop="10dp"
         android:inputType="textPersonName"
+        android:textColorHint="@color/peach"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerFullName" />
 
@@ -52,14 +57,16 @@ android:layout_marginTop="10dp"
         android:id="@+id/registerPassword"
         android:layout_width="330dp"
         android:layout_height="42dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border"
+
         android:ems="10"
         android:hint="Password"
-        android:textColorHint="@color/peach"
-        app:layout_constraintHorizontal_bias="0.75"
-        android:layout_marginTop="10dp"
-
         android:inputType="textPersonName"
+        android:textColorHint="@color/peach"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerEmailAddress" />
 
@@ -67,26 +74,31 @@ android:layout_marginTop="10dp"
         android:id="@+id/confPassword"
         android:layout_width="330dp"
         android:layout_height="42dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Confirm Password"
-        android:textColorHint="@color/peach"
-        app:layout_constraintHorizontal_bias="0.75"
         android:layout_marginTop="10dp"
+        android:background="@drawable/border"
 
+        android:ems="10"
+        android:hint="Confirm Password"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/peach"
         app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
 
     <Button
         android:id="@+id/registerBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@drawable/shape_button_background"
+        android:fontFamily="@font/gentiumbasicbold"
         android:text="Register"
-        android:backgroundTint="@color/peach"
-        android:textColor="@color/white"
+        android:textColor="@color/red"
+        android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confPassword" />
 
@@ -94,11 +106,14 @@ android:layout_marginTop="10dp"
         android:id="@+id/gotoLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/shape_button_background"
+        android:fontFamily="@font/gentiumbasicbold"
         android:text="LogIn"
-        android:backgroundTint="@color/peach"
-        android:textColor="@color/white"
+        android:textColor="@color/red"
+        android:textSize="22dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

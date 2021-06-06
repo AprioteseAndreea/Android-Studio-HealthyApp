@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@drawable/normal_border"
+    android:layout_marginLeft="6dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/today_meals_image"
-        app:civ_border_width="2dp"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
         android:layout_centerInParent="true"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="9dp"
+
         android:src="@drawable/ic_baseline_fastfood_24"
         app:civ_border_color="@color/peach"
-        android:layout_width="95dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_height="95dp"/>
+        app:civ_border_width="2dp" />
 
     <TextView
         android:id="@+id/today_meals_title"
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="90dp"
+        android:fontFamily="@font/gentiumbasicbegular"
         android:padding="?android:listPreferredItemPaddingLeft"
         android:paddingStart="5dp"
-        android:layout_marginTop="90dp"
         android:paddingLeft="10dp"
-        android:textAlignment="center"
-android:fontFamily="@font/gentiumbasicbegular"
         android:text="kcals"
+        android:ellipsize="end"
+        android:lines="2"
+        android:textAlignment="center"
         android:textColor="@color/peach"
         android:textSize="13dp" />
 </FrameLayout>
