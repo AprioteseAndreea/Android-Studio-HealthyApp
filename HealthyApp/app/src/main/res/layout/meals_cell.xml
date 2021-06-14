@@ -16,7 +16,7 @@
 <!--        app:srcCompat="@drawable/ic_baseline_fastfood_24" />-->
     <TextView
         android:id="@+id/meals_name"
-        android:layout_width="300dp"
+        android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:maxLines="2"
@@ -54,6 +54,16 @@
         app:layout_constraintStart_toEndOf="@id/meals_image"
         android:layout_marginLeft="7dp"
         android:textSize="18dp" />
+    <Button
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        app:layout_constraintStart_toStartOf="@id/meals_kcals"
+        app:layout_constraintTop_toBottomOf="@id/meals_name"
+        android:layout_marginLeft="240dp"
+        android:background="@drawable/ic_baseline_favorite_24"
+        android:backgroundTint="@color/peach"
+        />
+
 
 
 

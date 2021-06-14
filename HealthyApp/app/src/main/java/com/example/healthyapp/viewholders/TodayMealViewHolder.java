@@ -17,7 +17,6 @@ import com.example.healthyapp.models.Meal;
 
 public class TodayMealViewHolder extends RecyclerView.ViewHolder {
     private TextView title;
-
     private ImageView imageView;
     private View view;
 

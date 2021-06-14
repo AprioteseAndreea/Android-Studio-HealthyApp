@@ -22,7 +22,7 @@
 
     <TextView
         android:id="@+id/today_meals_title"
-        android:layout_width="110dp"
+        android:layout_width="115dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
         android:fontFamily="@font/gentiumbasicbegular"
@@ -31,7 +31,7 @@
         android:paddingLeft="10dp"
         android:text="kcals"
         android:ellipsize="end"
-        android:lines="2"
+        android:lines="3"
         android:textAlignment="center"
         android:textColor="@color/peach"
         android:textSize="13dp" />

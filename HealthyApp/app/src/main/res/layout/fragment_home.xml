@@ -6,23 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
-    <!--<ImageView
-        android:id="@+id/imageView"
-        android:layout_width="547dp"
-        android:layout_height="1309dp"
-
-        android:layout_marginTop="-10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.124"
-        app:srcCompat="@drawable/bg56789" />-->
-
     <TextView
         android:id="@+id/date_time"
         android:layout_width="190dp"
@@ -33,18 +16,17 @@
         android:text="Saturday, 12 April"
         android:textColor="@color/peach"
         android:textSize="15sp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 
 
     <Button
         android:id="@+id/logout_btn"
         android:layout_width="100dp"
         android:layout_height="37dp"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="80dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/border"
         android:backgroundTint="@color/peach"
         android:text="LogOut"
@@ -54,7 +36,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </Button>
-
 
 
     <TextView
@@ -77,23 +58,24 @@
         android:layout_marginTop="10dp"
         android:background="@color/peach"
         android:fontFamily="@font/gentiumbasicbegular"
-        android:paddingTop="3dp"
         android:paddingLeft="2dp"
+        android:paddingTop="3dp"
+        android:text="You need to drink: "
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:text="You need to drink: "
         app:layout_constraintStart_toStartOf="@id/hello"
         app:layout_constraintTop_toBottomOf="@id/hello" />
+
     <TextView
         android:id="@+id/water_glasses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="170dp"
+        android:layout_marginLeft="180dp"
         android:text="8"
         android:textColor="@color/white"
         android:textSize="40dp"
         app:layout_constraintStart_toStartOf="@id/waters"
-        app:layout_constraintTop_toBottomOf="@id/hello"/>
+        app:layout_constraintTop_toBottomOf="@id/hello" />
 
 
     <ImageView
@@ -103,17 +85,19 @@
         android:src="@drawable/glass"
         app:layout_constraintStart_toEndOf="@id/water_glasses"
         app:layout_constraintTop_toTopOf="@id/waters" />
+
     <Button
         android:id="@+id/drink"
         android:layout_width="120dp"
         android:layout_height="37dp"
+        android:layout_marginLeft="13dp"
         android:background="@drawable/border"
         android:backgroundTint="@color/peach"
         android:text="Drank one"
-android:layout_marginLeft="13dp"        android:textColor="@color/white"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/water_glass"
-        app:layout_constraintTop_toTopOf="@id/waters"
-        />
+        app:layout_constraintTop_toTopOf="@id/waters" />
+
     <TextView
         android:id="@+id/snacks"
         android:layout_width="370dp"
@@ -121,41 +105,58 @@ android:layout_marginLeft="13dp"        android:textColor="@color/white"
         android:layout_marginTop="10dp"
         android:background="@color/peach"
         android:fontFamily="@font/gentiumbasicbegular"
-        android:paddingTop="3dp"
         android:paddingLeft="2dp"
+        android:paddingTop="3dp"
+        android:text="Snacks for today: "
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:text="Snacks for today: "
         app:layout_constraintStart_toStartOf="@id/waters"
         app:layout_constraintTop_toBottomOf="@id/waters" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/today_snacks_recyclerView"
         android:layout_width="220dp"
         android:layout_height="40dp"
-        android:orientation="horizontal"
         android:layout_marginLeft="150dp"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="@id/snacks"
         app:layout_constraintTop_toTopOf="@+id/snacks" />
+    <Button
+        android:id="@+id/addHours_btn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/peach"
+        android:text="Add Sleep Hours"
+        android:textColor="@color/peach"
+        android:textSize="18dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/gentiumbasicbold"
+        android:background="@drawable/border"
+        app:layout_constraintStart_toStartOf="@id/snacks"
+        app:layout_constraintTop_toBottomOf="@id/snacks" />
     <TextView
         android:id="@+id/your_meals"
         android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/gentiumbasicbold"
+        android:layout_marginTop="5dp"
         android:paddingLeft="10dp"
-        android:paddingTop="24dp"
         android:text="MEALS FOR TODAY"
         android:textColor="@color/peach"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/snacks"
-        app:layout_constraintTop_toBottomOf="@id/snacks" />
+        app:layout_constraintTop_toBottomOf="@id/addHours_btn" />
+
 
     <TextView
         android:id="@+id/your_workout"
         android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/gentiumbasicbold"
         android:paddingLeft="10dp"
         android:paddingTop="0dp"
+        android:layout_marginTop="5dp"
         android:text="TODAY WORKOUT"
         android:textColor="@color/peach"
         android:textSize="18sp"
@@ -175,20 +176,12 @@ android:layout_marginLeft="13dp"        android:textColor="@color/white"
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/today_workout_recyclerView"
         android:layout_width="390dp"
-        android:layout_height="170dp"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="@id/your_workout"
         app:layout_constraintTop_toBottomOf="@+id/your_workout" />
 
-    <Button
-        android:id="@+id/addHours_btn"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="230dp"
-        android:backgroundTint="@color/peach"
-        android:text="Add Sleep Hours"
-        app:layout_constraintStart_toStartOf="@id/today_workout_recyclerView"
-        app:layout_constraintTop_toBottomOf="@id/today_workout_recyclerView" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

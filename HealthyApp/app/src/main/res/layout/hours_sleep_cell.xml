@@ -1,52 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="4 June 2021 "
-        android:textSize="28dp"
         android:layout_marginLeft="10dp"
-        android:textColor="@color/black"
         android:fontFamily="@font/gentiumbasicitalic"
-        android:textStyle="italic"/>
+        android:text="4 June 2021 "
+        android:textColor="@color/black"
+        android:textSize="28dp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/icon"
         android:layout_width="30dp"
         android:layout_height="40dp"
-        android:src="@drawable/ic_baseline_bedtime_24"
         android:layout_marginLeft="140dp"
-
+        android:src="@drawable/ic_baseline_bedtime_24"
         app:layout_constraintStart_toEndOf="@id/date"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/hours_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/icon"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Hours: "
         android:fontFamily="@font/gentiumbasicbegular"
+        android:text="Hours: "
         android:textSize="28dp"
-        />
+        app:layout_constraintStart_toEndOf="@id/icon"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/hours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/hours_label"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="8"
-        android:textSize="28dp"
         android:fontFamily="@font/gentiumbasicbold"
+        android:text="8"
         android:textColor="@color/peach"
-        />
+        android:textSize="28dp"
+        app:layout_constraintStart_toEndOf="@id/hours_label"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

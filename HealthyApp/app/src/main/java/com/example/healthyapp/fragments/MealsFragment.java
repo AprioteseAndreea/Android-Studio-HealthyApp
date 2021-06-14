@@ -1,9 +1,11 @@
 package com.example.healthyapp.fragments;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -110,6 +112,7 @@ public class MealsFragment extends Fragment {
         String url = MEALS_URL;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
+                    @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onResponse(String response) {
                         try {
@@ -130,6 +133,7 @@ public class MealsFragment extends Fragment {
         queue.add(stringRequest);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void handleMealResponse(String responseJson) throws JSONException {
         meals.clear();
         JSONArray usersJSONArray = new JSONArray(responseJson);
@@ -146,7 +150,12 @@ public class MealsFragment extends Fragment {
             String calories = obj.getString(CALORIES);
 
             Meal meal = new Meal(id, day, name, preptime, calories, imagePath, ingredients, howtoprepare);
-            meals.add(meal);
+
+            boolean exist = meals.stream().filter(o -> o.getName().equals(name)).findFirst().isPresent();
+            if(!exist){
+                meals.add(meal);
+
+            }
         }
 
 

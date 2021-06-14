@@ -27,10 +27,12 @@ import com.example.healthyapp.activities.LoginActivity;
 import com.example.healthyapp.adapters.MealAdapter;
 import com.example.healthyapp.adapters.SnackAdapter;
 import com.example.healthyapp.adapters.TodayMealsAdapter;
+import com.example.healthyapp.adapters.WorkoutAdapter;
 import com.example.healthyapp.interfaces.ActivityFragmentCommunication;
 import com.example.healthyapp.interfaces.OnMealItemClick;
 import com.example.healthyapp.models.Meal;
 import com.example.healthyapp.models.Snack;
+import com.example.healthyapp.models.Workout;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONArray;
@@ -50,11 +52,14 @@ import static com.example.healthyapp.Constants.HOW_TO_PREPARE;
 import static com.example.healthyapp.Constants.ID;
 import static com.example.healthyapp.Constants.IMAGE_PATH;
 import static com.example.healthyapp.Constants.INGREDIENTS;
+import static com.example.healthyapp.Constants.LINK;
 import static com.example.healthyapp.Constants.MEALS_URL;
 import static com.example.healthyapp.Constants.NAME;
 import static com.example.healthyapp.Constants.PATH;
 import static com.example.healthyapp.Constants.PREP_TIME;
 import static com.example.healthyapp.Constants.SNACKS_URL;
+import static com.example.healthyapp.Constants.TIME;
+import static com.example.healthyapp.Constants.WORKOUT_URL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,14 +76,16 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerView snacksRecyclerView;
+    private RecyclerView workoutRecyclerView;
 
     public static ArrayList<Meal> meals = new ArrayList<>();
     public static ArrayList<Snack> snacks = new ArrayList<>();
+    public static ArrayList<Workout> workouts = new ArrayList<>();
 
     private ActivityFragmentCommunication activityFragmentCommunication;
     private TextView dateTimeDisplay;
 
-    private String clickedId = null;
+    private final String clickedId = null;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -118,48 +125,40 @@ public class HomeFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.today_meals_recyclerView);
         snacksRecyclerView = view.findViewById(R.id.today_snacks_recyclerView);
+        workoutRecyclerView = view.findViewById(R.id.today_workout_recyclerView);
 
         Button logout = view.findViewById(R.id.logout_btn);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getContext(), LoginActivity.class));
+        logout.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(getContext(), LoginActivity.class));
 
-            }
         });
 
         Button addHours = view.findViewById(R.id.addHours_btn);
-        addHours.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (activityFragmentCommunication != null) {
-                    activityFragmentCommunication.replaceWithAddHoursFragment();
-                }
+        addHours.setOnClickListener(v -> {
+            if (activityFragmentCommunication != null) {
+                activityFragmentCommunication.replaceWithAddHoursFragment();
             }
         });
 
         Button drunk = view.findViewById(R.id.drink);
         TextView water_glasses = view.findViewById(R.id.water_glasses);
-        drunk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int waterGlasses = Integer.parseInt((String) water_glasses.getText());
-                if (waterGlasses > 0) {
-                    water_glasses.setText(String.valueOf(waterGlasses - 1));
-                }
-
+        drunk.setOnClickListener(v -> {
+            int waterGlasses = Integer.parseInt((String) water_glasses.getText());
+            if (waterGlasses > 0) {
+                water_glasses.setText(String.valueOf(waterGlasses - 1));
             }
+
         });
         dateTimeDisplay = view.findViewById(R.id.date_time);
         getDate();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
         snacksRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
-
+        workoutRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
         getMeals();
         getSnacks();
-
+        getWorkout();
         return view;
     }
 
@@ -177,21 +176,102 @@ public class HomeFragment extends Fragment {
         dateTimeDisplay.setText(date);
     }
 
-    private void getSnacks() {
+    private void getWorkout() {
         RequestQueue queue = Volley.newRequestQueue(getContext());
-        String url = SNACKS_URL;
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, WORKOUT_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
                         try {
-                            handleSnackResponse(response);
+                            handleWorkoutResponse(response);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
                     }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "ERROR: get WORKOUT failed with error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        queue.add(stringRequest);
+    }
+
+    private void handleWorkoutResponse(String responseJson) throws JSONException {
+        workouts.clear();
+        JSONArray usersJSONArray = new JSONArray(responseJson);
+        Calendar cal = Calendar.getInstance();
+        for (int i = 0; i < usersJSONArray.length(); i++) {
+            JSONObject obj = usersJSONArray.getJSONObject(i);
+            String day = obj.getString(DAY);
+            String name = obj.getString(NAME);
+            String time = obj.getString(TIME);
+            String link = obj.getString(LINK);
+
+            Workout workout = new Workout(day, name, time, link);
+            int currentDay = cal.get(Calendar.DAY_OF_WEEK);
+            switch (currentDay) {
+                case 1: {
+                    if (workout.getDay().equals("1")) {
+                        workouts.add(workout);
+                    }
+                    break;
+                }
+                case 2: {
+                    if (workout.getDay().equals("2")) {
+                        workouts.add(workout);
+                    }
+                    break;
+                }
+                case 3: {
+                    if (workout.getDay().equals("3")) {
+                        workouts.add(workout);
+                    }
+                    break;
+                }
+                case 4: {
+                    if (workout.getDay().equals("4")) {
+                        workouts.add(workout);
+                    }
+                    break;
+                }
+                case 5: {
+                    if (workout.getDay().equals("5")) {
+                        workouts.add(workout);
+                    }
+                    break;
+                }
+                case 6: {
+                    if (workout.getDay().equals("6")) {
+                        workouts.add(workout);
+                    }
+                    break;
+                }
+                case 7: {
+                    if (workout.getDay().equals("7")) {
+                        workouts.add(workout);
+                    }
+                    break;
+                }
+            }
+        }
+        workoutRecyclerView.setAdapter(new WorkoutAdapter(workouts));
+    }
+
+    private void getSnacks() {
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, SNACKS_URL,
+                response -> {
+
+                    try {
+                        handleSnackResponse(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -206,17 +286,14 @@ public class HomeFragment extends Fragment {
         RequestQueue queue = Volley.newRequestQueue(getContext());
         String url = MEALS_URL;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+                response -> {
 
-                        try {
-                            handleMealResponse(response);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
+                    try {
+                        handleMealResponse(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
+
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -249,7 +326,7 @@ public class HomeFragment extends Fragment {
             randomSnacks.add(snacks.get(currentDay + 1));
             randomSnacks.add(snacks.get(currentDay + 2));
             randomSnacks.add(snacks.get(currentDay + 3));
-        }else {
+        } else {
             randomSnacks.add(snacks.get(currentDay - 0));
             randomSnacks.add(snacks.get(currentDay - 1));
             randomSnacks.add(snacks.get(currentDay - 2));
