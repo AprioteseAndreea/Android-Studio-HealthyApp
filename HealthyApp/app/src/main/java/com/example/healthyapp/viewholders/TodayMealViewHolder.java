@@ -12,6 +12,8 @@ import com.android.volley.toolbox.ImageLoader;
 import com.example.healthyapp.R;
 import com.example.healthyapp.VolleyConfigSingleton;
 import com.example.healthyapp.adapters.MealAdapter;
+import com.example.healthyapp.adapters.TodayMealsAdapter;
+import com.example.healthyapp.fragments.HomeFragment;
 import com.example.healthyapp.fragments.MealsFragment;
 import com.example.healthyapp.models.Meal;
 
@@ -47,9 +49,9 @@ public class TodayMealViewHolder extends RecyclerView.ViewHolder {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MealsFragment.mealId=meal.getId();
-                if (MealAdapter.onMealItemClick != null)
-                    MealAdapter.onMealItemClick.onClick(meal);
+                HomeFragment.clickedId=meal.getId();
+                if (TodayMealsAdapter.onMealItemClick != null)
+                    TodayMealsAdapter.onMealItemClick.onClick(meal);
             }
         });
 

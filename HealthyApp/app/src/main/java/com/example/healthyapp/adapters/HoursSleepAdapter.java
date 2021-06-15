@@ -1,6 +1,4 @@
 package com.example.healthyapp.adapters;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +14,7 @@ import java.util.ArrayList;
 
 public class HoursSleepAdapter extends RecyclerView.Adapter<HoursSleepViewHolder> {
 
-ArrayList<HoursSleepElement> hoursList;
+    ArrayList<HoursSleepElement> hoursList;
 
     public HoursSleepAdapter(ArrayList<HoursSleepElement> hoursList) {
         this.hoursList = hoursList;
@@ -27,9 +25,7 @@ ArrayList<HoursSleepElement> hoursList;
     public HoursSleepViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.hours_sleep_cell, parent, false);
-        HoursSleepViewHolder hoursViewHolder = new HoursSleepViewHolder(view);
-
-        return hoursViewHolder;
+        return new HoursSleepViewHolder(view);
     }
 
     @Override

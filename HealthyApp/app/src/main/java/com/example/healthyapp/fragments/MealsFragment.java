@@ -99,7 +99,6 @@ public class MealsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
         View view = inflater.inflate(R.layout.fragment_meals, container, false);
         recyclerView = view.findViewById(R.id.meals_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
@@ -165,7 +164,7 @@ public class MealsFragment extends Fragment {
 
 
                 if (activityFragmentCommunication != null) {
-                    activityFragmentCommunication.replaceWithAboutMealFragment();
+                    activityFragmentCommunication.replaceWithAboutMealFromMealsFragment();
 
                 }
             }

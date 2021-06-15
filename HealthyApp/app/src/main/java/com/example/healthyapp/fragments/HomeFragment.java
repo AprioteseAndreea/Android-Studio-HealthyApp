@@ -24,10 +24,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.healthyapp.R;
 import com.example.healthyapp.activities.LoginActivity;
-import com.example.healthyapp.adapters.MealAdapter;
 import com.example.healthyapp.adapters.SnackAdapter;
 import com.example.healthyapp.adapters.TodayMealsAdapter;
-import com.example.healthyapp.adapters.WorkoutAdapter;
+import com.example.healthyapp.adapters.TodayWorkoutAdapter;
 import com.example.healthyapp.interfaces.ActivityFragmentCommunication;
 import com.example.healthyapp.interfaces.OnMealItemClick;
 import com.example.healthyapp.models.Meal;
@@ -39,12 +38,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Random;
 
 import static com.example.healthyapp.Constants.CALORIES;
 import static com.example.healthyapp.Constants.DAY;
@@ -85,8 +82,8 @@ public class HomeFragment extends Fragment {
     private ActivityFragmentCommunication activityFragmentCommunication;
     private TextView dateTimeDisplay;
 
-    private final String clickedId = null;
-
+    public static  String clickedId = null;
+    public static  String workoutClicked = null;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -258,7 +255,13 @@ public class HomeFragment extends Fragment {
                 }
             }
         }
-        workoutRecyclerView.setAdapter(new WorkoutAdapter(workouts));
+        TodayWorkoutAdapter workoutAdapter = new TodayWorkoutAdapter(workouts, workout -> {
+            if (activityFragmentCommunication != null) {
+                activityFragmentCommunication.replaceWithAboutWorkoutFragment();
+
+            }
+        });
+        workoutRecyclerView.setAdapter(workoutAdapter);
     }
 
     private void getSnacks() {
@@ -272,12 +275,7 @@ public class HomeFragment extends Fragment {
                         e.printStackTrace();
                     }
 
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "ERROR: get MEALS failed with error: " + error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+                }, error -> Toast.makeText(getContext(), "ERROR: get MEALS failed with error: " + error.getMessage(), Toast.LENGTH_LONG).show());
 
         queue.add(stringRequest);
     }
@@ -369,7 +367,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(Meal meal) {
                 if (activityFragmentCommunication != null) {
-                    activityFragmentCommunication.replaceWithAboutMealFragment();
+                    activityFragmentCommunication.replaceWithAboutMealFromHomeFragment();
 
                 }
             }

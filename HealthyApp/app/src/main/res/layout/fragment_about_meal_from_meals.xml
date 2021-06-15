@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:tag="AboutMealFragmentTag"
+        tools:context=".fragments.AboutMealFromHomeFragment">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/about_meal_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/healthy"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/about_meal_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gentiumbasicbold"
+            android:text="Healthy Granola Breakfast"
+            android:textAlignment="center"
+            android:textColor="@color/peach"
+            android:textSize="25dp"
+            app:layout_constraintTop_toBottomOf="@id/about_meal_image" />
+
+        <ImageView
+            android:id="@+id/clock_icon"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/clock"
+            app:layout_constraintStart_toStartOf="@id/about_meal_title"
+            app:layout_constraintTop_toBottomOf="@id/about_meal_title" />
+
+        <TextView
+            android:id="@+id/prep_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gentiumbasicbegular"
+            android:text="15 min"
+            android:textColor="@color/peach"
+            android:textSize="25dp"
+            app:layout_constraintStart_toEndOf="@id/clock_icon"
+            app:layout_constraintTop_toBottomOf="@id/about_meal_title">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/kcals_icon"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="120dp"
+            android:src="@drawable/caloriesimages"
+            app:layout_constraintStart_toEndOf="@id/prep_time"
+            app:layout_constraintTop_toBottomOf="@id/about_meal_title" />
+
+        <TextView
+            android:id="@+id/kcals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gentiumbasicbegular"
+            android:text="163 kcal"
+            android:textColor="@color/peach"
+            android:textSize="25dp"
+            app:layout_constraintStart_toEndOf="@id/kcals_icon"
+            app:layout_constraintTop_toBottomOf="@id/about_meal_title" />
+
+        <TextView
+            android:id="@+id/ingredients_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gentiumbasicbold"
+            android:paddingTop="10dp"
+            android:text="INGREDIENTS"
+            android:textAlignment="center"
+            android:textColor="@color/peach"
+            android:textSize="20dp"
+            app:layout_constraintTop_toBottomOf="@id/kcals_icon" />
+
+
+        <TextView
+            android:id="@+id/ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gentiumbasicitalic"
+            android:paddingLeft="10dp"
+            android:textColor="@color/peach"
+            app:layout_constraintTop_toBottomOf="@id/ingredients_title" />
+
+        <TextView
+            android:id="@+id/instructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gentiumbasicbold"
+            android:paddingTop="10dp"
+            android:text="INSTRUCTIONS"
+            android:textAlignment="center"
+            android:textColor="@color/peach"
+            android:textSize="20dp"
+            app:layout_constraintTop_toBottomOf="@id/ingredients" />
+
+
+
+        <TextView
+            android:id="@+id/howtoprepare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gentiumbasicbegular"
+            android:paddingLeft="10dp"
+            android:textColor="@color/peach"
+            app:layout_constraintTop_toBottomOf="@id/instructions" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

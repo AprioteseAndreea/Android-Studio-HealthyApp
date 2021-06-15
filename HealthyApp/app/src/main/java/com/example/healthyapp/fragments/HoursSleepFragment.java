@@ -77,12 +77,7 @@ public class HoursSleepFragment extends Fragment {
         dataPicker = view.findViewById(R.id.data_picker);
         hours = view.findViewById(R.id.hours);
 
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                insertHoursSleep();
-            }
-        });
+        addBtn.setOnClickListener(v -> insertHoursSleep());
         getHoursSleep();
 
 
@@ -97,31 +92,24 @@ public class HoursSleepFragment extends Fragment {
         String date = String.valueOf(dataPicker.getDayOfMonth()) + "/"+
                 String.valueOf( dataPicker.getMonth())+"/"+ String.valueOf(dataPicker.getYear());
         HoursSleep hoursSleep = new HoursSleep(date, currentHours);
-        hoursSleepRepository.insertHoursSleep(hoursSleep, new HoursSleepRepository.OnSuccesListener(){
+        hoursSleepRepository.insertHoursSleep(hoursSleep, () -> {
+            hoursSleepElements.add(hoursSleep.convert());
+            hoursSleepAdapter.notifyItemChanged(hoursSleepElements.size()-1);
+            hoursSleepAdapter.notifyDataSetChanged();
+            Toast.makeText(getContext(), "Success.", Toast.LENGTH_SHORT).show();
 
-            @Override
-            public void onSuccess() {
-                hoursSleepElements.add(hoursSleep.convert());
-                hoursSleepAdapter.notifyItemChanged(hoursSleepElements.size()-1);
-                hoursSleepAdapter.notifyDataSetChanged();
-                Toast.makeText(getContext(), "Success.", Toast.LENGTH_SHORT).show();
-
-            }
         });
         hours.setText("");
     }
 
     public void getHoursSleep() {
 
-        hoursSleepRepository.getAllHoursSleep(new HoursSleepRepository.OnGetToDosListener() {
-            @Override
-            public void onSuccess(List<HoursSleep> items) {
-                hoursSleepElements.clear();
-                for(HoursSleep h : items){
-                    hoursSleepElements.add(h.convert());
-                }
-                hoursSleepAdapter.notifyDataSetChanged();
+        hoursSleepRepository.getAllHoursSleep(items -> {
+            hoursSleepElements.clear();
+            for(HoursSleep h : items){
+                hoursSleepElements.add(h.convert());
             }
+            hoursSleepAdapter.notifyDataSetChanged();
         });
 
     }

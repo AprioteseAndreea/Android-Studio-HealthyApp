@@ -104,6 +104,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:background="@color/peach"
+
         android:fontFamily="@font/gentiumbasicbegular"
         android:paddingLeft="2dp"
         android:paddingTop="3dp"
@@ -144,7 +145,7 @@
         android:paddingLeft="10dp"
         android:text="MEALS FOR TODAY"
         android:textColor="@color/peach"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@id/snacks"
         app:layout_constraintTop_toBottomOf="@id/addHours_btn" />
 
@@ -159,7 +160,7 @@
         android:layout_marginTop="5dp"
         android:text="TODAY WORKOUT"
         android:textColor="@color/peach"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@id/hello"
         app:layout_constraintTop_toBottomOf="@id/today_meals_recyclerView" />
 

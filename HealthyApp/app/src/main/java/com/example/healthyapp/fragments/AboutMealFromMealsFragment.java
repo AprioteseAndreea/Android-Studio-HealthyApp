@@ -14,13 +14,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.example.healthyapp.R;
 import com.example.healthyapp.VolleyConfigSingleton;
+import com.example.healthyapp.models.Meal;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AboutMealFragment#newInstance} factory method to
+ * Use the {@link AboutMealFromMealsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AboutMealFragment extends Fragment {
+public class AboutMealFromMealsFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,7 +32,7 @@ public class AboutMealFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AboutMealFragment() {
+    public AboutMealFromMealsFragment() {
         // Required empty public constructor
     }
 
@@ -41,11 +42,11 @@ public class AboutMealFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AboutMealFragment.
+     * @return A new instance of fragment AboutMealFromMealsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AboutMealFragment newInstance(String param1, String param2) {
-        AboutMealFragment fragment = new AboutMealFragment();
+    public static AboutMealFromMealsFragment newInstance(String param1, String param2) {
+        AboutMealFromMealsFragment fragment = new AboutMealFromMealsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,7 +66,7 @@ public class AboutMealFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_about_meal, container, false);
+        View view = inflater.inflate(R.layout.fragment_about_meal_from_meals, container, false);
 
         TextView title = view.findViewById(R.id.about_meal_title);
         TextView prepTime = view.findViewById(R.id.prep_time);
@@ -73,7 +74,7 @@ public class AboutMealFragment extends Fragment {
         TextView ingredients = view.findViewById(R.id.ingredients);
         TextView howtoprepare = view.findViewById(R.id.howtoprepare);
 
-        int mealId = Integer.parseInt(MealsFragment.mealId)-1;
+        int mealId = Integer.parseInt(HomeFragment.clickedId)-1 ;
 
         title.setText(MealsFragment.meals.get(mealId).getName());
         prepTime.setText(MealsFragment.meals.get(mealId).getPreptime());
@@ -98,4 +99,4 @@ public class AboutMealFragment extends Fragment {
         });
         return view;
     }
-}
+    }

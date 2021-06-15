@@ -1,7 +1,8 @@
 package com.example.healthyapp.interfaces;
 
 public interface ActivityFragmentCommunication {
-    void replaceWithAboutMealFragment();
+    void replaceWithAboutMealFromHomeFragment();
+    void replaceWithAboutMealFromMealsFragment();
     void replaceWithAddHoursFragment();
-
+    void replaceWithAboutWorkoutFragment();
 }

@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/gentiumbasicbegular"
         android:text="Hours: "
-        android:textSize="28dp"
+        android:textSize="30dp"
         app:layout_constraintStart_toEndOf="@id/icon"
         app:layout_constraintTop_toTopOf="parent" />
 
