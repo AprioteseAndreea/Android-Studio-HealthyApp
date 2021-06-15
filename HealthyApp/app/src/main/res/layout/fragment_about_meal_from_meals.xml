@@ -36,7 +36,7 @@
             android:layout_width="33dp"
             android:layout_height="33dp"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/clock"
+            android:src="@drawable/purpleclock"
             app:layout_constraintStart_toStartOf="@id/about_meal_title"
             app:layout_constraintTop_toBottomOf="@id/about_meal_title" />
 
@@ -58,7 +58,7 @@
             android:layout_width="33dp"
             android:layout_height="33dp"
             android:layout_marginLeft="120dp"
-            android:src="@drawable/caloriesimages"
+            android:src="@drawable/foodicon"
             app:layout_constraintStart_toEndOf="@id/prep_time"
             app:layout_constraintTop_toBottomOf="@id/about_meal_title" />
 
