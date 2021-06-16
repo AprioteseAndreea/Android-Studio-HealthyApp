@@ -82,8 +82,9 @@ public class HomeFragment extends Fragment {
     private ActivityFragmentCommunication activityFragmentCommunication;
     private TextView dateTimeDisplay;
 
-    public static  String clickedId = null;
-    public static  String workoutClicked = null;
+    public static String clickedId = null;
+    public static String workoutClicked = null;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -200,62 +201,72 @@ public class HomeFragment extends Fragment {
     private void handleWorkoutResponse(String responseJson) throws JSONException {
         workouts.clear();
         JSONArray usersJSONArray = new JSONArray(responseJson);
-        Calendar cal = Calendar.getInstance();
         for (int i = 0; i < usersJSONArray.length(); i++) {
             JSONObject obj = usersJSONArray.getJSONObject(i);
+            String id = obj.getString(ID);
             String day = obj.getString(DAY);
             String name = obj.getString(NAME);
             String time = obj.getString(TIME);
             String link = obj.getString(LINK);
 
-            Workout workout = new Workout(day, name, time, link);
-            int currentDay = cal.get(Calendar.DAY_OF_WEEK);
+            Workout workout = new Workout(id, day, name, time, link);
+            workouts.add(workout);
+        }
+        getTodayWorkout();
+    }
+
+    private void getTodayWorkout() {
+        Calendar cal = Calendar.getInstance();
+        int currentDay = cal.get(Calendar.DAY_OF_WEEK);
+        ArrayList<Workout> todayWorkout = new ArrayList<>();
+        for (Workout w : workouts) {
+
             switch (currentDay) {
                 case 1: {
-                    if (workout.getDay().equals("1")) {
-                        workouts.add(workout);
+                    if (w.getDay().equals("1")) {
+                        todayWorkout.add(w);
                     }
                     break;
                 }
                 case 2: {
-                    if (workout.getDay().equals("2")) {
-                        workouts.add(workout);
+                    if (w.getDay().equals("2")) {
+                        todayWorkout.add(w);
                     }
                     break;
                 }
                 case 3: {
-                    if (workout.getDay().equals("3")) {
-                        workouts.add(workout);
+                    if (w.getDay().equals("3")) {
+                        todayWorkout.add(w);
                     }
                     break;
                 }
                 case 4: {
-                    if (workout.getDay().equals("4")) {
-                        workouts.add(workout);
+                    if (w.getDay().equals("4")) {
+                        todayWorkout.add(w);
                     }
                     break;
                 }
                 case 5: {
-                    if (workout.getDay().equals("5")) {
-                        workouts.add(workout);
+                    if (w.getDay().equals("5")) {
+                        todayWorkout.add(w);
                     }
                     break;
                 }
                 case 6: {
-                    if (workout.getDay().equals("6")) {
-                        workouts.add(workout);
+                    if (w.getDay().equals("6")) {
+                        todayWorkout.add(w);
                     }
                     break;
                 }
                 case 7: {
-                    if (workout.getDay().equals("7")) {
-                        workouts.add(workout);
+                    if (w.getDay().equals("7")) {
+                        todayWorkout.add(w);
                     }
                     break;
                 }
             }
         }
-        TodayWorkoutAdapter workoutAdapter = new TodayWorkoutAdapter(workouts, workout -> {
+        TodayWorkoutAdapter workoutAdapter = new TodayWorkoutAdapter(todayWorkout, workout -> {
             if (activityFragmentCommunication != null) {
                 activityFragmentCommunication.replaceWithAboutWorkoutFragment();
 

@@ -28,7 +28,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutViewHolder> {
     public WorkoutViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.workout_cell, parent, false);
-       WorkoutViewHolder workoutViewHolder = new WorkoutViewHolder(view);
+        WorkoutViewHolder workoutViewHolder = new WorkoutViewHolder(view);
         return workoutViewHolder;
     }
 
@@ -36,6 +36,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutViewHolder> {
     public void onBindViewHolder(@NonNull WorkoutViewHolder holder, int position) {
         Workout workout = workouts.get(position);
         holder.bind(workout);
+
     }
 
     @Override

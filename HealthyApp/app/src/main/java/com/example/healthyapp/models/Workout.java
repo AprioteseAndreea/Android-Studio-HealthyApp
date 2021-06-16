@@ -1,16 +1,26 @@
 package com.example.healthyapp.models;
 
 public class Workout {
+    private String id;
     private String day;
     private String name;
     private String time;
     private String link;
 
-    public Workout(String day, String name, String time, String link) {
+    public Workout(String id, String day, String name, String time, String link) {
+        this.id = id;
         this.day = day;
         this.name = name;
         this.time = time;
         this.link = link;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getDay() {

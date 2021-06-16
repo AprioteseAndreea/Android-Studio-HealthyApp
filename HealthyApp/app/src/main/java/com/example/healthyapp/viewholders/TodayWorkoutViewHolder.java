@@ -1,6 +1,7 @@
 package com.example.healthyapp.viewholders;
 
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,7 +28,7 @@ public class TodayWorkoutViewHolder extends RecyclerView.ViewHolder {
        view.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               HomeFragment.clickedId= workout.getName();
+               HomeFragment.workoutClicked= workout.getId();
                if (TodayWorkoutAdapter.onWorkoutItemClick != null)
                    TodayWorkoutAdapter.onWorkoutItemClick.onClick(workout);
            }
