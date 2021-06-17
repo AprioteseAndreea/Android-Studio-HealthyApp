@@ -7,13 +7,24 @@
     tools:context=".activities.RegisterActivity">
 
     <ImageView
-        android:layout_width="450dp"
-        android:layout_height="800dp"
-        android:layout_marginTop="4dp"
-        android:src="@drawable/loginwallpaper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/welcomebackgroundblur"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/utsansbold"
+        android:text="Healthy App"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.20"
+        app:layout_constraintHorizontal_bias="0.5"/>
     <EditText
         android:id="@+id/registerFullName"
         android:layout_width="330dp"
@@ -94,7 +105,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/confPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.3"/>
 
     <Button
         android:id="@+id/gotoLogin"

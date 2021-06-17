@@ -1,7 +1,9 @@
 package com.example.healthyapp.viewholders;
 
+import android.media.Image;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,27 +21,37 @@ import com.example.healthyapp.models.Meal;
 import com.example.healthyapp.models.Workout;
 
 public class WorkoutViewHolder extends RecyclerView.ViewHolder {
-    private TextView time;
-    private TextView day;
     private TextView title;
+    private ImageView imageView;
     private View view;
 
     public WorkoutViewHolder(@NonNull View itemView) {
         super(itemView);
-        time = itemView.findViewById(R.id.workout_time);
-        day = itemView.findViewById(R.id.workout_day);
         title = itemView.findViewById(R.id.workout_title);
+        imageView = itemView.findViewById(R.id.workout_image);
         this.view = itemView;
     }
 
     public void bind(Workout workout) {
-        time.setText(workout.getTime());
-        day.setText(workout.getDay());
         title.setText(workout.getName());
+        String imageViewUrl = workout.getBackground();
+        ImageLoader imageLoader = VolleyConfigSingleton.getInstance(imageView.getContext().
+                getApplicationContext()).getImageLoader();
+        imageLoader.get(imageViewUrl, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                imageView.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomeFragment.workoutClicked= workout.getId();
+                HomeFragment.workoutClicked = workout.getId();
                 if (WorkoutAdapter.onWorkoutItemClick != null)
                     WorkoutAdapter.onWorkoutItemClick.onClick(workout);
             }

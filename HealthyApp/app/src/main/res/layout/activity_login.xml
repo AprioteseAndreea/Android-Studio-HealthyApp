@@ -7,23 +7,24 @@
     tools:context=".activities.LoginActivity">
 
     <ImageView
-        android:layout_width="450dp"
-        android:layout_height="800dp"
-        android:layout_marginTop="4dp"
-        android:src="@drawable/loginwallpaper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/welcomebackgroundblur"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Healthy App"
-        android:textSize="40dp"
         android:fontFamily="@font/utsansbold"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="90dp"
-        android:textColor="@color/white"/>
+        android:text="Healthy App"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintHorizontal_bias="0.5"/>
 
     <EditText
         android:layout_height="wrap_content"
@@ -41,13 +42,13 @@
         android:inputType="textPersonName"
         android:hint="Email Address"
         android:fontFamily="@font/utsanslight"
-        android:background="@drawable/border"
+        android:background="@drawable/get_started_border"
         android:ems="10"/>
 
     <EditText
         android:layout_height="wrap_content"
         android:layout_width="350dp"
-        android:backgroundTint="@color/peach"
+        android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/loginPassword"
@@ -59,10 +60,28 @@
         android:fontFamily="@font/utsanslight"
         android:textColorHint="@color/white"
         android:layout_marginTop="10dp"
-        android:background="@drawable/border"
+        android:background="@drawable/get_started_border"
         app:layout_constraintTop_toBottomOf="@id/loginEmail"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
+<CheckBox
+    android:id="@+id/remember_check_box"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="@id/loginPassword"
+    app:layout_constraintTop_toBottomOf="@id/loginPassword"
+    android:layout_marginTop="20dp"
+   />
+    <TextView
+        android:id="@+id/remember_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/remember_check_box"
+        app:layout_constraintTop_toBottomOf="@id/loginPassword"
+        android:text="Remember me"
+        android:fontFamily="@font/utsansmedium"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"/>
     <Button
         android:layout_height="wrap_content"
         android:layout_width="100dp"
@@ -72,12 +91,13 @@
         android:textColor="@color/white"
         android:fontFamily="@font/utsansmedium"
         android:textSize="22dp"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassword"
+        app:layout_constraintTop_toBottomOf="@+id/remember_text_view"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/get_started_border"
         app:layout_constraintHorizontal_bias="0.5"
         android:text="LogIn"
 
-        android:layout_marginTop="35dp"/>
+        app:layout_constraintVertical_bias="0.30"/>
 
     <Button
         android:id="@+id/createAccount"

@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/workout_icon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/ic_baseline_fitness_center_24"
-        android:backgroundTint="@color/peach"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/today_workout_image"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="9dp"
+
+        android:src="@drawable/ic_baseline_fastfood_24"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="2dp" />
 
     <TextView
         android:id="@+id/today_workout"
-        android:layout_width="wrap_content"
+        android:layout_width="115dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/gentiumbasicbold"
-        android:text="Full Body Workout"
-        android:textColor="@color/peach"
-        android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/workout_icon"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="90dp"
+        android:fontFamily="@font/gentiumbasicbegular"
+        android:padding="?android:listPreferredItemPaddingLeft"
+        android:paddingStart="5dp"
+        android:paddingLeft="10dp"
+        android:text="kcals"
+        android:ellipsize="end"
+        android:lines="3"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="13dp" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

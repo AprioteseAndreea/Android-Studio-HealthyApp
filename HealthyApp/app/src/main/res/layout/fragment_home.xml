@@ -52,11 +52,10 @@
 
     <TextView
         android:id="@+id/waters"
-        android:layout_width="370dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/peach"
+        android:layout_marginTop="20sp"
+        android:background="@color/baby_blue"
         android:fontFamily="@font/gentiumbasicbegular"
         android:paddingLeft="2dp"
         android:paddingTop="3dp"
@@ -66,17 +65,18 @@
         app:layout_constraintStart_toStartOf="@id/hello"
         app:layout_constraintTop_toBottomOf="@id/hello" />
 
+
     <TextView
         android:id="@+id/water_glasses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="180dp"
         android:text="8"
         android:textColor="@color/white"
-        android:textSize="40dp"
+        android:textSize="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="@id/waters"
-        app:layout_constraintTop_toBottomOf="@id/hello" />
-
+        app:layout_constraintTop_toTopOf="@id/waters" />
 
     <ImageView
         android:id="@+id/water_glass"
@@ -100,11 +100,10 @@
 
     <TextView
         android:id="@+id/snacks"
-        android:layout_width="370dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        android:background="@color/peach"
-
+        android:background="@color/baby_blue"
         android:fontFamily="@font/gentiumbasicbegular"
         android:paddingLeft="2dp"
         android:paddingTop="3dp"
@@ -120,69 +119,92 @@
         android:layout_height="40dp"
         android:layout_marginLeft="150dp"
         android:orientation="horizontal"
+
         app:layout_constraintStart_toStartOf="@id/snacks"
         app:layout_constraintTop_toTopOf="@+id/snacks" />
+
     <Button
         android:id="@+id/addHours_btn"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border"
         android:backgroundTint="@color/peach"
+        android:fontFamily="@font/gentiumbasicbold"
         android:text="Add Sleep Hours"
         android:textColor="@color/peach"
         android:textSize="18dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/gentiumbasicbold"
-        android:background="@drawable/border"
         app:layout_constraintStart_toStartOf="@id/snacks"
         app:layout_constraintTop_toBottomOf="@id/snacks" />
+
+    <Button
+        android:id="@+id/your_favourites_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/peach"
+        android:fontFamily="@font/gentiumbasicbold"
+        android:text="Add Sleep Hours"
+        android:textColor="@color/peach"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/addHours_btn"
+        app:layout_constraintTop_toBottomOf="@id/snacks" />
+
     <TextView
         android:id="@+id/your_meals"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/baby_blue"
         android:fontFamily="@font/gentiumbasicbold"
-        android:layout_marginTop="5dp"
         android:paddingLeft="10dp"
         android:text="MEALS FOR TODAY"
-        android:textColor="@color/peach"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/snacks"
         app:layout_constraintStart_toStartOf="@id/snacks"
         app:layout_constraintTop_toBottomOf="@id/addHours_btn" />
 
 
     <TextView
         android:id="@+id/your_workout"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/gentiumbasicbold"
-        android:paddingLeft="10dp"
-        android:paddingTop="0dp"
         android:layout_marginTop="5dp"
+        android:background="@color/baby_blue"
+        android:fontFamily="@font/gentiumbasicbold"
         android:text="TODAY WORKOUT"
-        android:textColor="@color/peach"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@id/hello"
+        app:layout_constraintEnd_toEndOf="@id/snacks"
+        app:layout_constraintStart_toStartOf="@id/today_meals_recyclerView"
         app:layout_constraintTop_toBottomOf="@id/today_meals_recyclerView" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/today_meals_recyclerView"
-        android:layout_width="390dp"
-        android:layout_height="170dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:background="@drawable/recycler_gradient"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="@id/hello"
         app:layout_constraintTop_toBottomOf="@+id/your_meals" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/today_workout_recyclerView"
-        android:layout_width="390dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/recycler_gradient"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="@id/your_workout"
         app:layout_constraintTop_toBottomOf="@+id/your_workout" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

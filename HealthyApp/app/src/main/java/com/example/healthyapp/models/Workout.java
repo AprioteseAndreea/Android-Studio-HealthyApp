@@ -6,13 +6,23 @@ public class Workout {
     private String name;
     private String time;
     private String link;
+    private String background;
 
-    public Workout(String id, String day, String name, String time, String link) {
+    public Workout(String id, String day, String name, String time, String link, String background) {
         this.id = id;
         this.day = day;
         this.name = name;
         this.time = time;
         this.link = link;
+        this.background = background;
+    }
+
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
     }
 
     public String getId() {

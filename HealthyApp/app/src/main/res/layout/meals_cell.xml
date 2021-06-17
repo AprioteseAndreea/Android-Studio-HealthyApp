@@ -48,11 +48,13 @@
         android:layout_marginLeft="7dp"
         android:textSize="18dp" />
     <Button
+        android:id="@+id/addToPreferences"
         android:layout_width="35dp"
         android:layout_height="35dp"
         app:layout_constraintStart_toStartOf="@id/meals_kcals"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.90"
         app:layout_constraintTop_toBottomOf="@id/meals_name"
-        android:layout_marginLeft="240dp"
         android:background="@drawable/ic_baseline_favorite_24"
         android:backgroundTint="@color/peach"
         />

@@ -1,6 +1,7 @@
 package com.example.healthyapp.fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -24,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.healthyapp.R;
 import com.example.healthyapp.adapters.MealAdapter;
 import com.example.healthyapp.interfaces.ActivityFragmentCommunication;
+import com.example.healthyapp.interfaces.OnAddToPreferencesClick;
 import com.example.healthyapp.interfaces.OnMealItemClick;
 import com.example.healthyapp.models.Meal;
 
@@ -32,6 +35,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static com.example.healthyapp.Constants.CALORIES;
 import static com.example.healthyapp.Constants.DAY;
@@ -62,6 +66,8 @@ public class MealsFragment extends Fragment {
     public static String mealId;
     private RecyclerView recyclerView;
     public static ArrayList<Meal> meals = new ArrayList<>();
+    public static ArrayList<Meal> favouritesMeals = new ArrayList<>();
+
     private ActivityFragmentCommunication activityFragmentCommunication;
 
     public MealsFragment() {
@@ -103,6 +109,7 @@ public class MealsFragment extends Fragment {
         recyclerView = view.findViewById(R.id.meals_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         getMeals();
+
         return view;
     }
 
@@ -151,7 +158,7 @@ public class MealsFragment extends Fragment {
             Meal meal = new Meal(id, day, name, preptime, calories, imagePath, ingredients, howtoprepare);
 
             boolean exist = meals.stream().filter(o -> o.getName().equals(name)).findFirst().isPresent();
-            if(!exist){
+            if (!exist) {
                 meals.add(meal);
 
             }
@@ -161,18 +168,23 @@ public class MealsFragment extends Fragment {
         MealAdapter adapter = new MealAdapter(meals, new OnMealItemClick() {
             @Override
             public void onClick(Meal Album) {
-
-
                 if (activityFragmentCommunication != null) {
                     activityFragmentCommunication.replaceWithAboutMealFromMealsFragment();
 
                 }
+            }
+        }, new OnAddToPreferencesClick() {
+            @Override
+            public void onClick(Meal meal) {
+                favouritesMeals.add(meal);
+                Toast.makeText(getContext(), "Added to Preferences ", Toast.LENGTH_LONG).show();
             }
         });
 
         recyclerView.setAdapter(adapter);
 
     }
+
 
     @Override
     public void onAttach(@NonNull Context context) {

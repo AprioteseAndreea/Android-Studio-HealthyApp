@@ -1,6 +1,7 @@
 package com.example.healthyapp.fragments;
 
 import android.annotation.TargetApi;
+import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.CookieManager;
 import android.webkit.PermissionRequest;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -43,6 +45,8 @@ public class AboutWorkoutFragment extends Fragment {
     private String mParam2;
 
     private TextView workoutTitle;
+    private TextView workoutTime;
+    private TextView workoutDay;
     private WebView video;
 
     public AboutWorkoutFragment() {
@@ -82,22 +86,27 @@ public class AboutWorkoutFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_about_workout, container, false);
 
         workoutTitle = view.findViewById(R.id.title_workout);
-//        video = view.findViewById(R.id.videoWebView);
+        workoutTime = view.findViewById(R.id.workout_time);
+        workoutDay = view.findViewById(R.id.workout_day);
+
+        video = view.findViewById(R.id.videoWebView);
 
         int workoutId = Integer.parseInt(HomeFragment.workoutClicked);
         workoutTitle.setText(HomeFragment.workouts.get(workoutId).getName());
+        workoutTime.setText(HomeFragment.workouts.get(workoutId).getTime());
+        workoutDay.setText(HomeFragment.workouts.get(workoutId).getDay());
 
-        YouTubePlayerView youTubePlayerView = view.findViewById(R.id.youtube_player_view);
-        getLifecycle().addObserver(youTubePlayerView);
+      /*  YouTubePlayerView youTubePlayerView = view.findViewById(R.id.youtube_player_view);
+        getLifecycle().addObserver(youTubePlayerView);*/
 
-        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
-            @Override
-            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                String videoId = HomeFragment.workouts.get(workoutId).getLink();
-                youTubePlayer.loadVideo("IFtwhMK64H8", 0);
-            }
-        });
-       /* String myYouTubeVideoUrl = "https://www.youtube.com/embed/XUTXU6fy94E";
+//        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+//            @Override
+//            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+//                String videoId = HomeFragment.workouts.get(workoutId).getLink();
+//                youTubePlayer.loadVideo("IFtwhMK64H8", 0);
+//            }
+//        });
+        String myYouTubeVideoUrl = "https://www.youtube.com/embed/XUTXU6fy94E";
 
         String dataUrl =
                 "<html>" +
@@ -109,14 +118,14 @@ public class AboutWorkoutFragment extends Fragment {
                         "</html>";
 
 
-
+      //  video.loadUrl("https://www.youtube.com/");
         WebSettings webSettings = video.getSettings();
 
         webSettings.setJavaScriptEnabled(true);
         video.getSettings().setLoadWithOverviewMode(true);
         video.getSettings().setUseWideViewPort(true);
-        video.loadData(dataUrl, "text/html", "utf-8");*/
-        /*video.loadData("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/eWEF1Zrmdow\" frameborder=\"0\" allowfullscreen></iframe>", "text/html", "utf-8");
+        video.loadData(dataUrl, "text/html", "utf-8");
+        video.loadData("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/eWEF1Zrmdow\" frameborder=\"0\" allowfullscreen></iframe>", "text/html", "utf-8");
         video.getSettings().setJavaScriptEnabled(true);
         video.setWebChromeClient(new WebChromeClient() {
         });
@@ -126,14 +135,16 @@ public class AboutWorkoutFragment extends Fragment {
             public void onPermissionRequest(final PermissionRequest request) {
                 request.grant(request.getResources());
             }
+
         });
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-          //  webSettings.setMixedContentMode(MIXED_CONTENT_ALWAYS_ALLOW);
+            webSettings.setMixedContentMode(MIXED_CONTENT_ALWAYS_ALLOW);
             CookieManager.getInstance().setAcceptThirdPartyCookies(video, true);
 
         }
-*/
 
         return view;
     }

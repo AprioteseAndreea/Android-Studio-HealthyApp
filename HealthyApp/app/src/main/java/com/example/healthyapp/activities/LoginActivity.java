@@ -1,14 +1,17 @@
 package com.example.healthyapp.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.healthyapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -16,10 +19,20 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
     Button createAccountBtn, loginBtn;
     EditText username, password;
     FirebaseAuth firebaseAuth;
+    CheckBox rememberMeCheckBox;
+
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String User = "user";
+    public static final String Password = "password";
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +49,24 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
         username = findViewById(R.id.loginEmail);
         password = findViewById(R.id.loginPassword);
         loginBtn = findViewById(R.id.loginb);
+        rememberMeCheckBox = findViewById(R.id.remember_check_box);
 
         username.setText("andreea.apriotese11@gmail.com");
         password.setText("123456");
+       /* sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        if (sharedPreferences.getString(User, "") != null && sharedPreferences.getString(Password, "") != null) {
+            username.setText(sharedPreferences.getString(User, ""));
+            password.setText(sharedPreferences.getString(Password, ""));
+
+        }*/
+
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -69,7 +94,20 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         });
+       /* if (rememberMeCheckBox.isChecked()) {
+            saveUserInSharedPreferences(username.getText().toString(), password.getText().toString());
+        }*/
     }
+
+    private void saveUserInSharedPreferences(String email, String password) {
+
+        editor.putString(User, email);
+        editor.putString(Password, password);
+        editor.commit();
+    }
+
+
+}
 
     /*@Override
     protected void onStart() {
@@ -79,4 +117,3 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
     }*/
-}

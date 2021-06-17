@@ -16,5 +16,6 @@ class Constants {
         const val PREP_TIME = "preptime"
         const val CALORIES= "calories"
         const val PATH="path"
+        const val BACKGROUND="background"
     }
 }

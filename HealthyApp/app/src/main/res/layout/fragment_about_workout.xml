@@ -4,8 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AboutWorkoutFragment">
-
+    tools:context=".fragments.AboutWorkoutFragment"
+    android:background="@color/peach"
+    android:tag="AboutWorkoutFragmentTag">
+<ImageView
+    android:id="@+id/workoutbanner"
+    android:layout_width="match_parent"
+    android:layout_height="146dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:src="@drawable/workoutbanner"
+    />
 
     <TextView
         android:id="@+id/title_workout"
@@ -13,30 +22,99 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/utsansbold"
         android:text="Full Body Workout"
-        android:textColor="@color/purple_700"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="30dp"
+        app:layout_constraintVertical_bias="0.16"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_chainStyle="packed"
+       android:background="@drawable/workout_title_border"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/workoutbanner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
 
         />
-     <!--<WebView
+    <ImageView
+        android:id="@+id/clock_icon"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_marginLeft="40dp"
+        android:src="@drawable/purpleclock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_workout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.03"/>
+    <TextView
+        android:id="@+id/workout_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/clock_icon"
+        app:layout_constraintTop_toBottomOf="@id/title_workout"
+        android:textSize="26dp"
+        android:text="15 min"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.03"
+        android:fontFamily="@font/utsansmedium"
+        />
+    <ImageView
+        android:id="@+id/calendar_icon"
+        android:layout_width="34dp"
+        android:layout_height="36dp"
+        android:src="@drawable/iconcalendar"
+        android:layout_marginLeft="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.03"
+        app:layout_constraintStart_toEndOf="@id/workout_time"
+        app:layout_constraintTop_toBottomOf="@id/title_workout" />
+    <TextView
+        android:id="@+id/day_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/calendar_icon"
+        app:layout_constraintTop_toBottomOf="@id/title_workout"
+        android:textSize="26dp"
+        android:text="Day:"
+        android:layout_marginLeft="4dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.03"
+        android:fontFamily="@font/utsansmedium"
+        />
+    <TextView
+        android:id="@+id/workout_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/day_label"
+        app:layout_constraintTop_toBottomOf="@id/title_workout"
+        android:textSize="26dp"
+        android:text="1"
+        android:layout_marginLeft="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.03"
+        android:textColor="@color/white"
+        android:fontFamily="@font/utsansmedium"
+        />
+     <WebView
          android:id="@+id/videoWebView"
          android:layout_width="match_parent"
          android:layout_height="180dp"
          app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toBottomOf="@id/title_workout"/>
-     />-->
+         app:layout_constraintTop_toBottomOf="@id/clock_icon"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintVertical_bias="0.1"/>
+     />
 
-    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+   <!-- <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/youtube_player_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:autoPlay="false"
         app:showYouTubeButton="true"
-        app:useWebUi="true"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_workout"
         app:showFullScreenButton="true"
-        app:videoId="IFtwhMK64H8" />
+        app:videoId="IFtwhMK64H8" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

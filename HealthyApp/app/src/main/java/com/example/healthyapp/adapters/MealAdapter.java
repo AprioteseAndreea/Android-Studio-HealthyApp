@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthyapp.R;
+import com.example.healthyapp.interfaces.OnAddToPreferencesClick;
 import com.example.healthyapp.interfaces.OnMealItemClick;
 import com.example.healthyapp.models.Meal;
 import com.example.healthyapp.viewholders.MealViewHolder;
@@ -19,10 +20,12 @@ public class MealAdapter extends RecyclerView.Adapter<MealViewHolder> {
     private Context context;
     ArrayList<Meal> meals;
     public static OnMealItemClick onMealItemClick;
+    public static OnAddToPreferencesClick onAddToPreferencesClick;
 
-    public MealAdapter(ArrayList<Meal> meals, OnMealItemClick onMealItemClick) {
+    public MealAdapter(ArrayList<Meal> meals, OnMealItemClick onMealItemClick, OnAddToPreferencesClick onAddToPreferencesClick) {
         this.meals = meals;
         this.onMealItemClick = onMealItemClick;
+        this.onAddToPreferencesClick = onAddToPreferencesClick;
     }
 
     @NonNull

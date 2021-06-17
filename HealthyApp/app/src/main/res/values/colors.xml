@@ -8,9 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#669933</color>
-    <color name="peach">#745BE6</color>
+    <color name="peach">#A386F1</color>
     <color name="lightpeach">#DDBA8F</color>
     <color name="red">#AC2319</color>
+    <color name="baby_blue">#6AB3EC</color>
 
 
 </resources>

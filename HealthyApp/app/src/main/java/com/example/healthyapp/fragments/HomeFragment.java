@@ -2,6 +2,7 @@ package com.example.healthyapp.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -42,7 +43,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
+import static android.content.Context.MODE_PRIVATE;
+import static com.example.healthyapp.Constants.BACKGROUND;
 import static com.example.healthyapp.Constants.CALORIES;
 import static com.example.healthyapp.Constants.DAY;
 import static com.example.healthyapp.Constants.HOW_TO_PREPARE;
@@ -84,6 +88,7 @@ public class HomeFragment extends Fragment {
 
     public static String clickedId = null;
     public static String workoutClicked = null;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -153,7 +158,7 @@ public class HomeFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
         snacksRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
-        workoutRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
+        workoutRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
         getMeals();
         getSnacks();
         getWorkout();
@@ -208,8 +213,8 @@ public class HomeFragment extends Fragment {
             String name = obj.getString(NAME);
             String time = obj.getString(TIME);
             String link = obj.getString(LINK);
-
-            Workout workout = new Workout(id, day, name, time, link);
+            String background = obj.getString(BACKGROUND);
+            Workout workout = new Workout(id, day, name, time, link, background);
             workouts.add(workout);
         }
         getTodayWorkout();
@@ -368,6 +373,7 @@ public class HomeFragment extends Fragment {
 
             if (day.equals(String.valueOf(currentDay))) {
                 Meal meal = new Meal(id, day, name, preptime, calories, imagePath, ingredients, howtoprepare);
+                //  saveDataInSharedPreferences(meal);
                 meals.add(meal);
             }
 
@@ -386,6 +392,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
     }
+
 
     @Override
     public void onAttach(@NonNull Context context) {
