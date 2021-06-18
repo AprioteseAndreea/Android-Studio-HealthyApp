@@ -195,7 +195,7 @@ public class AboutWorkoutFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (picker.getHour() > 12) {
-                    selectedTime.setText(String.format(picker.getHour() - 12 + picker.getMinute() + " PM"));
+                    selectedTime.setText(String.format(picker.getHour() - 12 +" : "+ picker.getMinute() + " PM"));
                 } else {
                     selectedTime.setText(
                             String.format(picker.getHour() + " : " + picker.getMinute() + " AM")
