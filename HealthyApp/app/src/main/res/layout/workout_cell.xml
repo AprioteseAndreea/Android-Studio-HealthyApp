@@ -20,7 +20,7 @@
         android:layout_marginBottom="9dp"
 
         android:src="@drawable/ic_baseline_fastfood_24"
-        app:civ_border_color="@color/white"
+        app:civ_border_color="@color/baby_blue"
         app:civ_border_width="2dp" />
 
     <TextView
@@ -28,14 +28,14 @@
         android:layout_width="115dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
-        android:fontFamily="@font/gentiumbasicbegular"
+        android:fontFamily="@font/utsansbold"
         android:padding="?android:listPreferredItemPaddingLeft"
         android:paddingStart="5dp"
         android:paddingLeft="10dp"
         android:text="kcals"
         android:ellipsize="end"
-        android:lines="3"
+        android:lines="2"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/peach"
         android:textSize="13dp" />
 </FrameLayout>

@@ -74,16 +74,16 @@ public class AboutMealFromMealsFragment extends Fragment {
         TextView ingredients = view.findViewById(R.id.ingredients);
         TextView howtoprepare = view.findViewById(R.id.howtoprepare);
 
-        int mealId = Integer.parseInt(HomeFragment.clickedId)-1 ;
 
-        title.setText(MealsFragment.meals.get(mealId).getName());
-        prepTime.setText(MealsFragment.meals.get(mealId).getPreptime());
-        kcals.setText(MealsFragment.meals.get(mealId).getCalories());
-        ingredients.setText(MealsFragment.meals.get(mealId).getIngredients());
-        howtoprepare.setText(MealsFragment.meals.get(mealId).getHowtoprepare());
+
+        title.setText(HomeFragment.mealClicked.getName());
+        prepTime.setText(HomeFragment.mealClicked.getPreptime());
+        kcals.setText(HomeFragment.mealClicked.getCalories());
+        ingredients.setText(HomeFragment.mealClicked.getIngredients());
+        howtoprepare.setText(HomeFragment.mealClicked.getHowtoprepare());
 
         ImageView imageView = view.findViewById(R.id.about_meal_image);
-        String imageViewUrl = MealsFragment.meals.get(mealId).getImagePath();
+        String imageViewUrl = HomeFragment.mealClicked.getImagePath();
         ImageLoader imageLoader = VolleyConfigSingleton.getInstance(imageView.getContext().
                 getApplicationContext()).getImageLoader();
         imageLoader.get(imageViewUrl, new ImageLoader.ImageListener() {

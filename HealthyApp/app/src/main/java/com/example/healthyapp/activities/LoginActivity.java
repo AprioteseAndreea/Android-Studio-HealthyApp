@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.healthyapp.R;
@@ -19,7 +20,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 public class LoginActivity extends AppCompatActivity {
     Button createAccountBtn, loginBtn;
@@ -57,16 +60,17 @@ public class LoginActivity extends AppCompatActivity {
 
         username.setText("andreea.apriotese11@gmail.com");
         password.setText("123456");
-       /* sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
         if (sharedPreferences.getString(User, "") != null && sharedPreferences.getString(Password, "") != null) {
             username.setText(sharedPreferences.getString(User, ""));
             password.setText(sharedPreferences.getString(Password, ""));
 
-        }*/
-
-
+        }
+        if (rememberMeCheckBox.isChecked()) {
+            saveUserInSharedPreferences(username.getText().toString(), password.getText().toString());
+        }
         loginBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -94,9 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         });
-       /* if (rememberMeCheckBox.isChecked()) {
-            saveUserInSharedPreferences(username.getText().toString(), password.getText().toString());
-        }*/
+
     }
 
     private void saveUserInSharedPreferences(String email, String password) {

@@ -27,7 +27,7 @@
         app:civ_border_width="2dp"
         android:layout_centerInParent="true"
         android:src="@drawable/ic_baseline_fastfood_24"
-        app:civ_border_color="@color/peach"
+        app:civ_border_color="@color/baby_blue"
         android:layout_width="95dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
@@ -56,7 +56,7 @@
         app:layout_constraintHorizontal_bias="0.90"
         app:layout_constraintTop_toBottomOf="@id/meals_name"
         android:background="@drawable/ic_baseline_favorite_24"
-        android:backgroundTint="@color/peach"
+        android:backgroundTint="@color/baby_blue"
         />
 
 

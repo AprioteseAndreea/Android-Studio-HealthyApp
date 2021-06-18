@@ -80,13 +80,14 @@ public class HomeFragment extends Fragment {
     private RecyclerView workoutRecyclerView;
 
     public static ArrayList<Meal> meals = new ArrayList<>();
+    public static ArrayList<Meal> todayMeals = new ArrayList<>();
     public static ArrayList<Snack> snacks = new ArrayList<>();
     public static ArrayList<Workout> workouts = new ArrayList<>();
 
     private ActivityFragmentCommunication activityFragmentCommunication;
     private TextView dateTimeDisplay;
 
-    public static String clickedId = null;
+    public static Meal mealClicked = null;
     public static String workoutClicked = null;
 
 
@@ -143,6 +144,7 @@ public class HomeFragment extends Fragment {
                 activityFragmentCommunication.replaceWithAddHoursFragment();
             }
         });
+
 
         Button drunk = view.findViewById(R.id.drink);
         TextView water_glasses = view.findViewById(R.id.water_glasses);
@@ -371,16 +373,21 @@ public class HomeFragment extends Fragment {
             Date date = calendar.getTime();
             int currentDay = calendar.get(Calendar.DATE);
 
-            if (day.equals(String.valueOf(currentDay))) {
-                Meal meal = new Meal(id, day, name, preptime, calories, imagePath, ingredients, howtoprepare);
-                //  saveDataInSharedPreferences(meal);
+            Meal meal = new Meal(id, day, name, preptime, calories, imagePath, ingredients, howtoprepare);
+            boolean exist = meals.stream().filter(o -> o.getName().equals(name)).findFirst().isPresent();
+            if (!exist) {
                 meals.add(meal);
+
+            }
+
+            if (day.equals(String.valueOf(currentDay))) {
+                todayMeals.add(meal);
             }
 
         }
 
 
-        TodayMealsAdapter adapter = new TodayMealsAdapter(meals, new OnMealItemClick() {
+        TodayMealsAdapter adapter = new TodayMealsAdapter(todayMeals, new OnMealItemClick() {
             @Override
             public void onClick(Meal meal) {
                 if (activityFragmentCommunication != null) {
@@ -390,6 +397,7 @@ public class HomeFragment extends Fragment {
             }
         });
         recyclerView.setAdapter(adapter);
+
 
     }
 

@@ -108,64 +108,7 @@ public class MealsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_meals, container, false);
         recyclerView = view.findViewById(R.id.meals_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        getMeals();
-
-        return view;
-    }
-
-    private void getMeals() {
-        RequestQueue queue = Volley.newRequestQueue(getContext());
-        String url = MEALS_URL;
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @RequiresApi(api = Build.VERSION_CODES.N)
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-
-                            handleMealResponse(response);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "ERROR: get MEALS failed with error: " + error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-
-        queue.add(stringRequest);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private void handleMealResponse(String responseJson) throws JSONException {
-        meals.clear();
-        JSONArray usersJSONArray = new JSONArray(responseJson);
-        for (int i = 0; i < usersJSONArray.length(); i++) {
-            JSONObject obj = usersJSONArray.getJSONObject(i);
-
-            String id = obj.getString(ID);
-            String day = obj.getString(DAY);
-            String name = obj.getString(NAME);
-            String imagePath = obj.getString(IMAGE_PATH);
-            String ingredients = obj.getString(INGREDIENTS);
-            String howtoprepare = obj.getString(HOW_TO_PREPARE);
-            String preptime = obj.getString(PREP_TIME);
-            String calories = obj.getString(CALORIES);
-
-            Meal meal = new Meal(id, day, name, preptime, calories, imagePath, ingredients, howtoprepare);
-
-            boolean exist = meals.stream().filter(o -> o.getName().equals(name)).findFirst().isPresent();
-            if (!exist) {
-                meals.add(meal);
-
-            }
-        }
-
-
-        MealAdapter adapter = new MealAdapter(meals, new OnMealItemClick() {
+        MealAdapter adapter = new MealAdapter(HomeFragment.meals, new OnMealItemClick() {
             @Override
             public void onClick(Meal Album) {
                 if (activityFragmentCommunication != null) {
@@ -183,8 +126,8 @@ public class MealsFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
 
+        return view;
     }
-
 
     @Override
     public void onAttach(@NonNull Context context) {

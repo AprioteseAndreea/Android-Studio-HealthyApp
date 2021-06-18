@@ -1,7 +1,9 @@
 package com.example.healthyapp.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,9 +40,7 @@ public class WorkoutFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public static String workoutId;
     private RecyclerView recyclerView;
-    public static ArrayList<Workout> workouts = new ArrayList<>();
     private ActivityFragmentCommunication activityFragmentCommunication;
 
     public WorkoutFragment() {
@@ -89,7 +89,7 @@ public class WorkoutFragment extends Fragment {
         WorkoutAdapter adapter = new WorkoutAdapter(HomeFragment.workouts, new OnWorkoutItemClick() {
             @Override
             public void onClick(Workout workout) {
-                if (activityFragmentCommunication != null) {
+               if (activityFragmentCommunication != null) {
                     activityFragmentCommunication.replaceWithAboutWorkoutFragment();
 
                 }
@@ -97,5 +97,13 @@ public class WorkoutFragment extends Fragment {
         });
 
         recyclerView.setAdapter(adapter);
+    }
+    @Override
+    public void onAttach(@NonNull Context context) {
+
+        super.onAttach(context);
+        if (context instanceof ActivityFragmentCommunication) {
+            activityFragmentCommunication = (ActivityFragmentCommunication) context;
+        }
     }
 }

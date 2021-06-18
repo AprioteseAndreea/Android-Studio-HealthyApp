@@ -8,9 +8,9 @@
 
     <TextView
         android:id="@+id/date_time"
-        android:layout_width="190dp"
-        android:layout_height="35dp"
-        android:fontFamily="@font/gentiumbasicitalic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/utsansbold"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:text="Saturday, 12 April"
@@ -25,14 +25,15 @@
         android:id="@+id/logout_btn"
         android:layout_width="100dp"
         android:layout_height="37dp"
-        android:layout_marginLeft="80dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/border"
         android:backgroundTint="@color/peach"
         android:text="LogOut"
-
+android:fontFamily="@font/utsansbold"
         android:textColor="@color/peach"
         app:layout_constraintStart_toEndOf="@id/date_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintTop_toTopOf="parent">
 
     </Button>
@@ -40,13 +41,13 @@
 
     <TextView
         android:id="@+id/hello"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:fontFamily="@font/gentiumbasicbold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/utsansbold"
         android:paddingLeft="10dp"
         android:text="Hello!"
         android:textColor="@color/peach"
-        android:textSize="35sp"
+        android:textSize="40sp"
         app:layout_constraintStart_toStartOf="@id/date_time"
         app:layout_constraintTop_toBottomOf="@id/date_time" />
 
@@ -56,7 +57,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="20sp"
         android:background="@color/baby_blue"
-        android:fontFamily="@font/gentiumbasicbegular"
+        android:fontFamily="@font/utsansmedium"
         android:paddingLeft="2dp"
         android:paddingTop="3dp"
         android:text="You need to drink: "
@@ -104,7 +105,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:background="@color/baby_blue"
-        android:fontFamily="@font/gentiumbasicbegular"
+        android:fontFamily="@font/utsansmedium"
         android:paddingLeft="2dp"
         android:paddingTop="3dp"
         android:text="Snacks for today: "
@@ -130,11 +131,13 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/border"
         android:backgroundTint="@color/peach"
-        android:fontFamily="@font/gentiumbasicbold"
+        android:fontFamily="@font/utsansbold"
         android:text="Add Sleep Hours"
         android:textColor="@color/peach"
-        android:textSize="18dp"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="@id/snacks"
+        app:layout_constraintEnd_toEndOf="@id/snacks"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintTop_toBottomOf="@id/snacks" />
 
     <Button
@@ -144,12 +147,13 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/border"
         android:backgroundTint="@color/peach"
-        android:fontFamily="@font/gentiumbasicbold"
+        android:fontFamily="@font/utsansbold"
         android:text="Add Sleep Hours"
         android:textColor="@color/peach"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/addHours_btn"
+        android:textSize="15dp"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@id/snacks"
+        app:layout_constraintEnd_toEndOf="@id/snacks"
         app:layout_constraintTop_toBottomOf="@id/snacks" />
 
     <TextView

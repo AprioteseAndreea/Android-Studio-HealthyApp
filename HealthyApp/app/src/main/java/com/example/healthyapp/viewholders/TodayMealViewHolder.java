@@ -49,7 +49,7 @@ public class TodayMealViewHolder extends RecyclerView.ViewHolder {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomeFragment.clickedId=meal.getId();
+                HomeFragment.mealClicked=meal;
                 if (TodayMealsAdapter.onMealItemClick != null)
                     TodayMealsAdapter.onMealItemClick.onClick(meal);
             }
