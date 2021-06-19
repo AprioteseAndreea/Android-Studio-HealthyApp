@@ -15,7 +15,7 @@
         android:paddingTop="10dp"
         android:text="Saturday, 12 April"
         android:textColor="@color/peach"
-        android:textSize="15sp"
+        android:textSize="18sp"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,6 +37,19 @@ android:fontFamily="@font/utsansbold"
         app:layout_constraintTop_toTopOf="parent">
 
     </Button>
+    <Button
+        android:id="@+id/addHours_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+      android:background="@color/peach"
+        android:fontFamily="@font/utsansbold"
+        android:text="Add Sleep Hours"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@id/snacks"
+        app:layout_constraintEnd_toEndOf="@id/snacks"
+        app:layout_constraintTop_toBottomOf="@id/snacks" />
 
 
     <TextView
@@ -89,13 +102,15 @@ android:fontFamily="@font/utsansbold"
 
     <Button
         android:id="@+id/drink"
-        android:layout_width="120dp"
-        android:layout_height="37dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="13dp"
-        android:background="@drawable/border"
-        android:backgroundTint="@color/peach"
+        android:background="@drawable/get_started_border"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:text="Drank one"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/waters"
         app:layout_constraintStart_toEndOf="@id/water_glass"
         app:layout_constraintTop_toTopOf="@id/waters" />
 
@@ -107,7 +122,7 @@ android:fontFamily="@font/utsansbold"
         android:background="@color/baby_blue"
         android:fontFamily="@font/utsansmedium"
         android:paddingLeft="2dp"
-        android:paddingTop="3dp"
+        android:paddingTop="5dp"
         android:text="Snacks for today: "
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -124,53 +139,22 @@ android:fontFamily="@font/utsansbold"
         app:layout_constraintStart_toStartOf="@id/snacks"
         app:layout_constraintTop_toTopOf="@+id/snacks" />
 
-    <Button
-        android:id="@+id/addHours_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/border"
-        android:backgroundTint="@color/peach"
-        android:fontFamily="@font/utsansbold"
-        android:text="Add Sleep Hours"
-        android:textColor="@color/peach"
-        android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="@id/snacks"
-        app:layout_constraintEnd_toEndOf="@id/snacks"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintTop_toBottomOf="@id/snacks" />
-
-    <Button
-        android:id="@+id/your_favourites_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/border"
-        android:backgroundTint="@color/peach"
-        android:fontFamily="@font/utsansbold"
-        android:text="Add Sleep Hours"
-        android:textColor="@color/peach"
-        android:textSize="15dp"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="@id/snacks"
-        app:layout_constraintEnd_toEndOf="@id/snacks"
-        app:layout_constraintTop_toBottomOf="@id/snacks" />
 
     <TextView
         android:id="@+id/your_meals"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:background="@color/baby_blue"
-        android:fontFamily="@font/gentiumbasicbold"
+        android:fontFamily="@font/utsansbold"
         android:paddingLeft="10dp"
         android:text="MEALS FOR TODAY"
         android:textAlignment="center"
         android:textColor="@color/white"
 
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@id/snacks"
-        app:layout_constraintStart_toStartOf="@id/snacks"
+        app:layout_constraintEnd_toEndOf="@id/addHours_btn"
+        app:layout_constraintStart_toStartOf="@id/addHours_btn"
         app:layout_constraintTop_toBottomOf="@id/addHours_btn" />
 
 
@@ -178,9 +162,9 @@ android:fontFamily="@font/utsansbold"
         android:id="@+id/your_workout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:background="@color/baby_blue"
-        android:fontFamily="@font/gentiumbasicbold"
+        android:fontFamily="@font/utsansbold"
         android:text="TODAY WORKOUT"
         android:textAlignment="center"
         android:textColor="@color/white"

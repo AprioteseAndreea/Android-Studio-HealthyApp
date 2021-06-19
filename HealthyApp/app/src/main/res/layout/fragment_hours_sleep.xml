@@ -39,7 +39,10 @@
         app:layout_constraintTop_toBottomOf="@id/data_picker"
         android:layout_marginLeft="50dp"
         android:text="Add"
-        android:backgroundTint="@color/peach"/>
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:fontFamily="@font/utsansbold"
+        android:backgroundTint="@color/baby_blue"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/hours_recycler"
         android:layout_width="match_parent"

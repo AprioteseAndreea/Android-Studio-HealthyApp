@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
-                    switch(item.getItemId()){
+                    switch (item.getItemId()) {
                         case R.id.nav_home:
                             selectedFragment = new HomeFragment();
                             break;
@@ -53,16 +53,17 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).commit();
 
+
                     return true;
                 }
             };
 
     @Override
     public void replaceWithAboutMealFromHomeFragment() {
-         FragmentTransaction fragmentTransaction;
-         FragmentManager fragmentManager = getSupportFragmentManager();
-         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container,  AboutMealFromHomeFragment.newInstance("",""), "AboutMealFragmentTag");
+        FragmentTransaction fragmentTransaction;
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, AboutMealFromHomeFragment.newInstance("", ""), "AboutMealFragmentTag");
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
         FragmentTransaction fragmentTransaction;
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container,  AboutMealFromMealsFragment.newInstance("",""), "AboutMealFromMealsFragmentTag");
+        fragmentTransaction.replace(R.id.fragment_container, AboutMealFromMealsFragment.newInstance("", ""), "AboutMealFromMealsFragmentTag");
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
         FragmentTransaction fragmentTransaction;
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container,  HoursSleepFragment.newInstance("",""), "HoursSleepFragmentTag");
+        fragmentTransaction.replace(R.id.fragment_container, HoursSleepFragment.newInstance("", ""), "HoursSleepFragmentTag");
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
         FragmentTransaction fragmentTransaction;
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container,  AboutWorkoutFragment.newInstance("",""), "AboutWorkoutFragmentTag");
+        fragmentTransaction.replace(R.id.fragment_container, AboutWorkoutFragment.newInstance("", ""), "AboutWorkoutFragmentTag");
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }

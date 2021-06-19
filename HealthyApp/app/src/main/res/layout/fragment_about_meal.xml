@@ -93,6 +93,7 @@
             android:fontFamily="@font/utsansregular"
             android:paddingLeft="10dp"
             android:textColor="@color/peach"
+            android:textStyle="italic"
             app:layout_constraintTop_toBottomOf="@id/ingredients_title" />
 
         <TextView

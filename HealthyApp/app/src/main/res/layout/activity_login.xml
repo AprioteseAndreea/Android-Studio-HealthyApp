@@ -67,8 +67,8 @@
 
     <CheckBox
         android:id="@+id/remember_check_box"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="@id/loginPassword"
         app:layout_constraintTop_toBottomOf="@id/loginPassword" />
@@ -77,12 +77,15 @@
         android:id="@+id/remember_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:fontFamily="@font/utsansmedium"
         android:text="Remember me"
         android:textColor="@color/white"
         android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/remember_check_box"
         app:layout_constraintStart_toEndOf="@id/remember_check_box"
-        app:layout_constraintTop_toTopOf="@id/remember_check_box" />
+        app:layout_constraintTop_toTopOf="@id/remember_check_box"
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
         android:id="@+id/loginb"
@@ -93,7 +96,9 @@
         android:fontFamily="@font/utsansmedium"
         android:text="LogIn"
         android:textColor="@color/white"
-        android:textSize="22dp"
+        android:textSize="25dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -113,7 +118,7 @@
         android:paddingRight="20dp"
         android:text="Create Account"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

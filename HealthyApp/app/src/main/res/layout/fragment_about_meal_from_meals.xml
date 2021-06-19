@@ -92,6 +92,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/utsansregular"
             android:paddingLeft="10dp"
+            android:textStyle="italic"
+
             android:textColor="@color/peach"
             app:layout_constraintTop_toBottomOf="@id/ingredients_title" />
 
