@@ -58,8 +58,6 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginb);
         rememberMeCheckBox = findViewById(R.id.remember_check_box);
 
-        username.setText("andreea.apriotese11@gmail.com");
-        password.setText("123456");
         sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -68,9 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             password.setText(sharedPreferences.getString(Password, ""));
 
         }
-        if (rememberMeCheckBox.isChecked()) {
-            saveUserInSharedPreferences(username.getText().toString(), password.getText().toString());
-        }
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -96,6 +92,9 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+                if (rememberMeCheckBox.isChecked()) {
+                    saveUserInSharedPreferences(username.getText().toString(), password.getText().toString());
+                }
             }
         });
 
