@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".activities.RegisterActivity">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/blurwallpaper"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
+        android:id="@+id/healthy_app"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/utsansbold"
@@ -30,25 +31,26 @@
     <EditText
         android:id="@+id/registerFullName"
         android:layout_width="330dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="250dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/get_started_border"
         android:ems="10"
+        android:textSize="23dp"
         android:fontFamily="@font/utsanslight"
         android:hint="Full Name"
         android:inputType="textPersonName"
         android:textColorHint="@color/white"
-        android:textSize="23dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/healthy_app"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
         android:id="@+id/registerEmailAddress"
         android:layout_width="330dp"
-        android:layout_height="42dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/get_started_border"
         android:ems="10"
@@ -66,7 +68,7 @@
     <EditText
         android:id="@+id/registerPassword"
         android:layout_width="330dp"
-        android:layout_height="42dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/get_started_border"
         android:ems="10"
@@ -85,7 +87,7 @@
     <EditText
         android:id="@+id/confPassword"
         android:layout_width="330dp"
-        android:layout_height="42dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/get_started_border"
         android:ems="10"
@@ -136,3 +138,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

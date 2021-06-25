@@ -39,11 +39,10 @@
         android:theme="@style/AppTheme"
 
         >
-
-        <activity android:name=".activities.RegisterActivity"></activity>
-        <activity android:name=".activities.LoginActivity"></activity>
-        <activity android:name=".activities.MainActivity" />
-        <activity android:name=".activities.WelcomeActivity">
+        <activity android:name=".activities.RegisterActivity"/>
+        <activity android:name=".activities.LoginActivity" android:theme="@style/AppTheme" />
+        <activity android:name=".activities.MainActivity" android:theme="@style/AppTheme2" />
+        <activity android:name=".activities.WelcomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

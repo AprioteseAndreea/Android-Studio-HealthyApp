@@ -20,8 +20,8 @@ public class AlarmReceiver extends BroadcastReceiver {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, i, 0);
 
           NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "foxandroid")
-                  .setSmallIcon(R.drawable.ic_launcher_background)
-                  .setContentTitle("Android Alarm Manager")
+                  .setSmallIcon(R.mipmap.ic_launcher)
+                  .setContentTitle("Healthy App Alarm")
                   .setContentText("You have a workout to do!")
                   .setAutoCancel(true)
                   .setDefaults(NotificationCompat.DEFAULT_ALL)

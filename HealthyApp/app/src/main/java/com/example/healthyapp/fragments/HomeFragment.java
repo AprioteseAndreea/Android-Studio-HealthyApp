@@ -356,6 +356,7 @@ public class HomeFragment extends Fragment {
 
     private void handleMealResponse(String responseJson) throws JSONException {
         meals.clear();
+        todayMeals.clear();
         JSONArray usersJSONArray = new JSONArray(responseJson);
         for (int i = 0; i < usersJSONArray.length(); i++) {
             JSONObject obj = usersJSONArray.getJSONObject(i);
