@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -158,9 +159,10 @@ public class HomeFragment extends Fragment {
         dateTimeDisplay = view.findViewById(R.id.date_time);
         getDate();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
-        snacksRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
-        workoutRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 3));
+        snacksRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 4));
+        workoutRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 3));
+
         getMeals();
         getSnacks();
         getWorkout();
