@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.healthyapp.R;
 import com.example.healthyapp.VolleyConfigSingleton;
 import com.example.healthyapp.models.Meal;
@@ -82,19 +84,7 @@ public class AboutMealFromHomeFragment extends Fragment {
 
         ImageView imageView = view.findViewById(R.id.about_meal_image);
         String imageViewUrl = HomeFragment.mealClicked.getImagePath();
-        ImageLoader imageLoader = VolleyConfigSingleton.getInstance(imageView.getContext().
-                getApplicationContext()).getImageLoader();
-        imageLoader.get(imageViewUrl, new ImageLoader.ImageListener() {
-            @Override
-            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                imageView.setImageBitmap(response.getBitmap());
-            }
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
+        Glide.with(view).load(imageViewUrl).apply(new RequestOptions().override(300, 300)).into(imageView);
         return view;
     }
 }

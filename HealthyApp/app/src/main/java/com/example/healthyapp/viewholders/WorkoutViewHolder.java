@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.healthyapp.R;
 import com.example.healthyapp.VolleyConfigSingleton;
 import com.example.healthyapp.adapters.MealAdapter;
@@ -35,19 +37,8 @@ public class WorkoutViewHolder extends RecyclerView.ViewHolder {
     public void bind(Workout workout) {
         title.setText(workout.getName());
         String imageViewUrl = workout.getBackground();
-        ImageLoader imageLoader = VolleyConfigSingleton.getInstance(imageView.getContext().
-                getApplicationContext()).getImageLoader();
-        imageLoader.get(imageViewUrl, new ImageLoader.ImageListener() {
-            @Override
-            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                imageView.setImageBitmap(response.getBitmap());
-            }
+        Glide.with(this.view).load(imageViewUrl).apply(new RequestOptions().override(200, 200)).into(imageView);
 
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

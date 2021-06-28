@@ -65,7 +65,7 @@
             app:layout_constraintTop_toBottomOf="@+id/loginEmail"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <Button
+       <!-- <Button
             android:id="@+id/forgot_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toStartOf="@id/remember_check_box"
-            app:layout_constraintTop_toBottomOf="@id/remember_check_box" />
+            app:layout_constraintTop_toBottomOf="@id/remember_check_box" />-->
 
         <CheckBox
             android:id="@+id/remember_check_box"

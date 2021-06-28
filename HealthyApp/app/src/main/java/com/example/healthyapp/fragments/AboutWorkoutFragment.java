@@ -21,6 +21,8 @@ import androidx.fragment.app.Fragment;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.healthyapp.R;
 import com.example.healthyapp.VolleyConfigSingleton;
 import com.example.healthyapp.models.Workout;
@@ -131,19 +133,7 @@ public class AboutWorkoutFragment extends Fragment {
         });
 
         String imageViewUrl = HomeFragment.workouts.get(workoutId).getBackground();
-        ImageLoader imageLoader = VolleyConfigSingleton.getInstance(workoutImage.getContext().
-                getApplicationContext()).getImageLoader();
-        imageLoader.get(imageViewUrl, new ImageLoader.ImageListener() {
-            @Override
-            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                workoutImage.setImageBitmap(response.getBitmap());
-            }
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
+        Glide.with(view).load(imageViewUrl).apply(new RequestOptions().override(200, 200)).into(workoutImage);
         createNotificationChannel();
         selectTime.setOnClickListener(new View.OnClickListener() {
             @Override

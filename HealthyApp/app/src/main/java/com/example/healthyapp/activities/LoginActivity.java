@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         username = findViewById(R.id.loginEmail);
         password = findViewById(R.id.loginPassword);
         loginBtn = findViewById(R.id.loginb);
-        forgotPassword = findViewById(R.id.forgot_password);
+//        forgotPassword = findViewById(R.id.forgot_password);
         rememberMeCheckBox = findViewById(R.id.remember_check_box);
 
         sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
             password.setText(sharedPreferences.getString(Password, ""));
 
         }
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
+      /*  forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 reset_alert.setTitle("Reset Forgot Password ?")
@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
 
-        });
+        });*/
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
 
