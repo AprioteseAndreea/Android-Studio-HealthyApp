@@ -32,6 +32,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     repositories {
+        jcenter()
+        maven {
+            url "https://jitpack.io"
+        }
         google()
         mavenCentral()
     }
@@ -41,6 +45,7 @@ dependencies {
     def room_version = "2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation 'com.github.veeyaarVR:SuperGradientTextView:1.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.23'

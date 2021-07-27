@@ -17,7 +17,7 @@ import com.example.healthyapp.viewholders.MealViewHolder;
 import java.util.ArrayList;
 
 public class MealAdapter extends RecyclerView.Adapter<MealViewHolder> {
-    private Context context;
+
     ArrayList<Meal> meals;
     public static OnMealItemClick onMealItemClick;
     public static OnAddToPreferencesClick onAddToPreferencesClick;
