@@ -12,18 +12,16 @@
 
         tools:context=".activities.LoginActivity">
 
-       <ImageView
-           android:id="@+id/healthy_app"
-           android:layout_width="wrap_content"
-           android:layout_height="260dp"
-           android:src="@drawable/healthyapplogo2"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintTop_toTopOf="parent"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintVertical_bias="0.02"
-           app:layout_constraintHorizontal_bias="0.5"
-           />
+        <ImageView
+            android:id="@+id/healthy_app"
+            android:layout_width="wrap_content"
+            android:layout_height="230dp"
+            android:src="@drawable/healthyapplogo2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
 
         <TextView
             android:id="@+id/question"
@@ -62,7 +60,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textinputlayoutEmail"
-
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,7 +69,6 @@
             android:textColorHint="@color/baby_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/question"
             app:layout_constraintVertical_bias="0.1"
@@ -84,7 +80,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/baby_blue"
-                android:textColorHint="@color/magenta_light" />
+                android:textColorHint="@color/magenta_light"
+                android:textSize="15dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,10 +96,10 @@
             android:textColorHint="@color/baby_blue"
             app:endIconMode="password_toggle"
             app:endIconTint="@color/baby_blue"
+            app:layout_constraintBottom_toTopOf="@id/remember_me_switch"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textinputlayoutEmail"
-            app:layout_constraintBottom_toTopOf="@id/remember_me_switch"
             app:layout_constraintVertical_bias="0.3"
             app:shapeAppearance="@style/Rounded"
             app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
@@ -113,7 +110,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:textColor="@color/baby_blue"
-                android:textColorHint="@color/magenta_light" />
+                android:textColorHint="@color/magenta_light"
+                android:textSize="15dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
         <!--        <EditText-->
@@ -153,9 +151,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:checked="true"
             app:layout_constraintStart_toStartOf="@id/textinputlayoutPassword"
             app:layout_constraintTop_toBottomOf="@id/textinputlayoutPassword"
-            android:checked="true"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <TextView
@@ -165,7 +163,7 @@
             android:fontFamily="@font/utsansmedium"
             android:text="Remember me"
             android:textColor="@color/magenta_light"
-            android:textSize="20dp"
+            android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="@id/remember_me_switch"
             app:layout_constraintStart_toEndOf="@id/remember_me_switch"
             app:layout_constraintTop_toTopOf="@id/remember_me_switch"
@@ -173,56 +171,71 @@
 
         <Button
             android:id="@+id/loginb"
-            android:text="LogIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/login_button_border"
             android:fontFamily="@font/utsansmedium"
-            android:paddingLeft="70dp"
-            android:paddingRight="70dp"
+            android:paddingLeft="80dp"
+            android:paddingRight="80dp"
             android:shadowColor="@color/white"
+            android:text="LogIn"
             android:textColor="@color/white"
             android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/createAccount"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/remember_text_view"
-            app:layout_constraintVertical_bias="0.4">
+            app:layout_constraintVertical_bias="0.7">
 
         </Button>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/utsanslight"
+            android:text="Forgot password?"
+            android:textColor="@color/magenta_light"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="@id/remember_text_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/remember_text_view"
+            app:layout_constraintHorizontal_bias="0.9"/>
 
         <TextView
             android:id="@+id/createAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
             android:fontFamily="@font/utsansmedium"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="New user? Register Now"
             android:textColor="@color/magenta_light"
-            android:textSize="20dp"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginb" />
+            app:layout_constraintTop_toBottomOf="@+id/loginb"
+            app:layout_constraintVertical_bias="0.3" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/use_other_methods"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="15dp"-->
-<!--            android:fontFamily="@font/utsanslight"-->
-<!--            android:paddingLeft="20dp"-->
-<!--            android:paddingRight="20dp"-->
-<!--            android:text="-&#45;&#45;&#45;&#45; Use other Methods -&#45;&#45;&#45;&#45;"-->
-<!--            android:textColor="@color/baby_blue"-->
-<!--            android:textSize="20dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.5"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/createAccount" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/use_other_methods"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="15dp"-->
+        <!--            android:fontFamily="@font/utsanslight"-->
+        <!--            android:paddingLeft="20dp"-->
+        <!--            android:paddingRight="20dp"-->
+        <!--            android:text="-&#45;&#45;&#45;&#45; Use other Methods -&#45;&#45;&#45;&#45;"-->
+        <!--            android:textColor="@color/baby_blue"-->
+        <!--            android:textSize="20dp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.5"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/createAccount" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

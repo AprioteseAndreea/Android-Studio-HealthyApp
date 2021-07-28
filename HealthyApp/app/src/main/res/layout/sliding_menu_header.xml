@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/gradient_background"
+    android:gravity="bottom">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/about_meal_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/healthy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintBottom_toBottomOf="parent"
+      />
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Andreea"
+        android:textSize="35dp"
+        android:fontFamily="@font/utsansmedium"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/about_meal_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintVertical_bias="0.7"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        />
+    <TextView
+        android:id="@+id/user_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="andreea.apriotese11@gmail.com"
+        android:textSize="13dp"
+        android:fontFamily="@font/utsanslight"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/about_meal_image"
+        app:layout_constraintTop_toBottomOf="@id/user_name"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintVertical_bias="0.6"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
