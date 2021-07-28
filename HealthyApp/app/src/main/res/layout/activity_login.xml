@@ -12,23 +12,18 @@
 
         tools:context=".activities.LoginActivity">
 
-        <com.veeyaar.supergradienttextview.GradientTextView
-            android:id="@+id/healthy_app"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-          android:fontFamily="@font/utsansbold"
-            android:text="Healthy App"
-            android:textSize="55dp"
-            app:endColor="@color/purple"
-            app:isVertical="true"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.20"
-            app:startColor="@color/blue" />
+       <ImageView
+           android:id="@+id/healthy_app"
+           android:layout_width="wrap_content"
+           android:layout_height="260dp"
+           android:src="@drawable/healthyapplogo2"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintVertical_bias="0.02"
+           app:layout_constraintHorizontal_bias="0.5"
+           />
 
         <TextView
             android:id="@+id/question"
@@ -36,14 +31,14 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/utsansmedium"
             android:text="Already have an Account?"
-            android:textColor="@color/baby_blue"
+            android:textColor="@color/magenta_light"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/healthy_app"
-            app:layout_constraintVertical_bias="0.14" />
+            app:layout_constraintTop_toBottomOf="@id/healthy_app"
+            app:layout_constraintVertical_bias="0.04" />
 
         <!-- <EditText
              android:id="@+id/loginEmail"
@@ -89,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/baby_blue"
-                android:textColorHint="@color/baby_blue" />
+                android:textColorHint="@color/magenta_light" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,6 +102,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textinputlayoutEmail"
+            app:layout_constraintBottom_toTopOf="@id/remember_me_switch"
             app:layout_constraintVertical_bias="0.3"
             app:shapeAppearance="@style/Rounded"
             app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
@@ -117,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:textColor="@color/baby_blue"
-                android:textColorHint="@color/baby_blue" />
+                android:textColorHint="@color/magenta_light" />
 
         </com.google.android.material.textfield.TextInputLayout>
         <!--        <EditText-->
@@ -160,7 +156,7 @@
             app:layout_constraintStart_toStartOf="@id/textinputlayoutPassword"
             app:layout_constraintTop_toBottomOf="@id/textinputlayoutPassword"
             android:checked="true"
-            />
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <TextView
             android:id="@+id/remember_text_view"
@@ -168,7 +164,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/utsansmedium"
             android:text="Remember me"
-            android:textColor="@color/baby_blue"
+            android:textColor="@color/magenta_light"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="@id/remember_me_switch"
             app:layout_constraintStart_toEndOf="@id/remember_me_switch"
@@ -186,13 +182,13 @@
             android:paddingRight="70dp"
             android:shadowColor="@color/white"
             android:textColor="@color/white"
-            android:textSize="23dp"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/remember_text_view"
-            app:layout_constraintVertical_bias="0.2">
+            app:layout_constraintVertical_bias="0.4">
 
         </Button>
 
@@ -205,28 +201,28 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="New user? Register Now"
-            android:textColor="@color/peach"
+            android:textColor="@color/magenta_light"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginb" />
 
-        <TextView
-            android:id="@+id/use_other_methods"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/utsanslight"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="----- Use other Methods -----"
-            android:textColor="@color/baby_blue"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createAccount" />
+<!--        <TextView-->
+<!--            android:id="@+id/use_other_methods"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:fontFamily="@font/utsanslight"-->
+<!--            android:paddingLeft="20dp"-->
+<!--            android:paddingRight="20dp"-->
+<!--            android:text="-&#45;&#45;&#45;&#45; Use other Methods -&#45;&#45;&#45;&#45;"-->
+<!--            android:textColor="@color/baby_blue"-->
+<!--            android:textSize="20dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/createAccount" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

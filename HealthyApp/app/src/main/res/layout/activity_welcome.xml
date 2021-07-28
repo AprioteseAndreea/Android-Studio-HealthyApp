@@ -9,23 +9,52 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient_background">
-
+        android:background="@color/white">
+    <ImageView
+        android:id="@+id/healthy_app"
+        android:layout_width="wrap_content"
+        android:layout_height="260dp"
+        android:src="@drawable/healthyapplogo3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.5"
+        />
 
         <TextView
             android:id="@+id/healthy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/utsansbold"
-            android:text="Healthy App"
-            android:textColor="@color/white"
-            android:textSize="50dp"
+            android:text="Welcome to Healthy App!"
+            android:textColor="@color/baby_blue"
+            android:textSize="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.25" />
+            app:layout_constraintVertical_bias="0.45" />
+        <TextView
+            android:id="@+id/healthy_quote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/utsanslight"
+            android:textStyle="italic"
+            android:text="THINK positive, EXERCISE daily, EAT healthy, WORK hard, STAY strong, WORRY less, DANCE more, LOVE often, BE happy"
+            android:textColor="@color/baby_blue"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/healthy"
+            app:layout_constraintVertical_bias="0.3" />
 
         <Button
             android:id="@+id/getStarted"
@@ -36,13 +65,13 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="GET STARTED"
-            android:textColor="@color/white"
+            android:textColor="@color/baby_blue"
             android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/healthy"
-            app:layout_constraintVertical_bias="0.85" />
+            app:layout_constraintVertical_bias="0.9" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

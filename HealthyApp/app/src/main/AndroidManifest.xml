@@ -36,9 +36,10 @@
         android:theme="@style/AppTheme"
         android:configChanges="orientation|keyboardHidden|screenSize">
 
-        <activity android:name=".activities.RegisterActivity"/>
         <activity android:name=".activities.LoginActivity" android:theme="@style/AppTheme2" />
         <activity android:name=".activities.MainActivity" android:theme="@style/AppTheme2" />
+        <activity android:name=".activities.RegisterActivity" android:theme="@style/AppTheme2" />
+
         <activity android:name=".activities.WelcomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

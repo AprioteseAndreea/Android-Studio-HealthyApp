@@ -13,12 +13,13 @@ import android.widget.Toast;
 import com.example.healthyapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText registerFullName, registerEmail, registerPassword, registerConfPass;
+    TextInputEditText registerFullName, registerEmail, registerPassword, registerConfPass;
     Button registerUserBtn, gotoLogin;
     FirebaseAuth fAuth;
 
@@ -27,10 +28,10 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        registerFullName = findViewById(R.id.registerFullName);
-        registerEmail = findViewById(R.id.registerEmailAddress);
-        registerPassword = findViewById(R.id.registerPassword);
-        registerConfPass = findViewById(R.id.confPassword);
+        registerFullName = findViewById(R.id.textInputLayoutEditTextFullName);
+        registerEmail = findViewById(R.id.textInputLayoutEditTextEmailAddress);
+        registerPassword = findViewById(R.id.textInputLayoutEditTextPassword);
+        registerConfPass = findViewById(R.id.textInputLayoutEditTextConfPassword);
         registerUserBtn = findViewById(R.id.registerBtn);
         gotoLogin = findViewById(R.id.gotoLogin);
 
