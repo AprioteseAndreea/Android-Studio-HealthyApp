@@ -40,15 +40,14 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 HomeFragment.newInstance(" ", " ")).commit();
 
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
+
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close );
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
@@ -57,38 +56,57 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
 
     @Override
     public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
 
-        }else {
+        } else {
             super.onBackPressed();
 
         }
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-                    switch (item.getItemId()) {
-                        case R.id.nav_home:
-                            selectedFragment = new HomeFragment();
-                            break;
-                        case R.id.nav_meals:
-                            selectedFragment = new MealsFragment();
-                            break;
-                        case R.id.nav_workout:
-                            selectedFragment = new WorkoutFragment();
-                            break;
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
 
-                    return true;
-                }
-            };
+        int id = item.getItemId();
+        Fragment selectedFragment = null;
+        switch (item.getItemId()) {
+            case R.id.nav_home:
+                selectedFragment = new HomeFragment();
+                break;
+//            case R.id.nav_about_me:
+//                //selectedFragment = new MealsFragment();
+//                break;
+//            case R.id.nav_favourites:
+//                // selectedFragment = new WorkoutFragment();
+//                break;
+            case R.id.nav_meals:
+                selectedFragment = new MealsFragment();
+                toolbar.setTitle("Meals");
+                break;
+
+            case R.id.nav_workouts:
+                selectedFragment = new WorkoutFragment();
+                toolbar.setTitle("Workouts");
+                break;
+//            case R.id.nav_snacks:
+//                // selectedFragment = new
+//            case R.id.nav_progress:
+//                //
+//            case R.id.nav_settings:
+//                //
+//            case R.id.nav_logout:
+//                //
+        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                selectedFragment).commit();
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        return true;
+    }
+
 
     @Override
     public void replaceWithAboutMealFromHomeFragment() {
@@ -130,8 +148,5 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
         fragmentTransaction.commit();
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return true;
-    }
+
 }
