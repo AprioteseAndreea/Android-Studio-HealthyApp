@@ -113,7 +113,8 @@ public class LoginActivity extends AppCompatActivity {
                     password.setError("Password is Missing.");
                     return;
                 }
-                firebaseAuth.signInWithEmailAndPassword(username.getText().toString(), password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                firebaseAuth.signInWithEmailAndPassword(username.getText().toString(),
+                        password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));

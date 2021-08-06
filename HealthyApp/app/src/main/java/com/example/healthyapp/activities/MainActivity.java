@@ -10,8 +10,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 
 import com.example.healthyapp.R;
@@ -25,6 +27,7 @@ import com.example.healthyapp.fragments.WorkoutFragment;
 import com.example.healthyapp.interfaces.ActivityFragmentCommunication;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements ActivityFragmentCommunication, NavigationView.OnNavigationItemSelectedListener {
 
@@ -96,8 +99,9 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
 //                //
 //            case R.id.nav_settings:
 //                //
-//            case R.id.nav_logout:
-//                //
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(this, LoginActivity.class));
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 selectedFragment).commit();
@@ -120,12 +124,27 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
 
     @Override
     public void replaceWithAboutMealFromMealsFragment() {
+
+        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
         FragmentTransaction fragmentTransaction;
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, AboutMealFromMealsFragment.newInstance("", ""), "AboutMealFromMealsFragmentTag");
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+        toolbar.setTitle("");
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack(); ///  NU MERGE !!!
+                //  toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24);
+
+
+            }
+        });
+
+
     }
 
     @Override

@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,9 +23,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.healthyapp.R;
+import com.example.healthyapp.VolleyConfigSingleton;
 import com.example.healthyapp.activities.LoginActivity;
 import com.example.healthyapp.adapters.SnackAdapter;
 import com.example.healthyapp.adapters.TodayMealsAdapter;
@@ -85,6 +90,11 @@ public class HomeFragment extends Fragment {
     public static ArrayList<Snack> snacks = new ArrayList<>();
     public static ArrayList<Workout> workouts = new ArrayList<>();
 
+    private ImageView image_one;
+    private TextView textView_one;
+    private ImageView image_two;
+    private TextView textView_two;
+
     private ActivityFragmentCommunication activityFragmentCommunication;
     private TextView dateTimeDisplay;
 
@@ -127,45 +137,52 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        image_one = view.findViewById(R.id.img1);
+        textView_one = view.findViewById(R.id.recipe_one);
 
-        recyclerView = view.findViewById(R.id.today_meals_recyclerView);
-        snacksRecyclerView = view.findViewById(R.id.today_snacks_recyclerView);
-        workoutRecyclerView = view.findViewById(R.id.today_workout_recyclerView);
+        image_two = view.findViewById(R.id.img2);
+        textView_two = view.findViewById(R.id.recipe_two);
+//        recyclerView = view.findViewById(R.id.today_meals_recyclerView);
+//        snacksRecyclerView = view.findViewById(R.id.today_snacks_recyclerView);
+//        workoutRecyclerView = view.findViewById(R.id.today_workout_recyclerView);
+//
+//        Button logout = view.findViewById(R.id.logout_btn);
+//        logout.setOnClickListener(v -> {
+//            FirebaseAuth.getInstance().signOut();
+//            startActivity(new Intent(getContext(), LoginActivity.class));
+//
+//        });
 
-        Button logout = view.findViewById(R.id.logout_btn);
-        logout.setOnClickListener(v -> {
-            FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(getContext(), LoginActivity.class));
-
-        });
-
-        Button addHours = view.findViewById(R.id.addHours_btn);
-        addHours.setOnClickListener(v -> {
-            if (activityFragmentCommunication != null) {
-                activityFragmentCommunication.replaceWithAddHoursFragment();
-            }
-        });
+//        Button addHours = view.findViewById(R.id.addHours_btn);
+//        addHours.setOnClickListener(v -> {
+//            if (activityFragmentCommunication != null) {
+//                activityFragmentCommunication.replaceWithAddHoursFragment();
+//            }
+//        });
 
 
-        Button drunk = view.findViewById(R.id.drink);
-        TextView water_glasses = view.findViewById(R.id.water_glasses);
-        drunk.setOnClickListener(v -> {
-            int waterGlasses = Integer.parseInt((String) water_glasses.getText());
-            if (waterGlasses > 0) {
-                water_glasses.setText(String.valueOf(waterGlasses - 1));
-            }
-
-        });
+//        Button drunk = view.findViewById(R.id.drink);
+//        TextView water_glasses = view.findViewById(R.id.water_glasses);
+//        drunk.setOnClickListener(v -> {
+//            int waterGlasses = Integer.parseInt((String) water_glasses.getText());
+//            if (waterGlasses > 0) {
+//                water_glasses.setText(String.valueOf(waterGlasses - 1));
+//            }
+//
+//        });
         dateTimeDisplay = view.findViewById(R.id.date_time);
         getDate();
 
-        recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 3));
-        snacksRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 4));
-        workoutRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 3));
+//        recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 3));
+//        snacksRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 4));
+//        workoutRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 3));
 
         getMeals();
-        getSnacks();
-        getWorkout();
+        //getSnacks();
+        //getWorkout();
+        //String imageViewUrl = meals.get(0).getImagePath();
+        //Glide.with(view).load(imageViewUrl).apply(new RequestOptions().override(150, 150)).into(image_one);
+
         return view;
     }
 
@@ -200,7 +217,8 @@ public class HomeFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "ERROR: get WORKOUT failed with error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "ERROR: get WORKOUT failed with error: " +
+                        error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -295,7 +313,8 @@ public class HomeFragment extends Fragment {
                         e.printStackTrace();
                     }
 
-                }, error -> Toast.makeText(getContext(), "ERROR: get MEALS failed with error: " + error.getMessage(), Toast.LENGTH_LONG).show());
+                }, error -> Toast.makeText(getContext(), "ERROR: get MEALS failed with error: " +
+                error.getMessage(), Toast.LENGTH_LONG).show());
 
         queue.add(stringRequest);
     }
@@ -315,7 +334,8 @@ public class HomeFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "ERROR: get MEALS failed with error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "ERROR: get MEALS failed with error: " +
+                        error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -388,18 +408,56 @@ public class HomeFragment extends Fragment {
             }
 
         }
+        showMeals();
 
 
-        TodayMealsAdapter adapter = new TodayMealsAdapter(todayMeals, new OnMealItemClick() {
+//        TodayMealsAdapter adapter = new TodayMealsAdapter(todayMeals, new OnMealItemClick() {
+//            @Override
+//            public void onClick(Meal meal) {
+//                if (activityFragmentCommunication != null) {
+//                    activityFragmentCommunication.replaceWithAboutMealFromHomeFragment();
+//
+//                }
+//            }
+//        });
+//        recyclerView.setAdapter(adapter);
+
+
+    }
+
+    private void showMeals() {
+        String imageViewUrl = todayMeals.get(0).getImagePath();
+        ImageLoader imageLoader = VolleyConfigSingleton.getInstance(image_one.getContext().
+                getApplicationContext()).getImageLoader();
+        imageLoader.get(imageViewUrl, new ImageLoader.ImageListener() {
             @Override
-            public void onClick(Meal meal) {
-                if (activityFragmentCommunication != null) {
-                    activityFragmentCommunication.replaceWithAboutMealFromHomeFragment();
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                image_one.setImageBitmap(response.getBitmap());
+            }
 
-                }
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
             }
         });
-        recyclerView.setAdapter(adapter);
+        textView_one.setText(todayMeals.get(0).getName());
+
+        String imageViewUrl2 = todayMeals.get(1).getImagePath();
+        ImageLoader imageLoader2 = VolleyConfigSingleton.getInstance(image_two.getContext().
+                getApplicationContext()).getImageLoader();
+        imageLoader2.get(imageViewUrl2, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                image_two.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        textView_two.setText(todayMeals.get(1).getName());
+
 
 
     }

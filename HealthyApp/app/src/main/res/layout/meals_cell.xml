@@ -15,6 +15,7 @@
         android:maxLines="2"
         android:text="Name"
         android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/meals_image"
         android:fontFamily="@font/utsansbold"
