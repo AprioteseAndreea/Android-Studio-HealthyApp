@@ -95,6 +95,12 @@ public class HomeFragment extends Fragment {
     private ImageView image_two;
     private TextView textView_two;
 
+    private ImageView snack_image_one;
+    private ImageView snack_image_two;
+    private ImageView snack_image_three;
+    private ImageView snack_image_four;
+
+
     private ActivityFragmentCommunication activityFragmentCommunication;
     private TextView dateTimeDisplay;
 
@@ -142,6 +148,12 @@ public class HomeFragment extends Fragment {
 
         image_two = view.findViewById(R.id.img2);
         textView_two = view.findViewById(R.id.recipe_two);
+
+        snack_image_one = view.findViewById(R.id.snack_image_one);
+        snack_image_two = view.findViewById(R.id.snack_image_two);
+        snack_image_three = view.findViewById(R.id.snack_image_third);
+        snack_image_four = view.findViewById(R.id.snack_image_fourth);
+
 //        recyclerView = view.findViewById(R.id.today_meals_recyclerView);
 //        snacksRecyclerView = view.findViewById(R.id.today_snacks_recyclerView);
 //        workoutRecyclerView = view.findViewById(R.id.today_workout_recyclerView);
@@ -178,7 +190,7 @@ public class HomeFragment extends Fragment {
 //        workoutRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 3));
 
         getMeals();
-        //getSnacks();
+        getSnacks();
         //getWorkout();
         //String imageViewUrl = meals.get(0).getImagePath();
         //Glide.with(view).load(imageViewUrl).apply(new RequestOptions().override(150, 150)).into(image_one);
@@ -373,7 +385,65 @@ public class HomeFragment extends Fragment {
 
 
         SnackAdapter adapter = new SnackAdapter(randomSnacks);
-        snacksRecyclerView.setAdapter(adapter);
+//        snacksRecyclerView.setAdapter(adapter);
+
+        String imageViewUrl1 = randomSnacks.get(0).getPath();
+        String imageViewUrl2 = randomSnacks.get(1).getPath();
+        String imageViewUrl3 = randomSnacks.get(2).getPath();
+        String imageViewUrl4 = randomSnacks.get(3).getPath();
+
+        ImageLoader imageLoader1 = VolleyConfigSingleton.getInstance(snack_image_one.getContext().
+                getApplicationContext()).getImageLoader();
+        imageLoader1.get(imageViewUrl1, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                snack_image_one.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        ImageLoader imageLoader2 = VolleyConfigSingleton.getInstance(snack_image_two.getContext().
+                getApplicationContext()).getImageLoader();
+        imageLoader2.get(imageViewUrl2, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                snack_image_two.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        ImageLoader imageLoader3 = VolleyConfigSingleton.getInstance(snack_image_three.getContext().
+                getApplicationContext()).getImageLoader();
+        imageLoader3.get(imageViewUrl3, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                snack_image_three.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        ImageLoader imageLoader4 = VolleyConfigSingleton.getInstance(snack_image_four.getContext().
+                getApplicationContext()).getImageLoader();
+        imageLoader4.get(imageViewUrl4, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                snack_image_four.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
     }
 
     private void handleMealResponse(String responseJson) throws JSONException {
