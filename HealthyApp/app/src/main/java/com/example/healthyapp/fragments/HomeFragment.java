@@ -94,6 +94,12 @@ public class HomeFragment extends Fragment {
     private TextView textView_one;
     private ImageView image_two;
     private TextView textView_two;
+    private ImageView image_three;
+    private TextView textView_three;
+
+    private ImageView image_four;
+    private TextView textView_four;
+
 
     private ImageView snack_image_one;
     private ImageView snack_image_two;
@@ -148,6 +154,12 @@ public class HomeFragment extends Fragment {
 
         image_two = view.findViewById(R.id.img2);
         textView_two = view.findViewById(R.id.recipe_two);
+
+        image_three = view.findViewById(R.id.img3);
+        textView_three = view.findViewById(R.id.recipe_three);
+
+        image_four = view.findViewById(R.id.img4);
+        textView_four = view.findViewById(R.id.recipe_four);
 
         snack_image_one = view.findViewById(R.id.snack_image_one);
         snack_image_two = view.findViewById(R.id.snack_image_two);
@@ -527,6 +539,22 @@ public class HomeFragment extends Fragment {
             }
         });
         textView_two.setText(todayMeals.get(1).getName());
+
+        String imageViewUrl3 = todayMeals.get(2).getImagePath();
+        ImageLoader imageLoader3 = VolleyConfigSingleton.getInstance(image_three.getContext().
+                getApplicationContext()).getImageLoader();
+        imageLoader3.get(imageViewUrl3, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                image_three.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        textView_three.setText(todayMeals.get(2).getName());
 
 
 
