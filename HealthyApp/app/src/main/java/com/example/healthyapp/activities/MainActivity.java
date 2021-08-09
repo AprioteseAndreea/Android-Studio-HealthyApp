@@ -17,6 +17,7 @@ import android.view.View;
 
 
 import com.example.healthyapp.R;
+import com.example.healthyapp.fragments.AboutMeFragment;
 import com.example.healthyapp.fragments.AboutMealFromHomeFragment;
 import com.example.healthyapp.fragments.AboutMealFromMealsFragment;
 import com.example.healthyapp.fragments.AboutWorkoutFragment;
@@ -78,9 +79,9 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
             case R.id.nav_home:
                 selectedFragment = new HomeFragment();
                 break;
-//            case R.id.nav_about_me:
-//                //selectedFragment = new MealsFragment();
-//                break;
+           case R.id.nav_about_me:
+               selectedFragment = new AboutMeFragment();
+               break;
 //            case R.id.nav_favourites:
 //                // selectedFragment = new WorkoutFragment();
 //                break;

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@drawable/ic_about_me"
+    tools:context=".fragments.AboutMeFragment">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/avatar_image"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/default_avatar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.07" />
+
+    <TextView
+        android:id="@+id/name_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/utsansmedium"
+        android:text="Andreea Apriotese"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        app:layout_constraintTop_toBottomOf="@id/avatar_image" />
+
+    <TextView
+        android:id="@+id/full_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/utsansregular"
+        android:text="Full Name: "
+        android:textColor="@color/baby_blue"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/name_label"
+        app:layout_constraintTop_toBottomOf="@id/name_label" />
+
+    <EditText
+        android:id="@+id/full_name_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/custom_about_me_label"
+        android:drawablePadding="20dp"
+        android:padding="5dp"
+        android:text="Andreea Apriotese"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/full_name_text"
+        app:layout_constraintStart_toEndOf="@id/full_name_text"
+        app:layout_constraintWidth_percent="0.65"
+
+        />
+
+    <TextView
+        android:id="@+id/mail_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/utsansregular"
+        android:text="E-mail: "
+        android:textColor="@color/baby_blue"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/name_label"
+        app:layout_constraintTop_toBottomOf="@id/full_name_text" />
+
+    <EditText
+        android:id="@+id/mail_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_about_me_label"
+        android:drawablePadding="20dp"
+        android:ellipsize="end"
+        android:padding="5dp"
+        android:text="andreea.apriotese11@gmail.com"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/mail_text"
+        app:layout_constraintStart_toStartOf="@id/full_name_edit_text"
+        app:layout_constraintWidth_percent="0.65"
+
+        />
+
+    <TextView
+        android:id="@+id/age_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/utsansregular"
+        android:text="Age: "
+        android:textColor="@color/baby_blue"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/name_label"
+        app:layout_constraintTop_toBottomOf="@id/mail_text" />
+
+    <EditText
+        android:id="@+id/age_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_about_me_label"
+        android:drawablePadding="20dp"
+        android:ellipsize="end"
+        android:padding="5dp"
+        android:text="21"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/age_text"
+        app:layout_constraintStart_toStartOf="@id/full_name_edit_text"
+        app:layout_constraintWidth_percent="0.65"
+        />
+    <TextView
+        android:id="@+id/weight_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/utsansregular"
+        android:text="Weight: "
+        android:textColor="@color/baby_blue"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/name_label"
+        app:layout_constraintTop_toBottomOf="@id/age_text" />
+
+    <EditText
+        android:id="@+id/weight_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_about_me_label"
+        android:drawablePadding="20dp"
+        android:ellipsize="end"
+        android:padding="5dp"
+        android:text="48"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/weight_text"
+        app:layout_constraintStart_toStartOf="@id/full_name_edit_text"
+        app:layout_constraintWidth_percent="0.65"
+        />
+    <TextView
+        android:id="@+id/height_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/utsansregular"
+        android:text="Height: "
+        android:textColor="@color/baby_blue"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/name_label"
+        app:layout_constraintTop_toBottomOf="@id/weight_text" />
+
+    <EditText
+        android:id="@+id/height_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_about_me_label"
+        android:drawablePadding="20dp"
+        android:ellipsize="end"
+        android:padding="5dp"
+        android:text="1, 61"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/height_text"
+        app:layout_constraintStart_toStartOf="@id/full_name_edit_text"
+        app:layout_constraintWidth_percent="0.65"
+        />
+    <TextView
+        android:id="@+id/gender_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/utsansregular"
+        android:text="Gender: "
+        android:textColor="@color/baby_blue"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/name_label"
+        app:layout_constraintTop_toBottomOf="@id/height_text" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/female_image"
+        app:civ_border_width="1dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/female_avatar"
+        app:civ_border_color="@color/baby_blue"
+        android:layout_width="50dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/gender_text"
+        app:layout_constraintStart_toStartOf="@id/full_name_edit_text"
+        android:layout_height="50dp"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/male_image"
+        app:civ_border_width="0dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/male_avatar"
+        android:layout_width="50dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintBottom_toBottomOf="@id/gender_text"
+        app:layout_constraintStart_toEndOf="@id/female_image"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gender_text"
+        android:text="Save"
+        android:layout_marginTop="40dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
