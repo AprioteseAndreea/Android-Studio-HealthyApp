@@ -114,6 +114,7 @@ public class HomeFragment extends Fragment {
     public static String workoutClicked = null;
 
 
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -555,7 +556,6 @@ public class HomeFragment extends Fragment {
             }
         });
         textView_three.setText(todayMeals.get(2).getName());
-
 
 
     }

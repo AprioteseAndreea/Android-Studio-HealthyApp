@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
                 break;
            case R.id.nav_about_me:
                selectedFragment = new AboutMeFragment();
+               toolbar.setTitle("");
                break;
 //            case R.id.nav_favourites:
 //                // selectedFragment = new WorkoutFragment();
