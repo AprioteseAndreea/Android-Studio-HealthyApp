@@ -12,8 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.healthyapp.R;
+import com.example.healthyapp.activities.RegisterActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -177,6 +179,8 @@ public class AboutMeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 saveData();
+                Toast.makeText(getContext(), "Saved successfully!", Toast.LENGTH_SHORT).show();
+
             }
         });
         return view;
