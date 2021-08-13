@@ -5,294 +5,85 @@
     android:id="@+id/home_scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragments.HomeFragment">
 
-        <TextView
-            android:id="@+id/date_time"
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/first_card_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/utsanslight"
-            android:paddingLeft="10dp"
-            android:text="Saturday, 12 April  "
-            android:textColor="@color/baby_blue"
-            android:textStyle="italic"
+            android:outlineSpotShadowColor="@color/baby_blue"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            app:cardMaxElevation="5dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintHeight_percent="0.15"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/greeting_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/utsansmedium"
-            android:paddingLeft="10dp"
-            android:text="Good morning!"
-            android:textColor="@color/black"
-            android:textSize="25dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/date_time" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/date_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/utsanslight"
+                    android:paddingLeft="10dp"
+                    android:text="Saturday, 12 April  "
+                    android:textColor="@color/baby_blue"
+                    android:textStyle="italic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/greeting_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/utsansmedium"
+                    android:paddingLeft="10dp"
+                    android:text="Good morning!"
+                    android:textColor="@color/magenta_light"
+                    android:textSize="25dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/date_time"
+
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/today_meals_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/utsansmedium"
-            android:paddingLeft="10dp"
-            android:text="TODAY MEALS"
+            android:paddingStart="10dp"
+            android:text="@string/today_meals"
             android:textColor="@color/baby_blue"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/greeting_message" />
+            app:layout_constraintTop_toBottomOf="@id/first_card_view" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/first_card_view"
-            android:layout_width="0dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/today_meals_recyclerView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardUseCompatPadding="true"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="5dp"
-            app:cardMaxElevation="5dp"
-            app:cardPreventCornerOverlap="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/today_meals_message"
-            app:layout_constraintWidth_percent="0.5">
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@id/first_card_view"
+            app:layout_constraintTop_toBottomOf="@+id/today_meals_message" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/img1"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/healthy"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.55"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.9" />
-
-                <TextView
-                    android:id="@+id/recipe_one"
-                    android:layout_width="0dp"
-                    app:layout_constraintWidth_percent="0.8"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/utsansregular"
-                    android:lines="2"
-                    android:padding="3dp"
-                    android:textSize="10dp"
-                    android:text="Healthy Granola Homemade"
-                    android:textAlignment="center"
-                    android:textColor="@color/baby_blue"
-                    android:textStyle="bold"
-
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/img1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-
-                    />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/second_card_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="5dp"
-            app:cardMaxElevation="5dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintStart_toEndOf="@id/first_card_view"
-            app:layout_constraintTop_toBottomOf="@id/today_meals_message"
-            app:layout_constraintWidth_percent="0.5">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/img2"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/healthy"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.55"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.9" />
-
-                <TextView
-                    android:id="@+id/recipe_two"
-                    android:layout_width="0dp"
-                    app:layout_constraintWidth_percent="0.8"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/utsansregular"
-                    android:lines="2"
-                    android:padding="3dp"
-                    android:textSize="10dp"
-                    android:text="Healthy Granola Homemade"
-                    android:textAlignment="center"
-                    android:textColor="@color/baby_blue"
-                    android:textStyle="bold"
-
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/img2"
-                    app:layout_constraintBottom_toBottomOf="parent"
-
-                    />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/third_card_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="5dp"
-            app:cardMaxElevation="5dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/first_card_view"
-            app:layout_constraintWidth_percent="0.5">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/img3"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/healthy"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.55"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.9" />
-
-                <TextView
-                    android:id="@+id/recipe_three"
-
-                    android:layout_width="0dp"
-                    app:layout_constraintWidth_percent="0.8"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/utsansregular"
-                    android:lines="2"
-                    android:padding="3dp"
-                    android:textSize="10dp"
-                    android:text="Healthy Granola Homemade"
-                    android:textAlignment="center"
-                    android:textColor="@color/baby_blue"
-                    android:textStyle="bold"
-
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/img3"
-                    app:layout_constraintBottom_toBottomOf="parent"
-
-                    />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/fourth_card_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="5dp"
-            app:cardMaxElevation="5dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintStart_toEndOf="@id/third_card_view"
-            app:layout_constraintTop_toBottomOf="@id/second_card_view"
-            app:layout_constraintWidth_percent="0.5">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/img4"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/healthy"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.55"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.9" />
-
-                <TextView
-                    android:id="@+id/recipe_four"
-                    android:layout_width="0dp"
-                    app:layout_constraintWidth_percent="0.8"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/utsansregular"
-                    android:lines="2"
-                    android:padding="3dp"
-                    android:textSize="10dp"
-                    android:text="Healthy Granola Homemade"
-                    android:textAlignment="center"
-                    android:textColor="@color/baby_blue"
-                    android:textStyle="bold"
-
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/img4"
-                    app:layout_constraintBottom_toBottomOf="parent"
-
-                    />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/today_snacks_message"
@@ -304,7 +95,7 @@
             android:textColor="@color/baby_blue"
             android:textSize="18dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/third_card_view"
+            app:layout_constraintTop_toBottomOf="@id/today_meals_recyclerView"
 
             />
 
@@ -312,16 +103,17 @@
             android:id="@+id/first_snack_card_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:outlineSpotShadowColor="@color/baby_blue"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
             app:cardElevation="5dp"
             app:cardMaxElevation="5dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
-            app:layout_constraintTop_toBottomOf="@id/today_snacks_message"
             app:layout_constraintBottom_toTopOf="@id/today_workout_message"
             app:layout_constraintHeight_percent="0.15"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/today_snacks_message"
             app:layout_constraintWidth_percent="0.25">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -355,6 +147,7 @@
             android:id="@+id/second_snack_card_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:outlineSpotShadowColor="@color/baby_blue"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
             app:cardElevation="5dp"
@@ -398,6 +191,7 @@
             android:id="@+id/third_snack_card_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:outlineSpotShadowColor="@color/baby_blue"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
             app:cardElevation="5dp"
@@ -440,6 +234,7 @@
             android:id="@+id/fourth_snack_card_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:outlineSpotShadowColor="@color/baby_blue"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
             app:cardElevation="5dp"
@@ -610,16 +405,6 @@
         <!--            app:layout_constraintStart_toStartOf="@id/today_meals_recyclerView"-->
         <!--            app:layout_constraintTop_toBottomOf="@id/today_meals_recyclerView" />-->
 
-
-        <!--        <androidx.recyclerview.widget.RecyclerView-->
-        <!--            android:id="@+id/today_meals_recyclerView"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="5dp"-->
-        <!--            android:background="@drawable/recycler_gradient"-->
-        <!--            android:orientation="horizontal"-->
-        <!--            app:layout_constraintStart_toStartOf="@id/date_time"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/your_meals" />-->
 
         <!--        <androidx.recyclerview.widget.RecyclerView-->
         <!--            android:id="@+id/today_workout_recyclerView"-->

@@ -4,8 +4,9 @@
 
     <gradient
         android:endColor="@color/baby_blue"
-        android:startColor="@color/peach"
-        android:angle="90"/>
+        android:startColor="@color/magenta_light"
+        android:angle="90"
+        />
 
     <stroke android:color="@color/black"/>
 

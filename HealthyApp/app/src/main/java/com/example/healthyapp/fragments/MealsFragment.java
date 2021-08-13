@@ -1,7 +1,9 @@
 package com.example.healthyapp.fragments;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -108,6 +110,12 @@ public class MealsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_meals, container, false);
         recyclerView = view.findViewById(R.id.meals_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+        Resources resources = getContext().getResources();
+       int dimen = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+
+       // recyclerView.setPadding(0, 0, 0, dimen);
+
         MealAdapter adapter = new MealAdapter(HomeFragment.meals, new OnMealItemClick() {
             @Override
             public void onClick(Meal Album) {

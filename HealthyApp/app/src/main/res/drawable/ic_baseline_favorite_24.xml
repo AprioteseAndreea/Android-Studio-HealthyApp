@@ -4,7 +4,7 @@
     android:viewportWidth="24"
     android:viewportHeight="24"
 
-    android:tint="?attr/colorControlNormal">
+    android:tint="#3B5E1D">
   <path
       android:fillColor="@color/baby_blue"
       android:strokeColor="@color/baby_blue"

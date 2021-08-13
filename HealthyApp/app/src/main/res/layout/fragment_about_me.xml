@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -67,8 +68,9 @@
             android:layout_marginTop="30dp"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/utsansregular"
+            android:textStyle="bold"
             android:text="@string/full_name"
-            android:textColor="@color/baby_blue"
+            android:textColor="@color/magenta_light"
             app:layout_constraintStart_toStartOf="@id/name_label"
             app:layout_constraintTop_toBottomOf="@id/custom_shape"
             app:layout_constraintWidth_percent="0.25" />
@@ -99,7 +101,8 @@
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/utsansregular"
             android:text="E-mail: "
-            android:textColor="@color/baby_blue"
+            android:textStyle="bold"
+            android:textColor="@color/magenta_light"
             app:layout_constraintStart_toStartOf="@id/name_label"
             app:layout_constraintTop_toBottomOf="@id/full_name_text"
             app:layout_constraintWidth_percent="0.25" />
@@ -132,7 +135,8 @@
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/utsansregular"
             android:text="@string/age"
-            android:textColor="@color/baby_blue"
+            android:textStyle="bold"
+            android:textColor="@color/magenta_light"
             app:layout_constraintStart_toStartOf="@id/name_label"
             app:layout_constraintTop_toBottomOf="@id/mail_text"
             app:layout_constraintWidth_percent="0.25" />
@@ -161,7 +165,8 @@
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/utsansregular"
             android:text="@string/weight"
-            android:textColor="@color/baby_blue"
+            android:textStyle="bold"
+            android:textColor="@color/magenta_light"
             app:layout_constraintStart_toStartOf="@id/name_label"
             app:layout_constraintTop_toBottomOf="@id/age_text"
             app:layout_constraintWidth_percent="0.25" />
@@ -190,7 +195,8 @@
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/utsansregular"
             android:text="@string/height"
-            android:textColor="@color/baby_blue"
+            android:textStyle="bold"
+            android:textColor="@color/magenta_light"
             app:layout_constraintStart_toStartOf="@id/name_label"
             app:layout_constraintTop_toBottomOf="@id/weight_text"
             app:layout_constraintWidth_percent="0.25" />
@@ -219,7 +225,8 @@
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/utsansregular"
             android:text="@string/gender"
-            android:textColor="@color/baby_blue"
+            android:textStyle="bold"
+            android:textColor="@color/magenta_light"
             app:layout_constraintStart_toStartOf="@id/name_label"
             app:layout_constraintTop_toBottomOf="@id/height_text"
             app:layout_constraintWidth_percent="0.25" />
@@ -231,8 +238,9 @@
             android:layout_centerInParent="true"
             android:layout_marginTop="10dp"
             android:src="@drawable/female_avatar"
-            app:civ_border_color="@color/baby_blue"
+            android:textColor="@color/magenta_light"
             app:civ_border_width="1dp"
+            app:civ_border_color="@color/magenta_light"
             app:layout_constraintStart_toStartOf="@id/full_name_edit_text"
             app:layout_constraintTop_toBottomOf="@id/height_text" />
 
@@ -254,6 +262,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="@string/save"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

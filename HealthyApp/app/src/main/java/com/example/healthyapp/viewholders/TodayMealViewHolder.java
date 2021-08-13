@@ -26,8 +26,8 @@ public class TodayMealViewHolder extends RecyclerView.ViewHolder {
 
     public TodayMealViewHolder(@NonNull View view) {
         super(view);
-        title = view.findViewById(R.id.today_meals_title);
-        imageView = view.findViewById(R.id.today_meals_image);
+        title = view.findViewById(R.id.recipe_one);
+        imageView = view.findViewById(R.id.img1);
         this.view = view;
 
     }
@@ -35,7 +35,20 @@ public class TodayMealViewHolder extends RecyclerView.ViewHolder {
     public void bind(Meal meal) {
         title.setText(meal.getName());
         String imageViewUrl = meal.getImagePath();
-        Glide.with(this.view).load(imageViewUrl).apply(new RequestOptions().override(150, 150)).into(imageView);
+        ImageLoader imageLoader = VolleyConfigSingleton.getInstance(imageView.getContext().
+                getApplicationContext()).getImageLoader();
+        imageLoader.get(imageViewUrl, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+               imageView.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        //Glide.with(this.view).load(imageViewUrl).apply(new RequestOptions().override(150, 150)).into(imageView);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

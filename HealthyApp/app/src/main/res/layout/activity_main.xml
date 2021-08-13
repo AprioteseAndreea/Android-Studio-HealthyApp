@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".activities.MainActivity"
-    tools:openDrawer="start">
+    tools:openDrawer="start"
+    >
 
 
     <com.google.android.material.navigation.NavigationView
@@ -31,7 +32,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/baby_blue"
+                android:background="@color/magenta_light"
                 android:minHeight="?attr/actionBarSize"
 
                 android:theme="@style/ToolBarTheme"

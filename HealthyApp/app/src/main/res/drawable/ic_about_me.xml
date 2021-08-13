@@ -3,7 +3,7 @@
     <item android:top="-300dp" android:height="450dp" android:bottom="50dp" android:left="-60dp" android:right="-60dp">
         <shape>
             <corners android:radius="900dp" />
-            <solid android:color="@color/baby_blue" />
+            <solid android:color="@color/magenta_light" />
         </shape>
     </item>
 </layer-list>

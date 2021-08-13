@@ -3,27 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".activities.RegisterActivity">
+        tools:context=".activities.RegisterActivity"
+        tools:ignore="ExtraText">
 
 
         <ImageView
            android:id="@+id/healthy_app"
            android:layout_width="wrap_content"
            android:layout_height="230dp"
-           android:src="@drawable/healthyapplogo2"
+           android:src="@drawable/applogo"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintTop_toTopOf="parent"
            app:layout_constraintBottom_toBottomOf="parent"
            app:layout_constraintVertical_bias="0.02"
            app:layout_constraintHorizontal_bias="0.5"
-           />0.20"
-            app:startColor="@color/blue" />
+           />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textinputlayoutFullName"
@@ -41,7 +42,9 @@
             app:layout_constraintTop_toBottomOf="@id/healthy_app"
             app:layout_constraintVertical_bias="0.1"
             app:shapeAppearance="@style/Rounded"
-            app:startIconDrawable="@drawable/ic_baseline_person_24">
+            app:startIconDrawable="@drawable/ic_baseline_person_24"
+
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textInputLayoutEditTextFullName"

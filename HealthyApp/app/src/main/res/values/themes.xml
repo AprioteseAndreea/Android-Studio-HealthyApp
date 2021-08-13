@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/peach</item>
-        <item name="colorPrimaryVariant">@color/peach</item>
+        <item name="colorPrimary">@color/magenta_light</item>
+        <item name="colorPrimaryVariant">@color/magenta_light</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/peach</item>
-        <item name="colorSecondaryVariant">@color/peach</item>
+        <item name="colorSecondary">@color/magenta_light</item>
+        <item name="colorSecondaryVariant">@color/magenta_light</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
@@ -20,14 +20,14 @@
     <style name="AppTheme2" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/baby_blue</item>
-        <item name="colorPrimaryVariant">@color/white</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/magenta_light</item>
+        <item name="colorOnPrimary">@color/magenta_light</item>
         <item name="colorPrimaryDark">@color/baby_blue</item>
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/baby_blue</item>
         <item name="colorSecondaryVariant">@color/baby_blue</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorOnSecondary">@color/magenta_light</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -37,13 +37,13 @@
     </style>
     <style name="ToolBarTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/peach</item>
-        <item name="colorPrimaryVariant">@color/peach</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/magenta_light</item>
+        <item name="colorPrimaryVariant">@color/magenta_light</item>
+        <item name="colorOnPrimary">@color/magenta_light</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/peach</item>
-        <item name="colorSecondaryVariant">@color/peach</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondary">@color/magenta_light</item>
+        <item name="colorSecondaryVariant">@color/magenta_light</item>
+        <item name="colorOnSecondary">@color/magenta_light</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 

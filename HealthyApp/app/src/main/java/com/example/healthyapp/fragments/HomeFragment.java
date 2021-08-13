@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private RecyclerView recyclerView;
+    private RecyclerView mealsrecyclerView;
     private RecyclerView snacksRecyclerView;
     private RecyclerView workoutRecyclerView;
 
@@ -90,15 +90,6 @@ public class HomeFragment extends Fragment {
     public static ArrayList<Snack> snacks = new ArrayList<>();
     public static ArrayList<Workout> workouts = new ArrayList<>();
 
-    private ImageView image_one;
-    private TextView textView_one;
-    private ImageView image_two;
-    private TextView textView_two;
-    private ImageView image_three;
-    private TextView textView_three;
-
-    private ImageView image_four;
-    private TextView textView_four;
 
 
     private ImageView snack_image_one;
@@ -113,6 +104,7 @@ public class HomeFragment extends Fragment {
     public static Meal mealClicked = null;
     public static String workoutClicked = null;
 
+    private static boolean mealsWasReading=false;
 
 
     public HomeFragment() {
@@ -150,26 +142,26 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        image_one = view.findViewById(R.id.img1);
-        textView_one = view.findViewById(R.id.recipe_one);
-
-        image_two = view.findViewById(R.id.img2);
-        textView_two = view.findViewById(R.id.recipe_two);
-
-        image_three = view.findViewById(R.id.img3);
-        textView_three = view.findViewById(R.id.recipe_three);
-
-        image_four = view.findViewById(R.id.img4);
-        textView_four = view.findViewById(R.id.recipe_four);
+//        image_one = view.findViewById(R.id.img1);
+//        textView_one = view.findViewById(R.id.recipe_one);
+//
+//        image_two = view.findViewById(R.id.img2);
+//        textView_two = view.findViewById(R.id.recipe_two);
+//
+//        image_three = view.findViewById(R.id.img3);
+//        textView_three = view.findViewById(R.id.recipe_three);
+//
+//        image_four = view.findViewById(R.id.img4);
+//        textView_four = view.findViewById(R.id.recipe_four);
 
         snack_image_one = view.findViewById(R.id.snack_image_one);
         snack_image_two = view.findViewById(R.id.snack_image_two);
         snack_image_three = view.findViewById(R.id.snack_image_third);
         snack_image_four = view.findViewById(R.id.snack_image_fourth);
 
-//        recyclerView = view.findViewById(R.id.today_meals_recyclerView);
-//        snacksRecyclerView = view.findViewById(R.id.today_snacks_recyclerView);
-//        workoutRecyclerView = view.findViewById(R.id.today_workout_recyclerView);
+        mealsrecyclerView = view.findViewById(R.id.today_meals_recyclerView);
+        //snacksRecyclerView = view.findViewById(R.id.today_snacks_recyclerView);
+        //workoutRecyclerView = view.findViewById(R.id.today_workout_recyclerView);
 //
 //        Button logout = view.findViewById(R.id.logout_btn);
 //        logout.setOnClickListener(v -> {
@@ -198,7 +190,8 @@ public class HomeFragment extends Fragment {
         dateTimeDisplay = view.findViewById(R.id.date_time);
         getDate();
 
-//        recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 3));
+        mealsrecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 2));
+
 //        snacksRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 4));
 //        workoutRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 3));
 
@@ -460,105 +453,59 @@ public class HomeFragment extends Fragment {
     }
 
     private void handleMealResponse(String responseJson) throws JSONException {
-        meals.clear();
-        todayMeals.clear();
-        JSONArray usersJSONArray = new JSONArray(responseJson);
-        for (int i = 0; i < usersJSONArray.length(); i++) {
-            JSONObject obj = usersJSONArray.getJSONObject(i);
+        if(!mealsWasReading) {
 
-            String id = obj.getString(ID);
-            String day = obj.getString(DAY);
-            String name = obj.getString(NAME);
-            String imagePath = obj.getString(IMAGE_PATH);
-            String ingredients = obj.getString(INGREDIENTS);
-            String howtoprepare = obj.getString(HOW_TO_PREPARE);
-            String preptime = obj.getString(PREP_TIME);
-            String calories = obj.getString(CALORIES);
 
-            Calendar calendar = Calendar.getInstance();
-            Date date = calendar.getTime();
-            int currentDay = calendar.get(Calendar.DATE);
+            meals.clear();
+            todayMeals.clear();
+            JSONArray usersJSONArray = new JSONArray(responseJson);
+            for (int i = 0; i < usersJSONArray.length(); i++) {
+                JSONObject obj = usersJSONArray.getJSONObject(i);
 
-            Meal meal = new Meal(id, day, name, preptime, calories, imagePath, ingredients, howtoprepare);
-            boolean exist = meals.stream().filter(o -> o.getName().equals(name)).findFirst().isPresent();
-            if (!exist) {
-                meals.add(meal);
+                String id = obj.getString(ID);
+                String day = obj.getString(DAY);
+                String name = obj.getString(NAME);
+                String imagePath = obj.getString(IMAGE_PATH);
+                String ingredients = obj.getString(INGREDIENTS);
+                String howtoprepare = obj.getString(HOW_TO_PREPARE);
+                String preptime = obj.getString(PREP_TIME);
+                String calories = obj.getString(CALORIES);
+
+                Calendar calendar = Calendar.getInstance();
+                Date date = calendar.getTime();
+                int currentDay = calendar.get(Calendar.DATE);
+
+                Meal meal = new Meal(id, day, name, preptime, calories, imagePath, ingredients, howtoprepare);
+                boolean exist = meals.stream().filter(o -> o.getName().equals(name)).findFirst().isPresent();
+                if (!exist) {
+                    meals.add(meal);
+
+                }
+
+                if (day.equals(String.valueOf(currentDay))) {
+                    todayMeals.add(meal);
+                }
 
             }
-
-            if (day.equals(String.valueOf(currentDay))) {
-                todayMeals.add(meal);
-            }
+            todayMeals.add(meals.get(meals.size() - 1));
+            mealsWasReading=true;
 
         }
-        showMeals();
+        TodayMealsAdapter adapter = new TodayMealsAdapter(todayMeals, new OnMealItemClick() {
+            @Override
+            public void onClick(Meal meal) {
+                if (activityFragmentCommunication != null) {
+                    activityFragmentCommunication.replaceWithAboutMealFromHomeFragment();
 
-
-//        TodayMealsAdapter adapter = new TodayMealsAdapter(todayMeals, new OnMealItemClick() {
-//            @Override
-//            public void onClick(Meal meal) {
-//                if (activityFragmentCommunication != null) {
-//                    activityFragmentCommunication.replaceWithAboutMealFromHomeFragment();
-//
-//                }
-//            }
-//        });
-//        recyclerView.setAdapter(adapter);
+                }
+            }
+        });
+        mealsrecyclerView.setAdapter(adapter);
 
 
     }
 
-    private void showMeals() {
-        String imageViewUrl = todayMeals.get(0).getImagePath();
-        ImageLoader imageLoader = VolleyConfigSingleton.getInstance(image_one.getContext().
-                getApplicationContext()).getImageLoader();
-        imageLoader.get(imageViewUrl, new ImageLoader.ImageListener() {
-            @Override
-            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                image_one.setImageBitmap(response.getBitmap());
-            }
 
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-        textView_one.setText(todayMeals.get(0).getName());
-
-        String imageViewUrl2 = todayMeals.get(1).getImagePath();
-        ImageLoader imageLoader2 = VolleyConfigSingleton.getInstance(image_two.getContext().
-                getApplicationContext()).getImageLoader();
-        imageLoader2.get(imageViewUrl2, new ImageLoader.ImageListener() {
-            @Override
-            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                image_two.setImageBitmap(response.getBitmap());
-            }
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-        textView_two.setText(todayMeals.get(1).getName());
-
-        String imageViewUrl3 = todayMeals.get(2).getImagePath();
-        ImageLoader imageLoader3 = VolleyConfigSingleton.getInstance(image_three.getContext().
-                getApplicationContext()).getImageLoader();
-        imageLoader3.get(imageViewUrl3, new ImageLoader.ImageListener() {
-            @Override
-            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                image_three.setImageBitmap(response.getBitmap());
-            }
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-        textView_three.setText(todayMeals.get(2).getName());
-
-
-    }
 
 
     @Override
