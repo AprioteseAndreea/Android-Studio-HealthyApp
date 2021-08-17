@@ -49,6 +49,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -91,20 +92,19 @@ public class HomeFragment extends Fragment {
     public static ArrayList<Workout> workouts = new ArrayList<>();
 
 
-
     private ImageView snack_image_one;
     private ImageView snack_image_two;
     private ImageView snack_image_three;
     private ImageView snack_image_four;
 
-
+    private TextView greeting_text_view;
     private ActivityFragmentCommunication activityFragmentCommunication;
     private TextView dateTimeDisplay;
 
     public static Meal mealClicked = null;
     public static String workoutClicked = null;
 
-    private static boolean mealsWasReading=false;
+    private static boolean mealsWasReading = false;
 
 
     public HomeFragment() {
@@ -160,6 +160,18 @@ public class HomeFragment extends Fragment {
         snack_image_four = view.findViewById(R.id.snack_image_fourth);
 
         mealsrecyclerView = view.findViewById(R.id.today_meals_recyclerView);
+        greeting_text_view = view.findViewById(R.id.greeting_message);
+
+        Date date = new Date();   // given date
+        Calendar calendar = GregorianCalendar.getInstance();
+        calendar.setTime(date);
+       int currentHour =  calendar.get(Calendar.HOUR_OF_DAY); // gets hour in 24h format
+        if(currentHour>=5 && currentHour<=12) greeting_text_view.setText("Good morning!");
+        else if(currentHour>12 && currentHour<=18) greeting_text_view.setText("Good afternoon!");
+        else if(currentHour>18 && currentHour<22) greeting_text_view.setText("Good evening!");
+        else greeting_text_view.setText("Good night!");
+
+
         //snacksRecyclerView = view.findViewById(R.id.today_snacks_recyclerView);
         //workoutRecyclerView = view.findViewById(R.id.today_workout_recyclerView);
 //
@@ -453,7 +465,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void handleMealResponse(String responseJson) throws JSONException {
-        if(!mealsWasReading) {
+        if (!mealsWasReading) {
 
 
             meals.clear();
@@ -488,7 +500,7 @@ public class HomeFragment extends Fragment {
 
             }
             todayMeals.add(meals.get(meals.size() - 1));
-            mealsWasReading=true;
+            mealsWasReading = true;
 
         }
         TodayMealsAdapter adapter = new TodayMealsAdapter(todayMeals, new OnMealItemClick() {
@@ -504,8 +516,6 @@ public class HomeFragment extends Fragment {
 
 
     }
-
-
 
 
     @Override

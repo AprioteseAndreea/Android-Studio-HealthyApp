@@ -33,29 +33,50 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/date_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/utsanslight"
-                    android:paddingLeft="10dp"
-                    android:text="Saturday, 12 April  "
-                    android:textColor="@color/baby_blue"
-                    android:textStyle="italic"
+                <ImageView
+                    android:id="@+id/image_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="145dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/homebanner"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/greeting_message"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/date_time"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/utsansmedium"
+                    android:fontFamily="@font/utsanslight"
+                    android:gravity="right"
                     android:paddingLeft="10dp"
-                    android:text="Good morning!"
-                    android:textColor="@color/magenta_light"
-                    android:textSize="25dp"
+                    android:paddingEnd="8dp"
+                    android:text="Saturday, 12 April  "
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="@id/image_banner"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/date_time"
+                    app:layout_constraintTop_toTopOf="@id/image_banner"
+                    app:layout_constraintVertical_bias="0.3" />
+
+                <TextView
+                    android:id="@+id/greeting_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/utsansmedium"
+                    android:gravity="right"
+                    android:paddingLeft="10dp"
+                    android:paddingEnd="8dp"
+                    android:text="Good morning!"
+                    android:textColor="@color/white"
+                    android:textSize="27sp"
+                    app:layout_constraintBottom_toBottomOf="@id/image_banner"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/image_banner"
+                    app:layout_constraintVertical_bias="0.5"
 
                     />
             </androidx.constraintlayout.widget.ConstraintLayout>

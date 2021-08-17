@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,
                 HomeFragment.newInstance(" ", " ")).commit();
 
 
@@ -119,9 +119,23 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
         FragmentTransaction fragmentTransaction;
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, AboutMealFromHomeFragment.newInstance("", ""), "AboutMealFragmentTag");
+        fragmentTransaction.add(R.id.fragment_container, AboutMealFromHomeFragment.newInstance("", ""), "AboutMealFragmentTag");
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+//        toolbar.setTitle("");
+//        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                getFragmentManager().popBackStack();
+//                toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24);
+//
+//                ///  NU MERGE !!!
+//                //  toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24);
+//
+//
+//            }
+//        });
     }
 
     @Override
@@ -131,20 +145,10 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
         FragmentTransaction fragmentTransaction;
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, AboutMealFromMealsFragment.newInstance("", ""), "AboutMealFromMealsFragmentTag");
+        fragmentTransaction.add(R.id.fragment_container, AboutMealFromMealsFragment.newInstance("", ""), "AboutMealFromMealsFragmentTag");
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-        toolbar.setTitle("");
-        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getFragmentManager().popBackStack(); ///  NU MERGE !!!
-                //  toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24);
 
-
-            }
-        });
 
 
     }

@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:paddingBottom="56dp"
-    >
+    android:paddingBottom="56dp">
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -111,7 +111,6 @@
             app:layout_constraintTop_toBottomOf="@id/ingredients" />
 
 
-
         <TextView
             android:id="@+id/howtoprepare"
             android:layout_width="match_parent"
@@ -120,7 +119,6 @@
             android:paddingLeft="10dp"
             android:textColor="@color/baby_blue"
             app:layout_constraintTop_toBottomOf="@id/instructions" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
