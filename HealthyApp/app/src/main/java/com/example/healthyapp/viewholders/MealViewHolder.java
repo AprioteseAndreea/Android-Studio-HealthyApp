@@ -1,7 +1,11 @@
 package com.example.healthyapp.viewholders;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -9,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.VolleyError;
@@ -34,6 +40,14 @@ public class MealViewHolder extends RecyclerView.ViewHolder {
     private ImageView imageView;
     private Button addToPreferences;
 
+    public Button getAddToPreferences() {
+        return addToPreferences;
+    }
+
+    public void setAddToPreferences(Button addToPreferences) {
+        this.addToPreferences = addToPreferences;
+    }
+
     public MealViewHolder(@NonNull View view) {
         super(view);
         title = view.findViewById(R.id.meals_name);
@@ -49,10 +63,18 @@ public class MealViewHolder extends RecyclerView.ViewHolder {
         kcals.setText(meal.getCalories());
         String imageViewUrl = meal.getImagePath();
         Glide.with(this.view).load(imageViewUrl).apply(new RequestOptions().override(150, 150)).into(imageView);
+        if (meal.getFavourite()) {
+
+            Drawable buttonDrawable = addToPreferences.getBackground();
+            buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+            DrawableCompat.setTint(buttonDrawable, Color.BLACK);
+            addToPreferences.setBackground(buttonDrawable);
+
+        }
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomeFragment.mealClicked=meal;
+                HomeFragment.mealClicked = meal;
                 if (MealAdapter.onMealItemClick != null)
                     MealAdapter.onMealItemClick.onClick(meal);
             }
@@ -60,8 +82,17 @@ public class MealViewHolder extends RecyclerView.ViewHolder {
         addToPreferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 MealAdapter.onAddToPreferencesClick.onClick(meal);
 
+//                if (title.getText().equals(MealsFragment.favouritesMeals.get(MealsFragment.favouritesMeals.size()-1))) {
+//                    Drawable buttonDrawable = addToPreferences.getBackground();
+//                    buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+//                    DrawableCompat.setTint(buttonDrawable, Color.BLACK);
+//                    addToPreferences.setBackground(buttonDrawable);
+//
+//
+//                }
             }
         });
     }

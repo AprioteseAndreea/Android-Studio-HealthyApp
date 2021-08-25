@@ -20,10 +20,12 @@ import com.example.healthyapp.R;
 import com.example.healthyapp.fragments.AboutMeFragment;
 import com.example.healthyapp.fragments.AboutMealFromHomeFragment;
 import com.example.healthyapp.fragments.AboutMealFromMealsFragment;
+import com.example.healthyapp.fragments.AboutSnackFragment;
 import com.example.healthyapp.fragments.AboutWorkoutFragment;
 import com.example.healthyapp.fragments.HomeFragment;
 import com.example.healthyapp.fragments.HoursSleepFragment;
 import com.example.healthyapp.fragments.MealsFragment;
+import com.example.healthyapp.fragments.SnacksFragment;
 import com.example.healthyapp.fragments.WorkoutFragment;
 import com.example.healthyapp.interfaces.ActivityFragmentCommunication;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
                 break;
            case R.id.nav_about_me:
                selectedFragment = new AboutMeFragment();
-               toolbar.setTitle("");
+               toolbar.setTitle("About me");
                break;
 //            case R.id.nav_favourites:
 //                // selectedFragment = new WorkoutFragment();
@@ -95,8 +97,10 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
                 selectedFragment = new WorkoutFragment();
                 toolbar.setTitle("Workouts");
                 break;
-//            case R.id.nav_snacks:
-//                // selectedFragment = new
+            case R.id.nav_snacks:
+                 selectedFragment = new SnacksFragment();
+                toolbar.setTitle("Snacks");
+                break;
 //            case R.id.nav_progress:
 //                //
 //            case R.id.nav_settings:
@@ -169,6 +173,16 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, AboutWorkoutFragment.newInstance("", ""), "AboutWorkoutFragmentTag");
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void replaceWithAboutSnackFragment() {
+        FragmentTransaction fragmentTransaction;
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, AboutSnackFragment.newInstance("", ""), "AboutSnackFragmentTag");
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }

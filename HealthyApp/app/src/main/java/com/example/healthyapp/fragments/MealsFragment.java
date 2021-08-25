@@ -111,10 +111,6 @@ public class MealsFragment extends Fragment {
         recyclerView = view.findViewById(R.id.meals_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-        Resources resources = getContext().getResources();
-       int dimen = resources.getIdentifier("navigation_bar_height", "dimen", "android");
-
-       // recyclerView.setPadding(0, 0, 0, dimen);
 
         MealAdapter adapter = new MealAdapter(HomeFragment.meals, new OnMealItemClick() {
             @Override
@@ -127,8 +123,13 @@ public class MealsFragment extends Fragment {
         }, new OnAddToPreferencesClick() {
             @Override
             public void onClick(Meal meal) {
-                favouritesMeals.add(meal);
-                Toast.makeText(getContext(), "Added to Preferences ", Toast.LENGTH_LONG).show();
+                if(!favouritesMeals.contains(meal)){
+                    favouritesMeals.add(meal);
+                    Toast.makeText(getContext(), meal.getName()+" was added to Preferences ", Toast.LENGTH_LONG).show();
+                    meal.setFavourite(true);
+
+                }
+
             }
         });
 

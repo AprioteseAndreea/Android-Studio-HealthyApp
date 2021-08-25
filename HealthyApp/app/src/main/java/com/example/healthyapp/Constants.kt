@@ -15,6 +15,11 @@ class Constants {
         const val HOW_TO_PREPARE = "howtoprepare"
         const val PREP_TIME = "preptime"
         const val CALORIES= "calories"
+        const val CARBS= "carbs"
+        const val PROTEIN= "protein"
+        const val FIBRE= "fibre"
+        const val FAT= "fat"
+
         const val PATH="path"
         const val BACKGROUND="background"
     }

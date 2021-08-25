@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+   android:id="@+id/about_me_scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".fragments.AboutMeFragment">
@@ -15,9 +16,9 @@
         <ImageView
             android:id="@+id/custom_shape"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/ic_about_me"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="230dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/about_me_backgorund_short"
             app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -29,6 +30,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/custom_shape"
             app:layout_constraintVertical_bias="0.5"
 
             />

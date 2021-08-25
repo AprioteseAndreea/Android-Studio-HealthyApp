@@ -36,6 +36,7 @@ import com.example.healthyapp.adapters.TodayMealsAdapter;
 import com.example.healthyapp.adapters.TodayWorkoutAdapter;
 import com.example.healthyapp.interfaces.ActivityFragmentCommunication;
 import com.example.healthyapp.interfaces.OnMealItemClick;
+import com.example.healthyapp.interfaces.OnSnackItemClick;
 import com.example.healthyapp.models.Meal;
 import com.example.healthyapp.models.Snack;
 import com.example.healthyapp.models.Workout;
@@ -55,7 +56,10 @@ import java.util.Objects;
 import static android.content.Context.MODE_PRIVATE;
 import static com.example.healthyapp.Constants.BACKGROUND;
 import static com.example.healthyapp.Constants.CALORIES;
+import static com.example.healthyapp.Constants.CARBS;
 import static com.example.healthyapp.Constants.DAY;
+import static com.example.healthyapp.Constants.FAT;
+import static com.example.healthyapp.Constants.FIBRE;
 import static com.example.healthyapp.Constants.HOW_TO_PREPARE;
 import static com.example.healthyapp.Constants.ID;
 import static com.example.healthyapp.Constants.IMAGE_PATH;
@@ -65,6 +69,7 @@ import static com.example.healthyapp.Constants.MEALS_URL;
 import static com.example.healthyapp.Constants.NAME;
 import static com.example.healthyapp.Constants.PATH;
 import static com.example.healthyapp.Constants.PREP_TIME;
+import static com.example.healthyapp.Constants.PROTEIN;
 import static com.example.healthyapp.Constants.SNACKS_URL;
 import static com.example.healthyapp.Constants.TIME;
 import static com.example.healthyapp.Constants.WORKOUT_URL;
@@ -165,10 +170,11 @@ public class HomeFragment extends Fragment {
         Date date = new Date();   // given date
         Calendar calendar = GregorianCalendar.getInstance();
         calendar.setTime(date);
-       int currentHour =  calendar.get(Calendar.HOUR_OF_DAY); // gets hour in 24h format
-        if(currentHour>=5 && currentHour<=12) greeting_text_view.setText("Good morning!");
-        else if(currentHour>12 && currentHour<=18) greeting_text_view.setText("Good afternoon!");
-        else if(currentHour>18 && currentHour<22) greeting_text_view.setText("Good evening!");
+        int currentHour = calendar.get(Calendar.HOUR_OF_DAY); // gets hour in 24h format
+        if (currentHour >= 5 && currentHour <= 12) greeting_text_view.setText("Good morning!");
+        else if (currentHour > 12 && currentHour <= 18)
+            greeting_text_view.setText("Good afternoon!");
+        else if (currentHour > 18 && currentHour < 22) greeting_text_view.setText("Good evening!");
         else greeting_text_view.setText("Good night!");
 
 
@@ -402,7 +408,15 @@ public class HomeFragment extends Fragment {
         }
 
 
-        SnackAdapter adapter = new SnackAdapter(randomSnacks);
+        SnackAdapter adapter = new SnackAdapter(randomSnacks, new OnSnackItemClick() {
+            @Override
+            public void onClick(Snack snack) {
+                if (activityFragmentCommunication != null) {
+                    activityFragmentCommunication.replaceWithAboutSnackFragment();
+
+                }
+            }
+        });
 //        snacksRecyclerView.setAdapter(adapter);
 
         String imageViewUrl1 = randomSnacks.get(0).getPath();
@@ -482,21 +496,25 @@ public class HomeFragment extends Fragment {
                 String howtoprepare = obj.getString(HOW_TO_PREPARE);
                 String preptime = obj.getString(PREP_TIME);
                 String calories = obj.getString(CALORIES);
+                String carbs = obj.getString(CARBS);
+                String protein = obj.getString(PROTEIN);
+                String fibre = obj.getString(FIBRE);
+                String fat = obj.getString(FAT);
 
                 Calendar calendar = Calendar.getInstance();
                 Date date = calendar.getTime();
                 int currentDay = calendar.get(Calendar.DATE);
 
-                Meal meal = new Meal(id, day, name, preptime, calories, imagePath, ingredients, howtoprepare);
+                Meal meal = new Meal(id, day, name, preptime, calories, imagePath, ingredients, howtoprepare, carbs, protein, fibre, fat, false);
                 boolean exist = meals.stream().filter(o -> o.getName().equals(name)).findFirst().isPresent();
                 if (!exist) {
                     meals.add(meal);
 
                 }
 
-                if (day.equals(String.valueOf(currentDay))) {
-                    todayMeals.add(meal);
-                }
+                //  if (day.equals(String.valueOf(currentDay))) {
+                // todayMeals.add(meal);
+                //  }
 
             }
             todayMeals.add(meals.get(meals.size() - 1));

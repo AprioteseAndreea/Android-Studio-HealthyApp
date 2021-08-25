@@ -68,12 +68,11 @@
                 app:layout_constraintStart_toEndOf="@id/meals_image"
                 app:layout_constraintTop_toBottomOf="@id/meals_name" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/addToPreferences"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:background="@drawable/ic_baseline_favorite_24"
-                android:backgroundTint="@color/baby_blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.90"
                 app:layout_constraintStart_toStartOf="@id/meals_kcals"

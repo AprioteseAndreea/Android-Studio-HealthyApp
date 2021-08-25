@@ -10,20 +10,70 @@ public class Meal {
     private String imagePath;
     private String ingredients;
     private String howtoprepare;
+    private String carbs;
+    private String protein;
+    private String fibre;
+    private String fat;
+    private Boolean isFavourite;
 
-    public Meal(String id, String day, String name, String preptime, String calories, String imagePath, String ingredients, String howtoprepare) {
+    public Meal(String id, String day, String name, String preptime, String calories, String imagePath, String ingredients, String howtoprepare, String carbs, String protein, String fibre, String fat, Boolean isFavourite) {
         this.id = id;
-        this.day=day;
+        this.day = day;
         this.name = name;
         this.preptime = preptime;
         this.calories = calories;
         this.imagePath = imagePath;
         this.ingredients = ingredients;
         this.howtoprepare = howtoprepare;
+        this.carbs = carbs;
+        this.protein = protein;
+        this.fibre = fibre;
+        this.fat = fat;
+        this.isFavourite = isFavourite;
+    }
+
+    public String getCarbs() {
+        return carbs;
+    }
+
+    public void setCarbs(String carbs) {
+        this.carbs = carbs;
+    }
+
+    public String getProtein() {
+        return protein;
+    }
+
+    public void setProtein(String protein) {
+        this.protein = protein;
+    }
+
+    public String getFibre() {
+        return fibre;
+    }
+
+    public void setFibre(String fibre) {
+        this.fibre = fibre;
+    }
+
+    public String getFat() {
+        return fat;
+    }
+
+    public void setFat(String fat) {
+        this.fat = fat;
     }
 
     public String getId() {
         return id;
+    }
+
+    public Boolean getFavourite() {
+        return isFavourite;
+    }
+
+    public void setFavourite(Boolean favourite) {
+        isFavourite = favourite;
     }
 
     public void setId(String id) {
@@ -37,6 +87,7 @@ public class Meal {
     public void setName(String name) {
         this.name = name;
     }
+
     public String getDay() {
         return day;
     }

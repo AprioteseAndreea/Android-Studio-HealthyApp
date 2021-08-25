@@ -1,5 +1,6 @@
 package com.example.healthyapp.fragments;
 
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,11 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.healthyapp.R;
 import com.example.healthyapp.VolleyConfigSingleton;
 import com.example.healthyapp.models.Meal;
+import com.jgabrielfreitas.core.BlurImageView;
+
+import coil.transform.BlurTransformation;
+
+import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,9 +81,8 @@ public class AboutMealFromMealsFragment extends Fragment {
         TextView kcals = view.findViewById(R.id.kcals);
         TextView ingredients = view.findViewById(R.id.ingredients);
         TextView howtoprepare = view.findViewById(R.id.howtoprepare);
-
-
-
+        BlurImageView background_image_view = view.findViewById(R.id.background_image_view_recipe);
+        background_image_view.setBlur(7);
         title.setText(HomeFragment.mealClicked.getName());
         prepTime.setText(HomeFragment.mealClicked.getPreptime());
         kcals.setText(HomeFragment.mealClicked.getCalories());
@@ -87,7 +92,8 @@ public class AboutMealFromMealsFragment extends Fragment {
         ImageView imageView = view.findViewById(R.id.about_meal_image);
         String imageViewUrl = HomeFragment.mealClicked.getImagePath();
         Glide.with(view).load(imageViewUrl).apply(new RequestOptions().override(300, 300)).into(imageView);
+        Glide.with(view).load(imageViewUrl).apply(new RequestOptions().override(300, 300)).into(background_image_view);
 
         return view;
     }
-    }
+}

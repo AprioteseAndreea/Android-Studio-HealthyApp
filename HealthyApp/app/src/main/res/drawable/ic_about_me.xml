@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:top="-300dp" android:height="450dp" android:bottom="50dp" android:left="-60dp" android:right="-60dp">
+
+    <item   android:top="-300dp" android:height="450dp" android:bottom="50dp" android:left="-60dp" android:right="-60dp">
         <shape>
             <corners android:radius="900dp" />
-            <solid android:color="@color/magenta_light" />
+            <solid android:color="@color/magenta_light"
+
+                />
         </shape>
     </item>
 </layer-list>

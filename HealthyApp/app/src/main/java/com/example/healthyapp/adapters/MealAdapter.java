@@ -34,6 +34,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealViewHolder> {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.meals_cell, parent, false);
         MealViewHolder mealViewHolder = new MealViewHolder(view);
+
         return mealViewHolder;
     }
 

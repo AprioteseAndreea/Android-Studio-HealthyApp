@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthyapp.R;
+import com.example.healthyapp.interfaces.OnSnackItemClick;
+import com.example.healthyapp.interfaces.OnWorkoutItemClick;
 import com.example.healthyapp.models.Meal;
 import com.example.healthyapp.models.Snack;
 import com.example.healthyapp.viewholders.MealViewHolder;
@@ -18,9 +20,10 @@ import java.util.ArrayList;
 public class SnackAdapter extends RecyclerView.Adapter<SnackViewHolder> {
 
     ArrayList<Snack> snacks;
-
-    public SnackAdapter(ArrayList<Snack> sneaks) {
+    public static OnSnackItemClick onSnackItemClick;
+    public SnackAdapter(ArrayList<Snack> sneaks, OnSnackItemClick onSnackItemClick) {
         this.snacks = sneaks;
+        this.onSnackItemClick = onSnackItemClick;
     }
 
     @NonNull

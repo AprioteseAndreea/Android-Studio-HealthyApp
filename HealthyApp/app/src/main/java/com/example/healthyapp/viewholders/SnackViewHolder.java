@@ -16,9 +16,11 @@ import com.example.healthyapp.fragments.MealsFragment;
 import com.example.healthyapp.models.Meal;
 import com.example.healthyapp.models.Snack;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class SnackViewHolder extends RecyclerView.ViewHolder {
 
-    private ImageView imageView;
+    private CircleImageView imageView;
     private View view;
 
     public SnackViewHolder(@NonNull View view) {
