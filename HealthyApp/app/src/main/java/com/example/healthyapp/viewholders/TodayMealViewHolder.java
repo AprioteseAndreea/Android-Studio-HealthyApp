@@ -30,7 +30,7 @@ public class TodayMealViewHolder extends RecyclerView.ViewHolder {
         super(view);
         title = view.findViewById(R.id.recipe_one);
         imageView = view.findViewById(R.id.img1);
-        blurImageView = view.findViewById(R.id.blur_image);
+       // blurImageView = view.findViewById(R.id.recipe_blur_image);
         this.view = view;
 
     }
@@ -51,8 +51,22 @@ public class TodayMealViewHolder extends RecyclerView.ViewHolder {
 
             }
         });
-        Glide.with(this.view).load(imageViewUrl).apply(new RequestOptions().override(250, 250)).into(blurImageView);
-        blurImageView.setBlur(50);
+//        blurImageView.setBlur(20);
+//
+//        ImageLoader imageLoader2 = VolleyConfigSingleton.getInstance(blurImageView.getContext().
+//                getApplicationContext()).getImageLoader();
+//        imageLoader2.get(imageViewUrl, new ImageLoader.ImageListener() {
+//            @Override
+//            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+//                blurImageView.setImageBitmap(response.getBitmap());
+//            }
+//
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//            }
+//        });
+      //  Glide.with(this.view).load(imageViewUrl).apply(new RequestOptions().override(250, 250)).into(blurImageView);
 
 
         view.setOnClickListener(new View.OnClickListener() {

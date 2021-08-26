@@ -8,7 +8,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/today_meals_card_view"
         android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_height="150dp"
         android:outlineSpotShadowColor="@color/baby_blue"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="20dp"
@@ -27,45 +27,61 @@
             android:scaleType="centerCrop"
             android:src="@drawable/healthy" />
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.jgabrielfreitas.core.BlurImageView
-                android:id="@+id/blur_image"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/healthy"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-
-
-                />
-
-            <TextView
-                android:id="@+id/recipe_one"
-                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center_horizontal"
-                android:ellipsize="end"
-                android:fontFamily="@font/utsansregular"
-                android:lines="2"
-                android:padding="3dp"
-                android:text="Healthy Granola Homemade"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="13dp"
-                android:textStyle="bold"
+                app:cardBackgroundColor="@color/transparent"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardMaxElevation="5dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
 
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@id/blur_image"
-                app:layout_constraintTop_toTopOf="@id/blur_image"
-                app:layout_constraintWidth_percent="0.8"
+                >
 
-                />
+<!--                <com.jgabrielfreitas.core.BlurImageView-->
+<!--                    android:id="@+id/recipe_blur_image"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:scaleType="centerCrop"-->
+<!--                    android:src="@drawable/healthy"-->
+<!--                    android:foreground="@drawable/black_gradient"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:radius="24"-->
+<!--                    />-->
+
+
+                <TextView
+                    android:id="@+id/recipe_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/utsansbold"
+                    android:lines="2"
+                    android:padding="3dp"
+                    android:text="Healthy Granola Homemade"
+                    android:textAlignment="center"
+                    android:textColor="@color/magenta_light"
+                    android:textSize="13dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintWidth_percent="0.8"
+
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -17,7 +17,7 @@
 
     <color name="blue">#0282E4</color>
 
-    <color name="transparent">#00000000</color>
+    <color name="transparent">#CCFFFFFF</color>
 
     <color name="colorPrimary">#1F5BF3</color>
     <color name="colorPrimaryDark">#0947E8</color>

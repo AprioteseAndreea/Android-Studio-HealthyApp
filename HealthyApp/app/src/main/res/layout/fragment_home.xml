@@ -273,7 +273,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/first_snack_card_view"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="90dp"
             android:outlineSpotShadowColor="@color/baby_blue"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
@@ -281,7 +281,6 @@
             app:cardMaxElevation="5dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
-            app:layout_constraintHeight_percent="0.15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/today_snacks_message"
 
@@ -293,8 +292,8 @@
 
                 <ImageView
                     android:id="@+id/snack_image_one"
-                    android:layout_width="76dp"
-                    android:layout_height="88dp"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:contentDescription="@string/app_name"
@@ -317,7 +316,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/second_snack_card_view"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="90dp"
             android:outlineSpotShadowColor="@color/baby_blue"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
@@ -325,7 +324,6 @@
             app:cardMaxElevation="5dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
-            app:layout_constraintHeight_percent="0.15"
             app:layout_constraintStart_toEndOf="@id/first_snack_card_view"
             app:layout_constraintTop_toBottomOf="@id/today_snacks_message"
             app:layout_constraintWidth_percent="0.25">
@@ -360,7 +358,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/third_snack_card_view"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="90dp"
             android:outlineSpotShadowColor="@color/baby_blue"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
@@ -368,7 +366,6 @@
             app:cardMaxElevation="5dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
-            app:layout_constraintHeight_percent="0.15"
             app:layout_constraintStart_toEndOf="@id/second_snack_card_view"
             app:layout_constraintTop_toBottomOf="@id/today_snacks_message"
             app:layout_constraintWidth_percent="0.25">
@@ -403,7 +400,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/fourth_snack_card_view"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="90dp"
             android:outlineSpotShadowColor="@color/baby_blue"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
@@ -411,7 +408,6 @@
             app:cardMaxElevation="5dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
-            app:layout_constraintHeight_percent="0.15"
             app:layout_constraintStart_toEndOf="@id/third_snack_card_view"
             app:layout_constraintTop_toBottomOf="@id/today_snacks_message"
             app:layout_constraintWidth_percent="0.25">
