@@ -6,4 +6,5 @@ public interface ActivityFragmentCommunication {
     void replaceWithAddHoursFragment();
     void replaceWithAboutWorkoutFragment();
     void replaceWithAboutSnackFragment();
-}
+    void replaceWithAboutMeFragment()
+;}

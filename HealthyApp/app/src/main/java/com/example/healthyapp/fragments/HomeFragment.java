@@ -103,6 +103,9 @@ public class HomeFragment extends Fragment {
     private ImageView snack_image_four;
 
     private TextView greeting_text_view;
+    private ImageView weather_icon;
+
+    private ImageView avatar_image;
     private ActivityFragmentCommunication activityFragmentCommunication;
     private TextView dateTimeDisplay;
 
@@ -147,17 +150,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-//        image_one = view.findViewById(R.id.img1);
-//        textView_one = view.findViewById(R.id.recipe_one);
-//
-//        image_two = view.findViewById(R.id.img2);
-//        textView_two = view.findViewById(R.id.recipe_two);
-//
-//        image_three = view.findViewById(R.id.img3);
-//        textView_three = view.findViewById(R.id.recipe_three);
-//
-//        image_four = view.findViewById(R.id.img4);
-//        textView_four = view.findViewById(R.id.recipe_four);
 
         snack_image_one = view.findViewById(R.id.snack_image_one);
         snack_image_two = view.findViewById(R.id.snack_image_two);
@@ -166,16 +158,20 @@ public class HomeFragment extends Fragment {
 
         mealsrecyclerView = view.findViewById(R.id.today_meals_recyclerView);
         greeting_text_view = view.findViewById(R.id.greeting_message);
+        weather_icon = view.findViewById(R.id.today_icon);
+        avatar_image = view.findViewById(R.id.home_avatar_image);
 
-        Date date = new Date();   // given date
-        Calendar calendar = GregorianCalendar.getInstance();
-        calendar.setTime(date);
-        int currentHour = calendar.get(Calendar.HOUR_OF_DAY); // gets hour in 24h format
-        if (currentHour >= 5 && currentHour <= 12) greeting_text_view.setText("Good morning!");
-        else if (currentHour > 12 && currentHour <= 18)
-            greeting_text_view.setText("Good afternoon!");
-        else if (currentHour > 18 && currentHour < 22) greeting_text_view.setText("Good evening!");
-        else greeting_text_view.setText("Good night!");
+         avatar_image.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 if (activityFragmentCommunication != null) {
+                     activityFragmentCommunication.replaceWithAboutMeFragment();
+
+                 }
+             }
+         });
+         setGreetings();
+
 
 
         //snacksRecyclerView = view.findViewById(R.id.today_snacks_recyclerView);
@@ -220,6 +216,31 @@ public class HomeFragment extends Fragment {
         //Glide.with(view).load(imageViewUrl).apply(new RequestOptions().override(150, 150)).into(image_one);
 
         return view;
+    }
+
+    private void setGreetings() {
+        Date date = new Date();
+        Calendar calendar = GregorianCalendar.getInstance();
+        calendar.setTime(date);
+        int currentHour = calendar.get(Calendar.HOUR_OF_DAY); // gets hour in 24h format
+        if (currentHour >= 5 && currentHour <= 12) {
+            greeting_text_view.setText("Good morning!");
+           // Glide.with(getView()).load(R.drawable.green_sun_icon).apply(new RequestOptions().override(25, 25)).into(weather_icon);
+
+        } else if (currentHour > 12 && currentHour <= 18) {
+//            Glide.with(getView()).load(R.drawable.green_sun_icon).apply(new RequestOptions().override(25, 25)).into(weather_icon);
+           // greeting_text_view.setText("Good afternoon!");
+
+
+        } else if (currentHour > 18 && currentHour < 22) {
+            greeting_text_view.setText("Good evening!");
+           // Glide.with(getView()).load(R.drawable.green_moon_icon).apply(new RequestOptions().override(25, 25)).into(weather_icon);
+
+        } else {
+            greeting_text_view.setText("Good night!");
+           // Glide.with(getView()).load(R.drawable.green_moon_icon).apply(new RequestOptions().override(25, 25)).into(weather_icon);
+
+        }
     }
 
     private void getDate() {

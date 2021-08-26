@@ -17,6 +17,15 @@
         android:layout_height="match_parent"
         tools:context=".fragments.HomeFragment">
 
+        <ImageView
+            android:id="@+id/today_icon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/green_sun_icon"
+            app:layout_constraintBottom_toBottomOf="@id/greeting_message"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <TextView
             android:id="@+id/greeting_message"
             android:layout_width="wrap_content"
@@ -24,12 +33,12 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/utsansmedium"
             android:gravity="left"
-            android:paddingLeft="10dp"
+            android:paddingLeft="5dp"
             android:paddingEnd="8dp"
             android:text="Good morning!"
             android:textColor="@color/baby_blue"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@id/today_icon"
             app:layout_constraintTop_toTopOf="parent"
 
             />
@@ -40,11 +49,12 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/utsansmedium"
             android:gravity="left"
-            android:paddingLeft="10dp"
+            android:paddingLeft="5dp"
             android:paddingEnd="8dp"
+            android:layout_marginStart="5dp"
             android:text="Andreea Apriotese"
             android:textColor="@color/magenta_light"
-            android:textSize="25sp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/greeting_message" />
 
@@ -57,16 +67,16 @@
             android:gravity="right"
             android:paddingLeft="10dp"
             android:text="Saturday, 12 April  "
-            android:textColor="@color/magenta_light"
-            android:textSize="20sp"
+            android:textColor="@color/baby_blue"
+            android:textSize="17sp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/greeting_message" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/avatar_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/home_avatar_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginEnd="6dp"
             android:src="@drawable/healthy"
             app:layout_constraintEnd_toEndOf="parent"
@@ -75,87 +85,166 @@
 
             />
 
-        <!--        <androidx.cardview.widget.CardView-->
-        <!--            android:id="@+id/first_card_view"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:outlineSpotShadowColor="@color/baby_blue"-->
-        <!--            app:cardBackgroundColor="@color/white"-->
-        <!--            app:cardCornerRadius="20dp"-->
-        <!--            app:cardElevation="5dp"-->
-        <!--            app:cardMaxElevation="5dp"-->
-        <!--            app:cardPreventCornerOverlap="true"-->
-        <!--            app:cardUseCompatPadding="true"-->
-        <!--            app:layout_constraintHeight_percent="0.15"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent">-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/today_information"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:outlineSpotShadowColor="@color/baby_blue"
+            android:scaleType="centerCrop"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            app:cardMaxElevation="5dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_avatar_image"
+            app:layout_constraintWidth_percent="0.25">
 
-        <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content">-->
+            <ImageView
+                android:id="@+id/quizimage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/today_information_background" />
 
-        <!--&lt;!&ndash;                <ImageView&ndash;&gt;-->
-        <!--&lt;!&ndash;                    android:id="@+id/image_banner"&ndash;&gt;-->
-        <!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
-        <!--&lt;!&ndash;                    android:layout_height="145dp"&ndash;&gt;-->
-        <!--&lt;!&ndash;                    android:scaleType="fitXY"&ndash;&gt;-->
-        <!--&lt;!&ndash;                    android:src="@drawable/homebanner"&ndash;&gt;-->
-        <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
-        <!--&lt;!&ndash;                    app:layout_constraintTop_toTopOf="parent" />&ndash;&gt;-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <!--                <TextView-->
-        <!--                    android:id="@+id/date_time"-->
-        <!--                    android:layout_width="match_parent"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:fontFamily="@font/utsanslight"-->
-        <!--                    android:gravity="right"-->
-        <!--                    android:paddingLeft="10dp"-->
-        <!--                    android:paddingEnd="8dp"-->
-        <!--                    android:text="Saturday, 12 April  "-->
-        <!--                    android:textColor="@color/white"-->
-        <!--                    android:textSize="20sp"-->
-        <!--                    android:textStyle="italic"-->
-        <!--                    app:layout_constraintBottom_toBottomOf="@id/image_banner"-->
-        <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-        <!--                    app:layout_constraintStart_toStartOf="parent"-->
-        <!--                    app:layout_constraintTop_toTopOf="@id/image_banner"-->
-        <!--                    app:layout_constraintVertical_bias="0.3" />-->
+                <TextView
+                    android:id="@+id/inf1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/utsansmedium"
+                    android:text="Feeling Better!"
+                    android:textColor="@color/magenta_light"
+                    android:textSize="17sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <!--                <TextView-->
-        <!--                    android:id="@+id/greeting_message"-->
-        <!--                    android:layout_width="match_parent"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:layout_marginTop="10dp"-->
-        <!--                    android:fontFamily="@font/utsansmedium"-->
-        <!--                    android:gravity="right"-->
-        <!--                    android:paddingLeft="10dp"-->
-        <!--                    android:paddingEnd="8dp"-->
-        <!--                    android:text="Good morning!"-->
-        <!--                    android:textColor="@color/white"-->
-        <!--                    android:textSize="27sp"-->
-        <!--                    app:layout_constraintBottom_toBottomOf="@id/image_banner"-->
-        <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-        <!--                    app:layout_constraintStart_toStartOf="parent"-->
-        <!--                    app:layout_constraintTop_toTopOf="@id/image_banner"-->
-        <!--                    app:layout_constraintVertical_bias="0.5"-->
+                <TextView
+                    android:id="@+id/information_text_two"
+                    android:layout_width="0dp"
+                    app:layout_constraintWidth_percent="0.45"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/utsansregular"
+                    android:text="Keep you healthy life with healthy food"
+                    android:textColor="@color/magenta_light"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@id/inf1"
+                    app:layout_constraintTop_toBottomOf="@id/inf1"
+                    app:layout_constraintVertical_bias="0.4" />
 
-        <!--                    />-->
-        <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+                <TextView
+                    android:id="@+id/total_protains"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/utsansbold"
+                    android:text="140"
+                    android:textColor="@color/magenta_light"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toStartOf="@id/information_text_two"
+                    app:layout_constraintTop_toBottomOf="@id/information_text_two"
+                    app:layout_constraintVertical_bias="0.4" />
+
+                <TextView
+                    android:id="@+id/g_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/utsansmedium"
+                    android:text="g"
+                    android:textColor="@color/magenta_light"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/total_protains"
+                    app:layout_constraintStart_toEndOf="@id/total_protains"
+                    app:layout_constraintVertical_bias="0.4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/utsansmedium"
+                    android:text="Proteins"
+                    android:textColor="@color/magenta_light"
+                    app:layout_constraintEnd_toEndOf="@id/g_text"
+                    app:layout_constraintStart_toStartOf="@id/total_protains"
+                    app:layout_constraintTop_toBottomOf="@id/total_protains"
+                    app:layout_constraintVertical_bias="0.4" />
 
 
-        <!--        </androidx.cardview.widget.CardView>-->
+                <TextView
+                    android:id="@+id/total_kcals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/utsansbold"
+                    android:text="2325"
+                    android:layout_marginStart="35dp"
+                    android:textColor="@color/magenta_light"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toEndOf="@id/g_text"
+                    app:layout_constraintTop_toBottomOf="@id/information_text_two"
+                    app:layout_constraintVertical_bias="0.4" />
+
+                <TextView
+                    android:id="@+id/kcals_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/utsansmedium"
+                    android:text="g"
+                    android:textColor="@color/magenta_light"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/total_kcals"
+                    app:layout_constraintStart_toEndOf="@id/total_kcals"
+                    app:layout_constraintVertical_bias="0.4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/utsansmedium"
+                    android:text="Calories"
+                    android:textColor="@color/magenta_light"
+                    app:layout_constraintEnd_toEndOf="@id/kcals_text"
+                    app:layout_constraintStart_toStartOf="@id/total_kcals"
+                    app:layout_constraintTop_toBottomOf="@id/total_kcals"
+                     />
+
+
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/today_information_background"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:layout_gravity="center"-->
+                <!--                    android:layout_margin="5dp"-->
+                <!--                    android:contentDescription="@string/app_name"-->
+                <!--                    android:src="@drawable/today_information_background"-->
+                <!--                    android:scaleType="centerCrop"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintHeight_percent="0.9"-->
+                <!--                    app:layout_constraintHorizontal_bias="0.5"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toTopOf="parent"-->
+                <!--                    />-->
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/today_meals_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/utsansmedium"
+            android:fontFamily="@font/utsansregular"
             android:paddingStart="10dp"
             android:text="@string/today_meals"
             android:textColor="@color/baby_blue"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/avatar_image" />
+            app:layout_constraintTop_toBottomOf="@id/today_information" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/today_meals_recyclerView"
@@ -171,7 +260,7 @@
             android:id="@+id/today_snacks_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/utsansmedium"
+            android:fontFamily="@font/utsansregular"
             android:paddingLeft="10dp"
             android:text="TODAY SNACKS"
             android:textColor="@color/baby_blue"
@@ -358,7 +447,7 @@
             android:id="@+id/today_workout_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/utsansmedium"
+            android:fontFamily="@font/utsansregular"
             android:paddingLeft="10dp"
             android:text="TODAY WORKOUT"
             android:textColor="@color/baby_blue"

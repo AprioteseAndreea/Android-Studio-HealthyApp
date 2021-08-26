@@ -187,5 +187,15 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
         fragmentTransaction.commit();
     }
 
+    @Override
+    public void replaceWithAboutMeFragment() {
+        FragmentTransaction fragmentTransaction;
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, AboutMeFragment.newInstance("", ""), "AboutMeFragmentTag");
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
 
 }
