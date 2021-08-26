@@ -533,9 +533,9 @@ public class HomeFragment extends Fragment {
 
                 }
 
-                //  if (day.equals(String.valueOf(currentDay))) {
-                // todayMeals.add(meal);
-                //  }
+                  if (day.equals(String.valueOf(currentDay))) {
+                 todayMeals.add(meal);
+                  }
 
             }
             todayMeals.add(meals.get(meals.size() - 1));

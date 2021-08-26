@@ -18,16 +18,19 @@ import com.example.healthyapp.adapters.TodayMealsAdapter;
 import com.example.healthyapp.fragments.HomeFragment;
 import com.example.healthyapp.fragments.MealsFragment;
 import com.example.healthyapp.models.Meal;
+import com.jgabrielfreitas.core.BlurImageView;
 
 public class TodayMealViewHolder extends RecyclerView.ViewHolder {
     private TextView title;
     private ImageView imageView;
+    private BlurImageView blurImageView;
     private View view;
 
     public TodayMealViewHolder(@NonNull View view) {
         super(view);
         title = view.findViewById(R.id.recipe_one);
         imageView = view.findViewById(R.id.img1);
+        blurImageView = view.findViewById(R.id.blur_image);
         this.view = view;
 
     }
@@ -48,7 +51,9 @@ public class TodayMealViewHolder extends RecyclerView.ViewHolder {
 
             }
         });
-        //Glide.with(this.view).load(imageViewUrl).apply(new RequestOptions().override(150, 150)).into(imageView);
+        Glide.with(this.view).load(imageViewUrl).apply(new RequestOptions().override(250, 250)).into(blurImageView);
+        blurImageView.setBlur(50);
+
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

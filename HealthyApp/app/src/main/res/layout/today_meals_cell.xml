@@ -8,7 +8,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/today_meals_card_view"
         android:layout_width="180dp"
-        android:layout_height="wrap_content"
+        android:layout_height="180dp"
         android:outlineSpotShadowColor="@color/baby_blue"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="20dp"
@@ -16,29 +16,32 @@
         app:cardMaxElevation="5dp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/healthy" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img1"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:contentDescription="@string/app_name"
+            <com.jgabrielfreitas.core.BlurImageView
+                android:id="@+id/blur_image"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/healthy"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.65"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.6" />
+
+
+                />
 
             <TextView
                 android:id="@+id/recipe_one"
@@ -51,15 +54,15 @@
                 android:padding="3dp"
                 android:text="Healthy Granola Homemade"
                 android:textAlignment="center"
-                android:textColor="@color/baby_blue"
-                android:textSize="10dp"
+                android:textColor="@color/white"
+                android:textSize="13dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
 
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img1"
+                app:layout_constraintStart_toStartOf="@id/blur_image"
+                app:layout_constraintTop_toTopOf="@id/blur_image"
                 app:layout_constraintWidth_percent="0.8"
 
                 />
