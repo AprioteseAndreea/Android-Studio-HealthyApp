@@ -48,5 +48,18 @@
     <string name="gender">Gender:</string>
     <string name="save">Save</string>
     <string name="today_meals">TODAY MEALS</string>
+    <string name="_65g">65g</string>
+    <string name="_15_min">15 min</string>
+    <string name="_163_kcal">163 kcal</string>
+    <string name="_120g">120g</string>
+    <string name="fibre">Fibre</string>
+    <string name="fat">Fat</string>
+    <string name="_15g">15g</string>
+    <string name="protein">Protein</string>
+    <string name="carbs">Carbs</string>
+    <string name="healthy_granola_breakfast">Healthy Granola Breakfast</string>
+    <string name="_80g">80g</string>
+    <string name="ingredients">INGREDIENTS</string>
+    <string name="instructions">INSTRUCTIONS</string>
 
 </resources>

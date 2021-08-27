@@ -89,6 +89,16 @@ public class AboutMealFromMealsFragment extends Fragment {
         ingredients.setText(HomeFragment.mealClicked.getIngredients());
         howtoprepare.setText(HomeFragment.mealClicked.getHowtoprepare());
 
+        TextView carbs_value = view.findViewById(R.id.carbs_value);
+        TextView protein_value = view.findViewById(R.id.protein_value);
+        TextView fibre_value = view.findViewById(R.id.fibre_value);
+        TextView fat_value = view.findViewById(R.id.fat_value);
+
+        carbs_value.setText(HomeFragment.mealClicked.getCarbs());
+        protein_value.setText(HomeFragment.mealClicked.getProtein());
+        fibre_value.setText(HomeFragment.mealClicked.getFibre());
+        fat_value.setText(HomeFragment.mealClicked.getFat());
+
         ImageView imageView = view.findViewById(R.id.about_meal_image);
         String imageViewUrl = HomeFragment.mealClicked.getImagePath();
         Glide.with(view).load(imageViewUrl).apply(new RequestOptions().override(300, 300)).into(imageView);

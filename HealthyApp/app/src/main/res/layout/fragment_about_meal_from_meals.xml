@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:tag="AboutMealFragmentTag"
         tools:context=".fragments.AboutMealFromHomeFragment">
@@ -44,50 +44,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/utsansbold"
-            android:text="Healthy Granola Breakfast"
+            android:text="@string/healthy_granola_breakfast"
             android:textAlignment="center"
-            android:textColor="@color/magenta_light"
-            android:textSize="25dp"
+            android:textColor="@color/dark_green"
+            android:textSize="25sp"
             app:layout_constraintTop_toBottomOf="@id/about_meal_image" />
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/clock_icon"-->
-        <!--            android:layout_width="30dp"-->
-        <!--            android:layout_height="30dp"-->
-        <!--            android:layout_marginLeft="10dp"-->
-        <!--            android:src="@drawable/ic_baseline_access_time_24"-->
-        <!--            app:layout_constraintStart_toStartOf="@id/about_meal_title"-->
-        <!--            app:layout_constraintTop_toBottomOf="@id/about_meal_title" />-->
 
         <TextView
             android:id="@+id/prep_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/utsansmedium"
-            android:text="15 min"
-            android:textSize="20dp"
+            android:text="@string/_15_min"
+            android:textSize="20sp"
             android:layout_marginStart="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/about_meal_title">
 
         </TextView>
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/kcals_icon"-->
-        <!--            android:layout_width="33dp"-->
-        <!--            android:layout_height="33dp"-->
-        <!--            android:src="@drawable/ic_baseline_fastfood_24"-->
-        <!--            app:layout_constraintStart_toStartOf="@id/kcals"-->
-        <!--            app:layout_constraintTop_toBottomOf="@id/about_meal_title" />-->
-
         <TextView
             android:id="@+id/kcals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/utsansmedium"
-            android:text="163 kcal"
-            android:textSize="20dp"
+            android:text="@string/_163_kcal"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/about_meal_title" />
 
@@ -95,7 +77,7 @@
             android:id="@+id/detail_card_view_one"
             android:layout_width="0dp"
             android:layout_height="130dp"
-            android:outlineSpotShadowColor="@color/baby_blue"
+            android:outlineSpotShadowColor="@color/light_green"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
             app:cardElevation="5dp"
@@ -130,9 +112,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/utsansbold"
-                    android:text="65g"
+                    android:text="@string/_65g"
                     android:textAlignment="center"
-                    android:textColor="@color/magenta_light"
+                    android:textColor="@color/dark_green"
                     android:textSize="15sp"
                     app:layout_constraintTop_toBottomOf="@id/details_image_one" />
 
@@ -140,7 +122,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/utsansbold"
-                    android:text="Carbs"
+                    android:text="@string/carbs"
                     android:textAlignment="center"
                     android:textSize="12sp"
                     app:layout_constraintTop_toBottomOf="@id/carbs_value" />
@@ -153,7 +135,7 @@
             android:id="@+id/detail_card_view_two"
             android:layout_width="0dp"
             android:layout_height="130dp"
-            android:outlineSpotShadowColor="@color/baby_blue"
+            android:outlineSpotShadowColor="@color/light_green"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
             app:cardElevation="5dp"
@@ -188,9 +170,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/utsansbold"
-                    android:text="120g"
+                    android:text="@string/_120g"
                     android:textAlignment="center"
-                    android:textColor="@color/magenta_light"
+                    android:textColor="@color/dark_green"
                     android:textSize="15sp"
                     app:layout_constraintTop_toBottomOf="@id/details_image_two" />
 
@@ -198,7 +180,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/utsansbold"
-                    android:text="Protein"
+                    android:text="@string/protein"
                     android:textAlignment="center"
                     android:textSize="12sp"
                     app:layout_constraintTop_toBottomOf="@id/protein_value" />
@@ -211,7 +193,7 @@
             android:id="@+id/detail_card_view_three"
             android:layout_width="0dp"
             android:layout_height="130dp"
-            android:outlineSpotShadowColor="@color/baby_blue"
+            android:outlineSpotShadowColor="@color/light_green"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
             app:cardElevation="5dp"
@@ -246,9 +228,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/utsansbold"
-                    android:text="80g"
+                    android:text="@string/_80g"
                     android:textAlignment="center"
-                    android:textColor="@color/magenta_light"
+                    android:textColor="@color/dark_green"
                     android:textSize="15sp"
                     app:layout_constraintTop_toBottomOf="@id/details_image_three" />
 
@@ -256,7 +238,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/utsansbold"
-                    android:text="Fibre"
+                    android:text="@string/fibre"
                     android:textAlignment="center"
                     android:textSize="12sp"
                     app:layout_constraintTop_toBottomOf="@id/fibre_value" />
@@ -269,8 +251,7 @@
             android:id="@+id/detail_card_view_four"
             android:layout_width="0dp"
             android:layout_height="130dp"
-
-            android:outlineSpotShadowColor="@color/baby_blue"
+            android:outlineSpotShadowColor="@color/light_green"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
             app:cardElevation="5dp"
@@ -305,9 +286,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/utsansbold"
-                    android:text="15g"
+                    android:text="@string/_15g"
                     android:textAlignment="center"
-                    android:textColor="@color/magenta_light"
+                    android:textColor="@color/dark_green"
                     android:textSize="15sp"
                     app:layout_constraintTop_toBottomOf="@id/details_image_four" />
 
@@ -315,7 +296,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/utsansbold"
-                    android:text="Fat"
+                    android:text="@string/fat"
                     android:textAlignment="center"
                     android:textSize="12sp"
                     app:layout_constraintTop_toBottomOf="@id/fat_value" />
@@ -330,9 +311,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/utsansbold"
             android:paddingTop="10dp"
-            android:text="INGREDIENTS"
+            android:text="@string/ingredients"
             android:textAlignment="center"
-            android:textColor="@color/magenta_light"
+            android:textColor="@color/dark_green"
             android:textSize="20dp"
 
             app:layout_constraintTop_toBottomOf="@id/detail_card_view_one" />
@@ -343,8 +324,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/utsansregular"
-            android:paddingLeft="10dp"
-            android:textColor="@color/baby_blue"
+            android:paddingStart="10dp"
+            android:textColor="@color/light_green"
             android:textStyle="italic"
             app:layout_constraintTop_toBottomOf="@id/ingredients_title" />
 
@@ -354,10 +335,10 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/utsansbold"
             android:paddingTop="10dp"
-            android:text="INSTRUCTIONS"
+            android:text="@string/instructions"
             android:textAlignment="center"
-            android:textColor="@color/magenta_light"
-            android:textSize="20dp"
+            android:textColor="@color/dark_green"
+            android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@id/ingredients" />
 
 
@@ -366,8 +347,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/utsansregular"
-            android:paddingLeft="10dp"
-            android:textColor="@color/baby_blue"
+            android:paddingStart="10dp"
+            android:textColor="@color/light_green"
             app:layout_constraintTop_toBottomOf="@id/instructions" />
 
 

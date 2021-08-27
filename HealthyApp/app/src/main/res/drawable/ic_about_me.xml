@@ -5,7 +5,7 @@
     <item   android:top="-300dp" android:height="450dp" android:bottom="50dp" android:left="-60dp" android:right="-60dp">
         <shape>
             <corners android:radius="900dp" />
-            <solid android:color="@color/magenta_light"
+            <solid android:color="@color/dark_green"
 
                 />
         </shape>

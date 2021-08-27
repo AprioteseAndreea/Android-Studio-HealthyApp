@@ -35,7 +35,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:hint="Full Name"
-            android:textColorHint="@color/baby_blue"
+            android:textColorHint="@color/light_green"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,8 +50,8 @@
                 android:id="@+id/textInputLayoutEditTextFullName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/baby_blue"
-                android:textColorHint="@color/baby_blue" />
+                android:textColor="@color/light_green"
+                android:textColorHint="@color/light_green" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -63,7 +63,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:hint="Email Address"
-            android:textColorHint="@color/baby_blue"
+            android:textColorHint="@color/light_green"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,8 +76,8 @@
                 android:id="@+id/textInputLayoutEditTextEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/baby_blue"
-                android:textColorHint="@color/baby_blue" />
+                android:textColor="@color/light_green"
+                android:textColorHint="@color/light_green" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -89,7 +89,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:hint="Password"
-            android:textColorHint="@color/baby_blue"
+            android:textColorHint="@color/light_green"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -102,8 +102,8 @@
                 android:id="@+id/textInputLayoutEditTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/baby_blue"
-                android:textColorHint="@color/baby_blue" />
+                android:textColor="@color/light_green"
+                android:textColorHint="@color/light_green" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textinputlayoutConfPassword"
@@ -114,7 +114,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:hint="Confirm Password"
-            android:textColorHint="@color/baby_blue"
+            android:textColorHint="@color/light_green"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -127,8 +127,8 @@
                 android:id="@+id/textInputLayoutEditTextConfPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/baby_blue"
-                android:textColorHint="@color/baby_blue" />
+                android:textColor="@color/light_green"
+                android:textColorHint="@color/light_green" />
         </com.google.android.material.textfield.TextInputLayout>
 
 

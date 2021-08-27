@@ -1,11 +1,21 @@
 package com.example.healthyapp.fragments;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +25,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.healthyapp.R;
-import com.example.healthyapp.activities.RegisterActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static android.app.Activity.RESULT_OK;
+import static androidx.core.content.ContextCompat.checkSelfPermission;
 import static androidx.core.content.ContextCompat.getColor;
 
 /**
@@ -49,7 +60,7 @@ public class AboutMeFragment extends Fragment {
 
     private CircleImageView femaleImage;
     private CircleImageView maleImage;
-
+    private CircleImageView avatarImage;
     private Button saveButton;
 
     public static final String SHARED_PREFS = "sharedPrefs";
@@ -62,6 +73,9 @@ public class AboutMeFragment extends Fragment {
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+
+    private static final int PERMISSION_REQUEST = 0;
+    private static final int RESULT_LOAD_IMAGE = 1;
 
     public AboutMeFragment() {
         // Required empty public constructor
@@ -92,7 +106,12 @@ public class AboutMeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST);
+        }
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -107,7 +126,7 @@ public class AboutMeFragment extends Fragment {
         fullNameTextView = view.findViewById(R.id.name_label);
         femaleImage = view.findViewById(R.id.female_image);
         maleImage = view.findViewById(R.id.male_image);
-
+        avatarImage = view.findViewById(R.id.avatar_image);
         saveButton = view.findViewById(R.id.save_button);
 
         sharedPreferences = getContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
@@ -135,12 +154,12 @@ public class AboutMeFragment extends Fragment {
         }
         if (sharedPreferences.getString(Gender, "") != null) {
             if (sharedPreferences.getString(Gender, "").equals("female")) {
-                femaleImage.setBorderColor(getColor(getContext(), R.color.baby_blue));
+                femaleImage.setBorderColor(getColor(getContext(), R.color.light_green));
                 maleImage.setBorderColor(getColor(getContext(), R.color.white));
                 femaleImage.setBorderWidth(3);
                 isFemaleCheck = true;
             } else {
-                maleImage.setBorderColor(getColor(getContext(), R.color.baby_blue));
+                maleImage.setBorderColor(getColor(getContext(), R.color.light_green));
                 femaleImage.setBorderColor(getColor(getContext(), R.color.white));
 
                 maleImage.setBorderWidth(3);
@@ -154,7 +173,7 @@ public class AboutMeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!isFemaleCheck) {
-                    femaleImage.setBorderColor(getColor(getContext(), R.color.baby_blue));
+                    femaleImage.setBorderColor(getColor(getContext(), R.color.light_green));
                     maleImage.setBorderColor(getColor(getContext(), R.color.white));
 
                     femaleImage.setBorderWidth(3);
@@ -166,7 +185,7 @@ public class AboutMeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (isFemaleCheck) {
-                    maleImage.setBorderColor(getColor(getContext(), R.color.baby_blue));
+                    maleImage.setBorderColor(getColor(getContext(), R.color.light_green));
                     femaleImage.setBorderColor(getColor(getContext(), R.color.white));
 
                     maleImage.setBorderWidth(3);
@@ -183,7 +202,44 @@ public class AboutMeFragment extends Fragment {
 
             }
         });
+        avatarImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
         return view;
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+       switch (requestCode){
+           case PERMISSION_REQUEST:
+               if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                   Toast.makeText(getContext(), "Permission granted!", Toast.LENGTH_SHORT).show();
+               } else {
+                   Toast.makeText(getContext(), "Permission not granted!", Toast.LENGTH_SHORT).show();
+                   getActivity().finish();
+               }
+       }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        switch (requestCode){
+            case RESULT_LOAD_IMAGE:
+                if(resultCode == RESULT_OK){
+                    Uri selectedImage = data.getData();
+                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                    Cursor cursor = getActivity().getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+                    cursor.moveToFirst();
+                    int culumnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    String picturePath = cursor.getString(culumnIndex);
+                    cursor.close();
+                    avatarImage.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+                }
+        }
     }
 
     private void saveData() {

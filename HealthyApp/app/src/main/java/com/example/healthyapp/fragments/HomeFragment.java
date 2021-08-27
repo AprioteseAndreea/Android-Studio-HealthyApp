@@ -109,6 +109,9 @@ public class HomeFragment extends Fragment {
     private ActivityFragmentCommunication activityFragmentCommunication;
     private TextView dateTimeDisplay;
 
+    private TextView totalProteins;
+    private TextView totalKcals;
+
     public static Meal mealClicked = null;
     public static String workoutClicked = null;
 
@@ -161,16 +164,19 @@ public class HomeFragment extends Fragment {
         weather_icon = view.findViewById(R.id.today_icon);
         avatar_image = view.findViewById(R.id.home_avatar_image);
 
-         avatar_image.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 if (activityFragmentCommunication != null) {
-                     activityFragmentCommunication.replaceWithAboutMeFragment();
+        totalKcals = view.findViewById(R.id.total_kcals);
+        totalProteins = view.findViewById(R.id.total_protains);
 
-                 }
-             }
-         });
-         setGreetings();
+        avatar_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (activityFragmentCommunication != null) {
+                    activityFragmentCommunication.replaceWithAboutMeFragment();
+
+                }
+            }
+        });
+        setGreetings();
 
 
 
@@ -206,16 +212,30 @@ public class HomeFragment extends Fragment {
 
         mealsrecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 2));
 
-//        snacksRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 4));
-//        workoutRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 3));
-
         getMeals();
         getSnacks();
         //getWorkout();
-        //String imageViewUrl = meals.get(0).getImagePath();
-        //Glide.with(view).load(imageViewUrl).apply(new RequestOptions().override(150, 150)).into(image_one);
-
         return view;
+    }
+
+    private void getTotalProteins() {
+        float sum = 0;
+        for (Meal m : todayMeals) {
+            float value = Float.parseFloat(m.getProtein().substring(0, m.getProtein().length() - 1));
+            sum += value;
+
+        }
+        totalProteins.setText(String.valueOf( sum));
+    }
+
+    private void getTotalKcals() {
+        int sum = 0;
+        for (Meal m : todayMeals) {
+            int value = Integer.parseInt(m.getCalories().substring(0, m.getCalories().length() - 6));
+            sum += value;
+
+        }
+        totalKcals.setText(String.valueOf(sum));
     }
 
     private void setGreetings() {
@@ -225,20 +245,20 @@ public class HomeFragment extends Fragment {
         int currentHour = calendar.get(Calendar.HOUR_OF_DAY); // gets hour in 24h format
         if (currentHour >= 5 && currentHour <= 12) {
             greeting_text_view.setText("Good morning!");
-           // Glide.with(getView()).load(R.drawable.green_sun_icon).apply(new RequestOptions().override(25, 25)).into(weather_icon);
+            // Glide.with(getView()).load(R.drawable.green_sun_icon).apply(new RequestOptions().override(25, 25)).into(weather_icon);
 
         } else if (currentHour > 12 && currentHour <= 18) {
 //            Glide.with(getView()).load(R.drawable.green_sun_icon).apply(new RequestOptions().override(25, 25)).into(weather_icon);
-           // greeting_text_view.setText("Good afternoon!");
+            // greeting_text_view.setText("Good afternoon!");
 
 
         } else if (currentHour > 18 && currentHour < 22) {
             greeting_text_view.setText("Good evening!");
-           // Glide.with(getView()).load(R.drawable.green_moon_icon).apply(new RequestOptions().override(25, 25)).into(weather_icon);
+            // Glide.with(getView()).load(R.drawable.green_moon_icon).apply(new RequestOptions().override(25, 25)).into(weather_icon);
 
         } else {
             greeting_text_view.setText("Good night!");
-           // Glide.with(getView()).load(R.drawable.green_moon_icon).apply(new RequestOptions().override(25, 25)).into(weather_icon);
+            // Glide.with(getView()).load(R.drawable.green_moon_icon).apply(new RequestOptions().override(25, 25)).into(weather_icon);
 
         }
     }
@@ -533,9 +553,9 @@ public class HomeFragment extends Fragment {
 
                 }
 
-                  if (day.equals(String.valueOf(currentDay))) {
-                 todayMeals.add(meal);
-                  }
+                if (day.equals(String.valueOf(currentDay))) {
+                    todayMeals.add(meal);
+                }
 
             }
             todayMeals.add(meals.get(meals.size() - 1));
@@ -552,7 +572,8 @@ public class HomeFragment extends Fragment {
             }
         });
         mealsrecyclerView.setAdapter(adapter);
-
+        getTotalProteins();
+        getTotalKcals();
 
     }
 

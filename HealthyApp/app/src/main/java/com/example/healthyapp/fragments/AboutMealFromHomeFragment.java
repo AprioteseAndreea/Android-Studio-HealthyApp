@@ -92,6 +92,8 @@ public class AboutMealFromHomeFragment extends Fragment {
         kcals.setText(HomeFragment.mealClicked.getCalories());
         ingredients.setText(HomeFragment.mealClicked.getIngredients());
         howtoprepare.setText(HomeFragment.mealClicked.getHowtoprepare());
+
+
         carbs_value.setText(HomeFragment.mealClicked.getCarbs());
         protein_value.setText(HomeFragment.mealClicked.getProtein());
         fibre_value.setText(HomeFragment.mealClicked.getFibre());

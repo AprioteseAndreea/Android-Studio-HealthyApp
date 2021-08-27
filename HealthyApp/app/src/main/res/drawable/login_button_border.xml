@@ -4,7 +4,7 @@
     >
 
     <solid
-        android:color="@color/baby_blue"
+        android:color="@color/light_green"
         android:paddingLeft="5dp"
         android:paddingTop="5dp"
         />

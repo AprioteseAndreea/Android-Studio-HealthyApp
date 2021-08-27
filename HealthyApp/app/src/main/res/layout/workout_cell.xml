@@ -20,7 +20,7 @@
         android:layout_marginBottom="9dp"
 
         android:src="@drawable/ic_baseline_fastfood_24"
-        app:civ_border_color="@color/baby_blue"
+        app:civ_border_color="@color/light_green"
         app:civ_border_width="2dp" />
 
     <TextView
