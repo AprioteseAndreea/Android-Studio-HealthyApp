@@ -28,7 +28,10 @@ import com.example.healthyapp.fragments.HomeFragment;
 import com.example.healthyapp.fragments.MealsFragment;
 import com.example.healthyapp.models.Meal;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import static java.security.AccessController.getContext;
 
@@ -63,12 +66,9 @@ public class MealViewHolder extends RecyclerView.ViewHolder {
         kcals.setText(meal.getCalories());
         String imageViewUrl = meal.getImagePath();
         Glide.with(this.view).load(imageViewUrl).apply(new RequestOptions().override(150, 150)).into(imageView);
-        if (meal.getFavourite()) {
-
-            Drawable buttonDrawable = addToPreferences.getBackground();
-            buttonDrawable = DrawableCompat.wrap(buttonDrawable);
-            DrawableCompat.setTint(buttonDrawable, Color.BLACK);
-            addToPreferences.setBackground(buttonDrawable);
+        Set<String> favItems = new HashSet<>(HomeFragment.sharedPreferences.getStringSet("favValues", Collections.singleton("")));
+        if(favItems.contains(meal.getId())){
+            addToPreferences.setBackgroundResource(R.drawable.ic_baseline_favorite_full);
 
         }
         view.setOnClickListener(new View.OnClickListener() {
@@ -84,15 +84,10 @@ public class MealViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
 
                 MealAdapter.onAddToPreferencesClick.onClick(meal);
-
-//                if (title.getText().equals(MealsFragment.favouritesMeals.get(MealsFragment.favouritesMeals.size()-1))) {
-//                    Drawable buttonDrawable = addToPreferences.getBackground();
-//                    buttonDrawable = DrawableCompat.wrap(buttonDrawable);
-//                    DrawableCompat.setTint(buttonDrawable, Color.BLACK);
-//                    addToPreferences.setBackground(buttonDrawable);
-//
-//
-//                }
+                HomeFragment.favValues.add(meal.getId());
+                HomeFragment.editor.putStringSet("favValues", HomeFragment.favValues);
+                HomeFragment.editor.commit();
+                addToPreferences.setBackgroundResource(R.drawable.ic_baseline_favorite_full);
             }
         });
     }

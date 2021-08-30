@@ -118,15 +118,15 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/remember_me_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:checked="true"
+            android:textColorHighlight="@color/light_green"
             app:layout_constraintStart_toStartOf="@id/textinputlayoutPassword"
             app:layout_constraintTop_toBottomOf="@id/textinputlayoutPassword"
-            tools:ignore="UseSwitchCompatOrMaterialXml"
             />
 
         <TextView
@@ -175,6 +175,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/remember_text_view"
             app:layout_constraintHorizontal_bias="0.9"/>
+        <CheckBox android:id="@+id/checkbox_keepsigned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/utsansmedium"
+            android:text="Keep me signed in"
+            android:textColor="@color/dark_green"
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="@id/remember_me_switch"
+            app:layout_constraintTop_toBottomOf="@id/remember_me_switch"/>
 
         <TextView
             android:id="@+id/createAccount"

@@ -70,6 +70,8 @@ public class AboutMeFragment extends Fragment {
     public static final String Weight = "weight";
     public static final String Height = "height";
     public static final String Gender = "gender";
+    public static final String Avatar_Image_Path = "avatarImage";
+
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -152,6 +154,7 @@ public class AboutMeFragment extends Fragment {
             heightEditText.setText(sharedPreferences.getString(Height, ""));
 
         }
+
         if (sharedPreferences.getString(Gender, "") != null) {
             if (sharedPreferences.getString(Gender, "").equals("female")) {
                 femaleImage.setBorderColor(getColor(getContext(), R.color.light_green));
@@ -167,7 +170,9 @@ public class AboutMeFragment extends Fragment {
             }
 
         }
-
+        if(sharedPreferences.getString(Avatar_Image_Path, "")!=null){
+            avatarImage.setImageBitmap(BitmapFactory.decodeFile(sharedPreferences.getString(Avatar_Image_Path, "")));
+        }
 
         femaleImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -237,6 +242,8 @@ public class AboutMeFragment extends Fragment {
                     String picturePath = cursor.getString(culumnIndex);
                     cursor.close();
                     avatarImage.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                    editor.putString(Avatar_Image_Path, picturePath);
+                    editor.commit();
 
                 }
         }

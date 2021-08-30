@@ -10,12 +10,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.healthyapp.R;
 import com.example.healthyapp.fragments.AboutMeFragment;
 import com.example.healthyapp.fragments.AboutMealFromHomeFragment;
@@ -32,11 +37,18 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.example.healthyapp.fragments.AboutMeFragment.Avatar_Image_Path;
+import static com.example.healthyapp.fragments.AboutMeFragment.SHARED_PREFS;
+
 public class MainActivity extends AppCompatActivity implements ActivityFragmentCommunication, NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,
                 HomeFragment.newInstance(" ", " ")).commit();
+
+        sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
 
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -57,6 +72,14 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+        CircleImageView account_image =  header.findViewById(R.id.account_image);
+
+        if (sharedPreferences.getString(Avatar_Image_Path, "") != null) {
+            account_image.setImageBitmap(BitmapFactory.decodeFile(sharedPreferences.getString(Avatar_Image_Path, "")));
+        }else {
+            account_image.setImageResource(R.drawable.female_avatar);
+        }
 
     }
 
@@ -81,10 +104,10 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
             case R.id.nav_home:
                 selectedFragment = new HomeFragment();
                 break;
-           case R.id.nav_about_me:
-               selectedFragment = new AboutMeFragment();
-               toolbar.setTitle("About me");
-               break;
+            case R.id.nav_about_me:
+                selectedFragment = new AboutMeFragment();
+                toolbar.setTitle("About me");
+                break;
 //            case R.id.nav_favourites:
 //                // selectedFragment = new WorkoutFragment();
 //                break;
@@ -98,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
                 toolbar.setTitle("Workouts");
                 break;
             case R.id.nav_snacks:
-                 selectedFragment = new SnacksFragment();
+                selectedFragment = new SnacksFragment();
                 toolbar.setTitle("Snacks");
                 break;
 //            case R.id.nav_progress:
@@ -152,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements ActivityFragmentC
         fragmentTransaction.add(R.id.fragment_container, AboutMealFromMealsFragment.newInstance("", ""), "AboutMealFromMealsFragmentTag");
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-
 
 
     }
